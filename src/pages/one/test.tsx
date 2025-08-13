@@ -6,7 +6,7 @@ const Test = () => {
             <h2 className='notext'>테스트 영역</h2>
             <div className='test'>
                 <h3>테스트 영역</h3>
-                <p>테스트 영역</p>
+                <p>마스터 테스트 영역</p>
             </div>
         </main>
     );
