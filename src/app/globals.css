@@ -26,3 +26,33 @@ body {
 }
 
 
+
+/* Button: Btn_blue */
+.Btn_blue {
+	display: inline-block;
+	background-color: #2563eb; /* base blue */
+	color: #ffffff;
+	font-weight: 600;
+	padding: 0.5rem 1rem;
+	border-radius: 0.5rem;
+	border: none;
+	cursor: pointer;
+	transition: background-color 150ms ease, transform 100ms ease, box-shadow 150ms ease;
+	box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+}
+
+.Btn_blue:hover {
+	background-color: #1d4ed8; /* hover blue */
+	box-shadow: 0 4px 10px rgba(29, 78, 216, 0.35);
+}
+
+.Btn_blue:active {
+	background-color: #1e40af; /* active blue */
+	transform: translateY(1px);
+	box-shadow: 0 2px 6px rgba(30, 64, 175, 0.3);
+}
+
+.Btn_blue:focus-visible {
+	outline: 2px solid #93c5fd; /* focus ring */
+	outline-offset: 2px;
+}
