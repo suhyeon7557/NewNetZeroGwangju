@@ -3,10 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/kill-port-3000.ps1",
     "dev": "next dev -H 127.0.0.1 -p 3000",
     "build": "next build",
+    "prestart": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/kill-port-3000.ps1",
     "start": "next start -H 127.0.0.1 -p 3000",
-    "lint": "next lint"
+    "lint": "next lint",
+    "recover": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/recover-dev.ps1",
+    "health": "powershell -NoProfile -Command \"try { (Invoke-WebRequest -UseBasicParsing http://127.0.0.1:3000/).StatusCode } catch { $_.Exception.Message }\"",
+    "watch": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/port-watch.ps1"
   },
   "dependencies": {
     "next": "15.4.6",
