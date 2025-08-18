@@ -1,3 +1,280 @@
-header{
-    color: #ff0000;
+
+
+@import url('https://fonts.cdnfonts.com/css/ds-digital');
+
+header .climateclock {
+    background-color: #000;
+    position: relative;
+    width: 100%;
+    padding: 10px;
+
+    .climateclock_inner {
+        position: relative;
+        width: 1550px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin: 0 auto;
+
+		.earth3d {
+            width: 28px;
+        }   
+
+        .climateclock_text {
+            font-weight: 400;
+            color: #fff;
+            font-size: 1rem;
+            
+            .highlight {
+                font-weight: 550;
+            }
+        }
+
+        .clock_inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            .year, .month, .hour {
+                padding: 0 20px;
+                background-color: #F2082F;
+                color: #fff;
+                border-radius: 3px;
+            }
+            .year_num, .day_num, .hour_num {
+                font-size: 1.65rem;
+                font-weight: 600;
+                color: #fff;
+                font-family: 'DS-Digital', sans-serif;
+            }
+            .year_text, .day_text, .hour_text {
+                margin-left: 5px;
+                font-size: 0.85rem;
+            }
+            .temperature {
+                padding: 0 20px;
+                background-color: #fff;
+                border-radius: 3px;
+                display: flex;
+                align-items: center;
+
+                .temperature_num {
+                    color: #F2082F;
+                    font-size: 1.65rem;
+                    font-weight: 550;
+                    font-family: 'DS-Digital', sans-serif;
+                }
+                .txt_black {
+                    margin-left: 5px;
+                    font-size: 0.85rem;
+                }
+            }
+        }
+    }
+
+}
+
+nav {
+    display: flex;
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid #dbdbdb;
+    
+    .menu_inner {
+        position: relative;
+        width: 1550px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 160px 1fr auto; /* logo | gnb | hamburger */
+        align-items: center;
+        padding: 20px 0;
+        
+        .logo {
+            width: 160px;
+            grid-column: 1;
+        }
+        .gnb {
+            grid-column: 2;
+            display: grid;
+            grid-template-columns: var(--lnb-cols, repeat(7, minmax(0, 1fr)));
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 24px; /* 항목 간 동일 간격 */
+            padding: 0 24px; /* 좌우 여백 */
+
+            > li {
+                position: static; /* li에 LNB가 위치하므로 static 유지 */
+            }
+
+            > li > a {
+                display: block;
+                padding: 6px 0;
+                color: #111;
+                text-align: center;
+                position: relative;
+                transition: color .15s ease;
+            }
+
+            /* GNB hover underline bar */
+            > li > a::after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                bottom: -14px; /* nav 하단선과 겹치지 않게 약간 아래 */
+                height: 3px;
+                width: 100%;
+                background: #B9E300;
+                transform: translateX(-50%) scaleX(0);
+                transform-origin: center;
+                transition: transform .18s ease;
+            }
+
+            > li:hover > a,
+            > li:focus-within > a {
+                color: #111; /* 글자색은 유지, 필요 시 변경 가능 */
+            }
+
+            > li:hover > a::after,
+            > li:focus-within > a::after {
+                transform: translateX(-50%) scaleX(1);
+            }
+
+            /* LNB: 각 li 하위 드롭다운 */
+            > li .lnb {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 100%;
+                width: 100%; /* 컨테이너 폭 기준, 스크롤바에 의한 지터 방지 */
+                background: #fff;
+                border-top: 0; /* nav 경계선과 맞닿게 하여 갭 제거 */
+                border-bottom: 1px solid #eaeaea;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transition: opacity .2s ease, visibility .2s ease;
+                z-index: 1000;
+
+                .lnb_inner {
+                    width: 1550px;
+                    position: relative;
+                    max-width: 95vw;
+                    margin: 0 auto;
+                    padding: 20px 0;
+                    display: grid;
+                    grid-template-columns: 160px 1fr auto; /* logo | content | hamburger */
+                    text-align: center;
+
+                    .lnb_menu {
+                        grid-column: 2;
+                        display: grid;
+                        grid-template-columns: var(--lnb-cols, repeat(7, minmax(0, 1fr)));
+                        justify-content: center;
+                        align-items: start;
+                        gap: 24px; /* GNB와 동일 간격 */
+                        padding: 0 24px; /* GNB와 동일 좌우 여백으로 정렬 일치 */
+
+                        /* 하위 메뉴 hover 시 색상 변경 */
+                        li a { transition: color .15s ease; }
+                        li a:hover { color: #B9E300; }
+                    }
+                }
+
+                /* 호버 브리지: GNB -> LNB 이동시 끊김 방지 */
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: -12px;
+                    height: 12px;
+                }
+            }
+
+            > li:hover .lnb,
+            > li:focus-within .lnb,
+            > li .lnb:hover,
+            > li .lnb:focus-within {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto; /* 열린 상태에서 링크 클릭 가능 */
+                /* transform 제거로 레이아웃 지터 방지 */
+            }
+            /* GNB 전체 영역 hover 시에도 LNB 노출 */
+            &:hover > li:first-child .lnb,
+            &:focus-within > li:first-child .lnb,
+            &:hover > li:hover .lnb {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                /* transform 제거 */
+            }
+        }
+
+        .hamburger { grid-column: 3; justify-self: end; }
+    }
+
+    /* 단일 LNB: nav 바로 하위 공용 드롭다운 */
+    .lnb {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        width: 100%;
+        background: #fff;
+        border-top: 0;
+        border-bottom: 1px solid #eaeaea;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity .2s ease, visibility .2s ease;
+        z-index: 1000;
+
+        .lnb_inner {
+            width: 1550px;
+            position: relative;
+            max-width: 95vw;
+            margin: 0 auto;
+            padding: 20px 0;
+            display: grid;
+            grid-template-columns: 160px 1fr auto; /* logo | content | hamburger */
+            text-align: center;
+
+            .lnb_content {
+                grid-column: 2;
+                display: grid;
+                grid-template-columns: var(--lnb-cols, repeat(7, minmax(0, 1fr)));
+                justify-content: center;
+                align-items: start;
+                gap: 24px;
+                padding: 0 24px;
+            }
+        }
+
+        /* 호버 브리지 */
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -12px;
+            height: 12px;
+        }
+    }
+
+    /* nav 또는 menu 영역 hover 시 LNB 노출 (단일 LNB) */
+    .menu_inner:hover ~ .lnb,
+    &:focus-within .lnb,
+    .lnb:hover {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
 }

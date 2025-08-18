@@ -1,8 +1,8 @@
-import Test from "../pages/one/test";
+import Common from "../layout/common";
 
 export default function Home() {
 	return (
-		<Test/>
+		<Common/>
 	);
 }
 
