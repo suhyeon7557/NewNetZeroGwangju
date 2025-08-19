@@ -8,6 +8,18 @@ const Header = () => {
     const headerWrapRef = useRef<HTMLDivElement | null>(null);
     const headerRef = useRef<HTMLElement | null>(null);
     const [isGnb2Open, setIsGnb2Open] = useState(false);
+    const closeGnb2TimeoutRef = useRef<number | null>(null);
+
+    const scheduleGnb2Close = (delayMs: number = 300) => {
+        if (closeGnb2TimeoutRef.current) {
+            window.clearTimeout(closeGnb2TimeoutRef.current);
+            closeGnb2TimeoutRef.current = null;
+        }
+        closeGnb2TimeoutRef.current = window.setTimeout(() => {
+            setIsGnb2Open(false);
+            closeGnb2TimeoutRef.current = null;
+        }, delayMs);
+    };
 
     useEffect(() => {
         const gnb = gnbRef.current;
@@ -83,7 +95,11 @@ const Header = () => {
         const gnb = document.getElementById('gnb1');
         if (!headerWrap || !gnb) return;
 
-        const onEnter = () => headerWrap.classList.add('menu-hover');
+        const onEnter = () => {
+            headerWrap.classList.add('menu-hover');
+            // 상단 메뉴 호버 시 gnb2가 열려 있다면 닫기
+            scheduleGnb2Close(300);
+        };
         const onLeave = () => headerWrap.classList.remove('menu-hover');
 
         gnb.addEventListener('mouseenter', onEnter);
@@ -93,20 +109,59 @@ const Header = () => {
             gnb.removeEventListener('mouseleave', onLeave);
         };
     }, []);
+
+    // gnb2가 열려 있을 때 상단 메뉴 항목 hover/포커스 시 gnb2 지연 닫기
+    useEffect(() => {
+        const anchors = Array.from(document.querySelectorAll('#gnb1 > ul > li > a')) as HTMLAnchorElement[];
+        if (anchors.length === 0) return;
+        const closeGnb2 = () => scheduleGnb2Close(300);
+        anchors.forEach(a => {
+            a.addEventListener('mouseenter', closeGnb2);
+            a.addEventListener('focus', closeGnb2);
+        });
+        return () => {
+            anchors.forEach(a => {
+                a.removeEventListener('mouseenter', closeGnb2);
+                a.removeEventListener('focus', closeGnb2);
+            });
+        };
+    }, []);
+
+    // 언마운트 시 대기 중인 타이머 정리
+    useEffect(() => {
+        return () => {
+            if (closeGnb2TimeoutRef.current) {
+                window.clearTimeout(closeGnb2TimeoutRef.current);
+                closeGnb2TimeoutRef.current = null;
+            }
+        };
+    }, []);
     // 스크롤 시 헤더 상단 고정 상태에서 배경/텍스트/아이콘 색 전환
     useEffect(() => {
         const headerEl = headerRef.current;
         if (!headerEl) return;
+        const computeOffset = () => {
+            // 요청에 따라 헤더 오프셋을 40px로 고정 적용
+            document.documentElement.style.setProperty('--header-offset', `40px`);
+        };
         const onScroll = () => {
             if (window.scrollY > 0) {
                 headerEl.classList.add('scrolled');
             } else {
                 headerEl.classList.remove('scrolled');
             }
+            computeOffset();
         };
-        onScroll();
+        computeOffset();
         window.addEventListener('scroll', onScroll, { passive: true });
-        return () => window.removeEventListener('scroll', onScroll);
+        window.addEventListener('resize', computeOffset);
+        const ro = new ResizeObserver(computeOffset);
+        ro.observe(headerEl);
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+            window.removeEventListener('resize', computeOffset);
+            ro.disconnect();
+        };
     }, []);
     const onClickHamburger = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -115,6 +170,17 @@ const Header = () => {
             return next;
         });
     };
+
+    // gnb2 열림 상태를 html 클래스에 반영하여 전역 스타일 제어
+    useEffect(() => {
+        const rootEl = document.documentElement;
+        if (isGnb2Open) {
+            rootEl.classList.add('gnb2-open');
+        } else {
+            rootEl.classList.remove('gnb2-open');
+        }
+        return () => rootEl.classList.remove('gnb2-open');
+    }, [isGnb2Open]);
 
     const gnb2Markup = (
         <div id='gnb2-layer' className={isGnb2Open ? 'open' : ''}>

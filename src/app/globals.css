@@ -40,6 +40,16 @@ body {
 	background: var(--background);
 }
 
+main {
+  padding-top: var(--header-offset, 138px);
+}
+
+
+/* main_page*/
+
+
+
+
 
 
 /* Button: Btn_blue */

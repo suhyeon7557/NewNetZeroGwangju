@@ -83,7 +83,7 @@
 #header {
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
     width: 100%;
     transition: background-color .22s ease, box-shadow .22s ease;
 
@@ -94,7 +94,7 @@
 
     .header_wrap {
         display: flex;
-        position: relative;
+        position: absolute;
         flex-direction: column;
         width: 100%;
     }
@@ -106,7 +106,7 @@
         background-color: #999;
         top: 77px;
         left: 0;
-        z-index: 10;
+        z-index: 1;
     }
     .header_wrap::after {
         content: '';
@@ -117,7 +117,7 @@
         height: 485px;
         position: absolute;
         z-index: 0;
-        background-color: rgba(0,0,0,0.50);
+        background-color: rgba(0,0,0,0.40);
         opacity: 0;
         pointer-events: none;
         transition: opacity .22s ease;
@@ -129,6 +129,62 @@
         opacity: 1;
     }
 
+    /* gnb2 오픈 상태에서는 헤더 오버레이 비활성화하여 흰 배경 유지 */
+    html.gnb2-open & .header_wrap::after {
+        opacity: 0 !important;
+    }
+    html.gnb2-open & .header_wrap {
+        background-color: #fff;
+    }
+
+}
+
+/* gnb2 오픈 상태에서 헤더를 흰 배경/검정 톤으로 강제 */
+html.gnb2-open #header {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+html.gnb2-open #header .header_wrap {
+    background-color: #fff;
+}
+html.gnb2-open #logo a {
+    background: url('/logo_black.svg') no-repeat center center;
+    background-size: contain;
+}
+html.gnb2-open #gnb1 > ul > li > a {
+    color: #000;
+    -webkit-text-fill-color: initial;
+    background-image: none;
+}
+/* gnb2 오픈 시 서브메뉴 텍스트도 검정으로 보이도록 */
+html.gnb2-open #gnb1 > ul > li > .submenu { color: #000; }
+html.gnb2-open #gnb1 > ul > li > .submenu a { color: #000; -webkit-text-fill-color: initial; background-image: none; }
+/* gnb2 오픈 시 hover로 인한 gnb1 서브메뉴 노출 완전 차단 */
+html.gnb2-open #gnb1 > ul > li > .submenu {
+    display: none !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+    transform: translateY(-6px) !important;
+}
+/* gnb2 오픈 시 상단메뉴의 그라데이션 호버 효과 비활성화 */
+html.gnb2-open #gnb1 > ul > li > a:hover,
+html.gnb2-open #gnb1 > ul > li.lnb:hover > a,
+html.gnb2-open #gnb1 > ul > li.lnb:focus-within > a,
+html.gnb2-open #gnb1 > ul > li:has(> .submenu:hover) > a {
+    background-image: none;
+    color: #000;
+    -webkit-text-fill-color: initial;
+}
+html.gnb2-open #menu_inner .btn_hamburger a::before {
+    background: #000;
+}
+html.gnb2-open #menu_inner .btn_hamburger a::after {
+    box-shadow: 0 14px 0 #000;
+    border-top: 3px solid #000;
+}
+html.gnb2-open #menu_inner .btn_hamburger .btn_hamburger_inner.open::before,
+html.gnb2-open #menu_inner .btn_hamburger .btn_hamburger_inner.open::after {
+    background: #000;
 }
 #logo {
     width: 130px;
@@ -314,7 +370,7 @@
 #gnb1 > ul > li.lnb:hover,
 #gnb1 > ul > li.lnb:focus-within,
 #gnb1 > ul > li.lnb:has(> .submenu:hover) {
-    background-color: rgba(255,255,255,0.16);
+    background-color: rgba(255, 255, 255, 0.20);
 }
 #gnb1 > ul > li > .submenu > ul > li {
     position: relative;
@@ -403,8 +459,6 @@
     transform: translateY(0);
 }
 
-
-
 /*gnb2*/
 #gnb2 {
     display: none;
@@ -427,21 +481,16 @@
     inset: 0;
     pointer-events: none;
     opacity: 0;
-    transition: opacity .25s ease;
+    transition: opacity .2s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 19; /* 헤더보다 뒤, gnb2보다 앞 */
 }
 #gnb2-layer.open { pointer-events: auto; opacity: 1; }
 
-.gnb2-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.30);
-}
 
 /* gnb2 컨테이너는 자체 트랜지션으로 부드럽게 등장 */
-#gnb2 { will-change: transform, opacity; }
+#gnb2 { will-change: transform, opacity; transition: opacity .45s cubic-bezier(0.4, 0, 0.2, 1), transform .32s cubic-bezier(0.4, 0, 0.2, 1); }
 #gnb2:not(.active) { opacity: 0; transform: translateY(-8px); pointer-events: none; }
-#gnb2.active { opacity: 1; transform: translateY(0); transition: opacity .28s ease, transform .28s ease; }
+#gnb2.active { opacity: 1; transform: translateY(0); }
 
 /* 상위 항목과 서브 항목 페이드 인 (트랜지션 지연으로 순차 효과) */
 #gnb2 > ul > li { opacity: 0; transform: translateY(4px); }
