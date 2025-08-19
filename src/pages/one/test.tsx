@@ -7,7 +7,8 @@ const Test = () => {
 			<button className='Btn_blue' type='button'>테스트 버튼</button>
             <div className='test'>
                 <h3>테스트 영역</h3>
-                <p>마스터 테스트 영역 마스터 테스트 </p>
+				<p>마스터 테스트 영역 마스터 테스트 </p>
+				<button type="button">시켜봐</button>
             </div>
         </main>
     );
