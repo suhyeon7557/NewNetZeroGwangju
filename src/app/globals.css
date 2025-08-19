@@ -26,11 +26,18 @@
 		--foreground: #ededed;
 	}
 }
-
+html {
+	width: 100%;
+	height: 100%;
+}
 body {
-	background: var(--background);
 	color: var(--foreground);
 	font-family: 'Gmarket Sans', Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--background);
 }
 
 

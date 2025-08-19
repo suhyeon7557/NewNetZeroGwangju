@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="ko">
 			<body>
-                <div className="Netzero">
+                <div className="Netzero" style={{background: 'url(/main_visual01.svg) no-repeat center center', width: '100%', height: '100%'}}>
                     <Header />
                     {children}
                     <Footer />  
