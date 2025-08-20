@@ -4,7 +4,10 @@ const Common = () => {
     return (
         <main>
 			<h2 className='notext'>공통 페이지</h2>
-            <div className='common'>
+            <div className='main_page'>
+                <div className='common_page'>
+
+                </div>
             </div>
         </main>
     );
