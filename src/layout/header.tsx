@@ -9,6 +9,8 @@ const Header = () => {
     const headerRef = useRef<HTMLElement | null>(null);
     const [isGnb2Open, setIsGnb2Open] = useState(false);
     const closeGnb2TimeoutRef = useRef<number | null>(null);
+    const isGnb2OpenRef = useRef<boolean>(false);
+    const isMouseOverGnb2Ref = useRef<boolean>(false);
 
     const scheduleGnb2Close = (delayMs: number = 300) => {
         if (closeGnb2TimeoutRef.current) {
@@ -20,6 +22,17 @@ const Header = () => {
             closeGnb2TimeoutRef.current = null;
         }, delayMs);
     };
+
+    const cancelGnb2Close = () => {
+        if (closeGnb2TimeoutRef.current) {
+            window.clearTimeout(closeGnb2TimeoutRef.current);
+            closeGnb2TimeoutRef.current = null;
+        }
+    };
+
+    useEffect(() => {
+        isGnb2OpenRef.current = isGnb2Open;
+    }, [isGnb2Open]);
 
     useEffect(() => {
         const gnb = gnbRef.current;
@@ -97,8 +110,10 @@ const Header = () => {
 
         const onEnter = () => {
             headerWrap.classList.add('menu-hover');
-            // 상단 메뉴 호버 시 gnb2가 열려 있다면 닫기
-            scheduleGnb2Close(300);
+            // 상단 메뉴 호버 시 gnb2가 열려 있고, gnb2 위에 포인터가 없으면 지연 닫기
+            if (isGnb2OpenRef.current && !isMouseOverGnb2Ref.current) {
+                scheduleGnb2Close(600);
+            }
         };
         const onLeave = () => headerWrap.classList.remove('menu-hover');
 
@@ -114,15 +129,19 @@ const Header = () => {
     useEffect(() => {
         const anchors = Array.from(document.querySelectorAll('#gnb1 > ul > li > a')) as HTMLAnchorElement[];
         if (anchors.length === 0) return;
-        const closeGnb2 = () => scheduleGnb2Close(300);
+        const maybeScheduleClose = () => {
+            if (!isGnb2OpenRef.current) return;
+            if (isMouseOverGnb2Ref.current) return;
+            scheduleGnb2Close(600);
+        };
         anchors.forEach(a => {
-            a.addEventListener('mouseenter', closeGnb2);
-            a.addEventListener('focus', closeGnb2);
+            a.addEventListener('mouseenter', maybeScheduleClose);
+            a.addEventListener('focus', maybeScheduleClose);
         });
         return () => {
             anchors.forEach(a => {
-                a.removeEventListener('mouseenter', closeGnb2);
-                a.removeEventListener('focus', closeGnb2);
+                a.removeEventListener('mouseenter', maybeScheduleClose);
+                a.removeEventListener('focus', maybeScheduleClose);
             });
         };
     }, []);
@@ -185,7 +204,14 @@ const Header = () => {
     const gnb2Markup = (
         <div id='gnb2-layer' className={isGnb2Open ? 'open' : ''}>
             <div className='gnb2-backdrop' onClick={() => setIsGnb2Open(false)} />
-            <nav id='gnb2' className={isGnb2Open ? 'active' : ''} onClick={(e) => e.stopPropagation()}>
+            <nav
+                id='gnb2'
+                className={isGnb2Open ? 'active' : ''}
+                onClick={(e) => e.stopPropagation()}
+                onMouseEnter={(e) => { isMouseOverGnb2Ref.current = true; cancelGnb2Close(); }}
+                onMouseLeave={(e) => { isMouseOverGnb2Ref.current = false; }}
+                onFocus={cancelGnb2Close}
+            >
                 <ul className='topmenu_all'>
                 <li className='lnb2'>
                     <a href='#'>기후변화</a>
