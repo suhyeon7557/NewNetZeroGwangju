@@ -12,7 +12,9 @@
 
     .climateclock_inner {
         position: relative;
-        width: 1550px;
+        width: 100%;
+        max-width: 1550px;
+        padding: 0 20px;
         height: 100%;
         display: flex;
         align-items: center;
@@ -108,6 +110,16 @@
         left: 0;
         z-index: 1;
     }
+    /* 반응형: 헤더 선 위치 보정 */
+    @media (max-width: 1366px) {
+        .header_wrap::before { top: 70px; }
+    }
+    @media (max-width: 1024px) {
+        .header_wrap::before { top: 64px; }
+    }
+    @media (max-width: 768px) {
+        .header_wrap::before { top: 58px; }
+    }
     .header_wrap::after {
         content: '';
         width: 100%;
@@ -136,7 +148,16 @@
     html.gnb2-open & .header_wrap {
         background-color: #fff;
     }
-
+    /* 스크롤 상태에서 로고 블랙으로 */
+    .scrolled #logo a {
+        background: url('/logo_black.svg') no-repeat center center;
+    }
+    /* 스크롤 상태에서 상단 메뉴 기본 텍스트 색상 검정 */
+    .scrolled #gnb1 > ul > li > a {
+        color: #000;
+        -webkit-text-fill-color: initial;
+        background-image: none;
+    }
 }
 
 /* gnb2 오픈 상태에서 헤더를 흰 배경/검정 톤으로 강제 */
@@ -186,29 +207,26 @@ html.gnb2-open #menu_inner .btn_hamburger .btn_hamburger_inner.open::before,
 html.gnb2-open #menu_inner .btn_hamburger .btn_hamburger_inner.open::after {
     background: #000;
 }
+/*logo*/
 #logo {
     width: 130px;
     height: 50px;
     margin-top: 15px;
-}
-#logo a {
-    background: url('/logo_white.svg') no-repeat center center;
-    background-size: contain;
-    display: block;
-    width: 100%;
-    height: 100%;
-}
 
-/* 스크롤 상태에서 로고 블랙으로 */
-#header.scrolled #logo a {
-    background: url('/logo_black.svg') no-repeat center center;
-    background-size: contain;
+    a {
+        background: url('/logo_white.svg') no-repeat center center;
+        background-size: contain;
+        display: block;
+        width: 100%;
+        height: 100%;
+}
 }
 
 /*menu_inner*/
 #menu_inner {
     position: relative;
-    width: 1550px;
+    width: 100%;
+    max-width: 1550px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -321,93 +339,104 @@ html.gnb2-open #menu_inner .btn_hamburger .btn_hamburger_inner.open::after {
         opacity: 1;
         transform: translateY(0);
     }
-}
+    > ul {
+        display: table;
+        width: 100%;
+        table-layout: fixed
+    }
+    > ul > li {
+        display: table-cell;
+        text-align: center;
+        position: relative;
+    }
+    > ul > li > a {
+        color:#fff;
+        width: 100%;
+        display: inline-block;
+        position: relative;
+        line-height: 4.8;
+    }
+    > ul > li > .submenu {
+        width: 100%;
+        font-size: 0.95rem;
+        color: #fff;
+    }
+    > ul > li > .submenu > ul {
+        padding: 25px 0 25px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    /* 각 서브메뉴(.lnb)별 hover 시에만 흰색 투명 배경(오버레이) 표시 */
+    > ul > li.lnb {
+        background-color: transparent;
+        transition: background-color .2s ease;
+    }
+    > ul > li.lnb:hover,
+    > ul > li.lnb:focus-within,
+    > ul > li.lnb:has(> .submenu:hover) {
+       background-color: rgba(255, 255, 255, 0.20);
+    }
+    > ul > li > .submenu > ul > li {
+        position: relative;
+    }
 
-/* 이전 변경에서 추가한 gnb2 강제 차단 규칙 제거 (원복) */
-#gnb1 > ul {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-}
-#gnb1 > ul > li {
-    display: table-cell;
-    text-align: center;
-    position: relative;
-}
-#gnb1 > ul > li > a {
-    color:#fff;
-    width: 100%;
-    display: inline-block;
-    position: relative;
-    line-height: 4.8;
-}
-
-/* 스크롤 상태에서 상단 메뉴 기본 텍스트 색상 검정 */
-#header.scrolled #gnb1 > ul > li > a {
-    color: #000;
-    -webkit-text-fill-color: initial;
-    background-image: none;
-}
-
-#gnb1 > ul > li > .submenu {
-    width: 100%;
-    max-height: none;
-    font-size: 0.95rem;
-    color: #fff;
-}
-#gnb1 > ul > li > .submenu > ul {
-    padding: 25px 0 25px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-/* 각 서브메뉴(.lnb)별 hover 시에만 흰색 투명 배경(오버레이) 표시 */
-#gnb1 > ul > li.lnb {
-    background-color: transparent;
-    transition: background-color .2s ease;
-}
-#gnb1 > ul > li.lnb:hover,
-#gnb1 > ul > li.lnb:focus-within,
-#gnb1 > ul > li.lnb:has(> .submenu:hover) {
-    background-color: rgba(255, 255, 255, 0.20);
-}
-#gnb1 > ul > li > .submenu > ul > li {
-    position: relative;
-}
-
-/* 서브메뉴 링크에 상단과 동일한 언더라인 슬라이드 호버 효과 적용 */
-#gnb1 > ul > li > .submenu > ul > li > a {
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    padding: 8px 14px;
-    border-radius: 6px;
-    transition: background-color .18s ease;
-}
-#gnb1 > ul > li > .submenu > ul > li > a::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #B9E300 0%, #d1ff03 50%, #fff 100%);
-    transform: translateX(-50%);
-    transition: width .25s ease;
-}
-#gnb1 > ul > li > .submenu > ul > li:hover > a::after,
-#gnb1 > ul > li > .submenu > ul > li:focus-within > a::after,
-#gnb1 > ul > li > .submenu > ul > li > a:hover::after,
-#gnb1 > ul > li > .submenu > ul > li > a:focus::after {
-    width: 100%;
-}
-
-/* 상단 메뉴 텍스트 hover 효과*/
-#gnb1 > ul > li > a {
-    transition: color .15s ease, letter-spacing .2s ease, text-shadow .2s ease, filter .2s ease, -webkit-text-stroke-color .2s ease, -webkit-text-stroke-width .2s ease;
-}
-#gnb1 > ul > li > a:hover {
+    /* 서브메뉴 링크에 상단과 동일한 언더라인 슬라이드 호버 효과 적용 */
+    > ul > li > .submenu > ul > li > a {
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        padding: 8px 14px;
+        border-radius: 6px;
+        transition: background-color .18s ease;
+    }
+    > ul > li > .submenu > ul > li > a::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #B9E300 0%, #d1ff03 50%, #fff 100%);
+        transform: translateX(-50%);
+        transition: width .25s ease;
+    }
+    > ul > li > .submenu > ul > li:hover > a::after,
+    > ul > li > .submenu > ul > li:focus-within > a::after,
+    > ul > li > .submenu > ul > li > a:hover::after,
+    > ul > li > .submenu > ul > li > a:focus::after {
+       width: 100%;
+    }
+   
+    /* 상단 메뉴 텍스트 hover 효과*/
+    > ul > li > a {
+        transition: color .15s ease, letter-spacing .2s ease, text-shadow .2s ease, filter .2s ease, -webkit-text-stroke-color .2s ease, -webkit-text-stroke-width .2s ease;
+    }
+    > ul > li > a:hover {
+        background-image: linear-gradient(90deg, #B9E300 0%, #d1ff03 50%, #ffffff 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 0.6px;
+        font-weight: 700;
+        filter: none;
+    }
+    
+    /* 서브메뉴 a를 hover했을 때도 상단 메뉴 a를 동일 스타일로 활성화 */
+    > ul > li:has(> .submenu:hover) > a {
+        background-image: linear-gradient(90deg, #B9E300 0%, #d1ff03 50%, #ffffff 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 0.6px;
+        font-weight: 700;
+        filter: none;
+    }
+    /* 상위 .lnb 자체에 hover/포커스가 있을 때도 상단 메뉴 a를 활성화 */
+    > ul > li.lnb:hover > a,
+    > ul > li.lnb:focus-within > a {
     background-image: linear-gradient(90deg, #B9E300 0%, #d1ff03 50%, #ffffff 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -416,33 +445,10 @@ html.gnb2-open #menu_inner .btn_hamburger .btn_hamburger_inner.open::after {
     letter-spacing: 0.6px;
     font-weight: 700;
     filter: none;
+    }
 }
 
-/* 서브메뉴 a를 hover했을 때도 상단 메뉴 a를 동일 스타일로 활성화 */
-#gnb1 > ul > li:has(> .submenu:hover) > a {
-    background-image: linear-gradient(90deg, #B9E300 0%, #d1ff03 50%, #ffffff 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 0.6px;
-    font-weight: 700;
-    filter: none;
-}
-
-/* 상위 .lnb 자체에 hover/포커스가 있을 때도 상단 메뉴 a를 활성화 */
-#gnb1 > ul > li.lnb:hover > a,
-#gnb1 > ul > li.lnb:focus-within > a {
-    background-image: linear-gradient(90deg, #B9E300 0%, #d1ff03 50%, #ffffff 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 0.6px;
-    font-weight: 700;
-    filter: none;
-}
-
+/*head_menu*/
 #head_menu {
     .lnb {
         transition: background-color .25s ease;
@@ -461,14 +467,12 @@ html.gnb2-open #menu_inner .btn_hamburger .btn_hamburger_inner.open::after {
 
 /*gnb2*/
 #gnb2 {
-    display: none;
-}
-#gnb2 {
     position: fixed;
+    display: none;
     width: 100%;
     left: 0;
     transform: none;
-    top: 138px;
+    top: var(--header-offset, 138px);
     background-color: #fff;
     z-index: 20;
     border-bottom-left-radius: 30px;
@@ -490,7 +494,7 @@ html.gnb2-open #menu_inner .btn_hamburger .btn_hamburger_inner.open::after {
 /* gnb2 컨테이너는 자체 트랜지션으로 부드럽게 등장 */
 #gnb2 { will-change: transform, opacity; transition: opacity .45s cubic-bezier(0.4, 0, 0.2, 1), transform .32s cubic-bezier(0.4, 0, 0.2, 1); }
 #gnb2:not(.active) { opacity: 0; transform: translateY(-8px); pointer-events: none; }
-#gnb2.active { opacity: 1; transform: translateY(0); }
+#gnb2.active { opacity: 1; transform: translateY(0); display: block; }
 
 /* 상위 항목과 서브 항목 페이드 인/아웃 (기본에도 트랜지션 적용) */
 #gnb2 > ul > li { opacity: 0; transform: translateY(4px); transition: opacity .35s ease, transform .35s ease; }
@@ -523,9 +527,6 @@ html.gnb2-open #menu_inner .btn_hamburger .btn_hamburger_inner.open::after {
     width: 100%;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
-#gnb2.active .open {
-    display: none;
-}
 #gnb2.active > ul {
     visibility: visible;
     overflow: visible;
@@ -533,11 +534,14 @@ html.gnb2-open #menu_inner .btn_hamburger .btn_hamburger_inner.open::after {
     height: auto;
 }
 #gnb2 > ul {
-    width: calc(100% - 370px);
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
     color: #000;
     position: relative;
     padding: 0 0 50px 0;
+    padding-left: 20px;
+    padding-right: 20px;
     gap: 15px;
     margin-top: 30px;
     z-index: 2;
@@ -587,7 +591,6 @@ html.gnb2-open #menu_inner .btn_hamburger .btn_hamburger_inner.open::after {
     transform-origin: left center;
     transition: transform .45s cubic-bezier(0.4, 0, 0.2, 1), opacity .3s ease;
 }
-
 #gnb2 > ul > li > a {
     font-size: 1.5rem;
     line-height: 3rem;
@@ -600,6 +603,27 @@ html.gnb2-open #menu_inner .btn_hamburger .btn_hamburger_inner.open::after {
     text-align-last: left;
     -webkit-transition: color 0.3s;
     transition: color 0.3s;
+}
+/* 모바일: 상위 a 우측 V 아이콘 */
+@media (max-width: 768px) {
+    #gnb2 > ul > li > a {
+        padding-right: 28px;
+    }
+    #gnb2 > ul > li > a::before {
+        content: '';
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid #333;
+        border-bottom: 2px solid #333;
+        transform: translateY(-50%) rotate(45deg); /* V 모양 */
+        transition: transform .25s ease;
+    }
+    #gnb2 > ul > li > a[aria-expanded='true']::before {
+        transform: translateY(-50%) rotate(-135deg); /* 뒤집힘 */
+    }
 }
 #gnb2.active > ul > li:nth-child(1) {
     -webkit-transition-delay: 0.1s;
@@ -676,4 +700,196 @@ html.gnb2-open #menu_inner .btn_hamburger .btn_hamburger_inner.open::after {
 #gnb2 > ul > li:focus-within > .submenu > ul > li a {
     border-color: #B9E300;
     color: #000;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+    #menu_inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        gap: 12px;
+        padding: 0 16px;
+    }
+    #menu_inner .btn_hamburger { margin-top: 0; }
+    #menu_inner .btn_hamburger a { width: 28px; height: 22px; }
+    #logo {
+        width: 110px;
+        height: 44px;
+        margin-top: 12px;
+    }
+    #gnb1 > ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    #gnb1 > ul > li {
+        display: block;
+        text-align: left;
+    }
+    #gnb1 > ul > li > a {
+        line-height: 3.2;
+        padding: 0 10px;
+    }
+    /* gnb2 레이어: 전체 화면 높이 기반 */
+    #gnb2 {
+        width: 50%;
+        right: 0;
+        left: auto;
+    }
+    #gnb2.active {
+        height: calc(100vh - var(--header-offset, 138px));
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        width: 50%;
+    }
+    #gnb2 > ul {
+        max-width: none;
+        padding-left: 16px;
+        padding-right: 16px;
+        gap: 10px;
+        margin-left: auto;
+        margin-right: 0;
+    }
+    #gnb2 > ul > li {
+        gap: 10px;
+    }
+    #gnb2.active::before {
+        font-size: 1.5rem;
+    }
+    /* 아코디언: 서브메뉴 슬라이드 다운/업 (max-height 전환) */
+    #gnb2 > ul > li > .submenu {
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .32s cubic-bezier(0.4, 0, 0.2, 1), opacity .25s ease, transform .25s ease, padding .25s ease;
+        opacity: 0;
+        transform: translateY(-4px);
+        padding-top: 0;
+        padding-bottom: 0;
+        visibility: hidden;
+        pointer-events: none;
+        background-color: #fff;
+    }
+    #gnb2 > ul > li > .submenu > ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    #gnb2 > ul > li > .submenu.open {
+        max-height: 500px; /* 콘텐츠보다 충분히 큰 값 */
+        opacity: 1;
+        transform: translateY(0);
+        padding-top: 8px;
+        padding-bottom: 8px;
+        visibility: visible;
+        pointer-events: auto;
+    }
+    #gnb2 > ul > li > a {
+        font-size: 1.1rem;
+        line-height: 2.6rem;
+    }
+    #gnb2 > ul > li > .submenu a {
+        color: #000;
+        font-size: 1.05rem;
+    }
+    #gnb2 > ul > li > .submenu > ul {
+        gap: 10px;
+    }
+    #gnb2 > ul > li > .submenu > ul > li a {
+        padding: 6px 16px;
+        border-radius: 20px;
+    }
+}
+
+
+@media (max-width: 1500px) {
+    #menu_inner {
+        padding: 0 20px;
+    }
+}
+
+
+/* 데스크톱 */
+@media (max-width: 1024px) {
+    #logo {
+        width: 100px;
+        margin-top: 10px;
+    }
+    #menu_inner .btn_hamburger {
+        margin-top: 25px;
+    }
+    #menu_inner {
+        gap: 24px;
+    }
+    #climateclock, #gnb1 {
+        display: none;
+    }
+    #gnb2.active {
+        height: 80vh;
+    }
+    #gnb2 > ul > li > a {
+        font-size: 1.3rem;
+        line-height: 2.8rem;
+    }
+}
+
+/* 태블릿 */
+@media (min-width: 769px) {
+
+}
+
+/* 터치 환경에서 호버를 터치용으로 조정 */
+@media (hover: none) and (pointer: coarse) {
+    #gnb1 > ul > li > a:hover {
+        background-image: none;
+        color: inherit;
+        -webkit-text-fill-color: initial;
+    }
+    #gnb1 > ul > li > a:active,
+    #gnb1 > ul > li > a:focus {
+        background-image: none;
+        color: #000;
+    }
+    #gnb1 > ul > li.lnb:active,
+    #gnb1 > ul > li.lnb:focus-within {
+        background-color: rgba(185, 227, 0, 0.15);
+    }
+    #gnb2 > ul > li > a:active::after,
+    #gnb2 > ul > li > a:focus::after {
+        transform: scaleX(1);
+    }
+    #gnb2 > ul > li > .submenu > ul > li a:active,
+    #gnb2 > ul > li > .submenu > ul > li a:focus {
+        background-color: #B9E300;
+        color: #000;
+        border-color: #B9E300;
+    }
+}
+
+/* 좁은 데스크톱 구간: gnb1 간격 축소 및 줄바꿈 방지 */
+@media (min-width: 1025px) and (max-width: 1366px) {
+    #gnb1 > ul {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    #gnb1 > ul > li {
+        display: block; 
+        flex: 0 1 auto;
+    }
+    #gnb1 > ul > li > a {
+        padding: 0 10px; 
+        line-height: 4.2; 
+        font-size: 1.05rem; 
+        white-space: nowrap; 
+        letter-spacing: 0.2px; 
+    }
+    #gnb1 > ul > li > a:hover {
+        letter-spacing: 0.3px;
+    }
+    #gnb1 > ul > li > .submenu > ul {
+        padding: 18px 0; 
+    }
 }

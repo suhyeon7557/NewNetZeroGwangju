@@ -190,6 +190,26 @@ const Header = () => {
         });
     };
 
+    const onClickGnb2Top = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        // 모바일에서만 아코디언 토글
+        if (!window.matchMedia('(max-width: 768px)').matches) return;
+        e.preventDefault();
+        const anchor = e.currentTarget;
+        const li = anchor.closest('li');
+        if (!li) return;
+        const submenu = li.querySelector(':scope > .submenu') as HTMLElement | null;
+        if (!submenu) return;
+        // 형제 서브메뉴 닫기 (submenu에 open 클래스 기준)
+        const siblings = li.parentElement ? Array.from(li.parentElement.children) : [];
+        siblings.forEach(sib => {
+            const sibSub = sib.querySelector(':scope > .submenu') as HTMLElement | null;
+            if (sibSub && sibSub !== submenu) sibSub.classList.remove('open');
+        });
+        const nowOpen = !submenu.classList.contains('open');
+        submenu.classList.toggle('open', nowOpen);
+        anchor.setAttribute('aria-expanded', nowOpen ? 'true' : 'false');
+    };
+
     // gnb2 열림 상태를 html 클래스에 반영하여 전역 스타일 제어
     useEffect(() => {
         const rootEl = document.documentElement;
@@ -207,14 +227,14 @@ const Header = () => {
             <nav
                 id='gnb2'
                 className={isGnb2Open ? 'active' : ''}
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => { e.stopPropagation(); }}
                 onMouseEnter={(e) => { isMouseOverGnb2Ref.current = true; cancelGnb2Close(); }}
                 onMouseLeave={(e) => { isMouseOverGnb2Ref.current = false; }}
                 onFocus={cancelGnb2Close}
             >
                 <ul className='topmenu_all'>
                 <li className='lnb2'>
-                    <a href='#'>기후변화</a>
+                    <a href='#' onClick={onClickGnb2Top}>기후변화</a>
                     <div className='submenu'>
                         <ul className='sub'>
                             <li>
@@ -230,7 +250,7 @@ const Header = () => {
                     </div>
                 </li>
                 <li className='lnb2'>
-                    <a href='#'>탄소중립</a>
+                    <a href='#' onClick={onClickGnb2Top}>탄소중립</a>
                     <div className='submenu'>
                         <ul className='sub'>
                             <li>
@@ -246,7 +266,7 @@ const Header = () => {
                     </div>
                 </li>
                 <li className='lnb2'>
-                    <a href='#'>광주의 탄소중립</a>
+                    <a href='#' onClick={onClickGnb2Top}>광주의 탄소중립</a>
                     <div className='submenu'>
                         <ul className='sub'>
                             <li>
@@ -271,7 +291,7 @@ const Header = () => {
                     </div>
                 </li>
                 <li className='lnb2'>
-                    <a href='#'>정책지표</a>
+                    <a href='#' onClick={onClickGnb2Top}>정책지표</a>
                     <div className='submenu'>
                         <ul className='sub'>
                             <li>
@@ -287,7 +307,7 @@ const Header = () => {
                     </div>
                 </li>
                 <li className='lnb2'>
-                    <a href='#'>시민실천</a>
+                    <a href='#' onClick={onClickGnb2Top}>시민실천</a>
                     <div className='submenu'>
                         <ul className='sub'>
                             <li>
@@ -303,7 +323,7 @@ const Header = () => {
                     </div>
                 </li>
                 <li className='lnb2'>
-                    <a href='#'>소통하기</a>
+                    <a href='#' onClick={onClickGnb2Top}>소통하기</a>
                     <div className='submenu'>
                         <ul className='sub'>
                             <li>
@@ -319,7 +339,7 @@ const Header = () => {
                     </div>
                 </li>
                 <li className='lnb2'>
-                    <a href='#'>우리동네 배출지도</a>
+                    <a href='#' onClick={onClickGnb2Top}>우리동네 배출지도</a>
                     <div className='submenu'>
                         <ul className='sub'>
                             <li>
