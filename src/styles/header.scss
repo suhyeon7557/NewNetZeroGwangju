@@ -321,6 +321,11 @@ html.gnb2-open #menu_inner .btn_hamburger .btn_hamburger_inner.open::after {
     }
 }
 
+/* gnb2 열림 + 스크롤 상태에서 햄버거 하단 라인 그림자 제거 */
+html.gnb2-open #header.scrolled #menu_inner .btn_hamburger a::after {
+    box-shadow: none;
+}
+
 /*gnb1*/
 #gnb1 {
     display: flex;

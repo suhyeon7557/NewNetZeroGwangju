@@ -22,7 +22,7 @@
     width: 100%;
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
     .section {
         width: 1550px;
@@ -75,4 +75,119 @@
         }
     }
 
+}
+
+    .footer_banner {
+        width: 100%;
+        background-color: #fff;
+        border-bottom: 1px solid #eee;
+
+        #banner_f_slider {
+            --swiper-navigation-color: #000;
+            --swiper-navigation-size: 14px;
+            /* 컨트롤 영역과 슬라이드 표시 영역을 분리 정의 */
+            --controls-gap: 160px; /* 우측 컨트롤 영역 폭 (가려짐 방지로 확대) */
+            --slides-inner-width: 1430px; /* 요청: 슬라이드 표시 영역 1430px */
+            position: relative;
+            width: calc(var(--slides-inner-width) + var(--controls-gap));
+            margin: 0 auto;
+            padding: 20px 140px 20px 20px;
+            display: block; /* Swiper 컨테이너는 블록으로 유지 */
+            align-items: center;
+            gap: 16px;
+
+            .swiper-wrapper {
+                display: flex;
+                align-items: center;
+                transition-timing-function: linear !important; /* 연속 마퀴 느낌 */
+            }
+            .swiper-slide {
+                flex: 0 0 auto;
+                width: auto !important;
+                a {
+                    display: inline-block;
+                    padding: 8px 20px;
+                    font-size: 0.95rem;
+                    color: #333;
+                    background: #fff;
+                    transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+                }
+            }
+
+            .swiper-controls {
+                position: absolute;
+                right: 16px;
+                top: 50%;
+                transform: translateY(-50%);
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                z-index: 100;
+            }
+
+            .swiper-button-prev,
+            .swiper-button-next {
+                position: static; /* Swiper 기본 absolute 해제 */
+                inset: auto;
+                transform: none;
+                margin-top: 0 !important; /* Swiper 기본 마이너스 margin 상쇄 */
+                margin-bottom: 0;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                border: 1px solid #999;
+                background: #fff center center / 10px no-repeat;
+                cursor: pointer;
+                transition: border-color .2s ease, background-color .2s ease;
+            }
+            .swiper-button-prev::after,
+            .swiper-button-next::after { display: none; } /* 기본 폰트 아이콘 숨김 */
+            .swiper-button-prev { background-image: url('/ic_prev_black.svg'); }
+            .swiper-button-next { background-image: url('/ic_next_black.svg'); }
+            .swiper-button-prev:hover,
+            .swiper-button-next:hover { border-color: #999; background-color: #fff; }
+
+            .play_stop {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+
+                .toggle {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    border: 1px solid #999;
+                    background: #fff center center / 10px no-repeat;
+                    cursor: pointer;
+                    transition: border-color .2s ease, background-color .2s ease;
+                }
+                .toggle.playing { background-image: url('/ic_stop_black.svg'); }
+                .toggle.paused { background-image: url('/ic_play_black.svg'); }
+                .toggle:hover { border-color: #999; background-color: #f0f0f0; }
+            }
+        }
+    }
+
+@media (max-width: 1500px) {
+    #footer {
+        padding: 0 20px;
+    }
+    #footer .footer_wrap .footer_banner #banner_f_slider {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/* screen-reader only */
+.sr_only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
