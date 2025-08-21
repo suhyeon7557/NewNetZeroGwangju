@@ -234,7 +234,7 @@ const Header = () => {
             >
                 <ul className='topmenu_all'>
                 <li className='lnb2'>
-                    <a href='#' onClick={onClickGnb2Top}>기후변화</a>
+                    <a href='#' aria-expanded={false} onClick={onClickGnb2Top}>기후변화</a>
                     <div className='submenu'>
                         <ul className='sub'>
                             <li>
@@ -250,7 +250,7 @@ const Header = () => {
                     </div>
                 </li>
                 <li className='lnb2'>
-                    <a href='#' onClick={onClickGnb2Top}>탄소중립</a>
+                    <a href='#' aria-expanded={false} onClick={onClickGnb2Top}>탄소중립</a>
                     <div className='submenu'>
                         <ul className='sub'>
                             <li>
@@ -266,7 +266,7 @@ const Header = () => {
                     </div>
                 </li>
                 <li className='lnb2'>
-                    <a href='#' onClick={onClickGnb2Top}>광주의 탄소중립</a>
+                    <a href='#' aria-expanded={false} onClick={onClickGnb2Top}>광주의 탄소중립</a>
                     <div className='submenu'>
                         <ul className='sub'>
                             <li>
@@ -291,7 +291,7 @@ const Header = () => {
                     </div>
                 </li>
                 <li className='lnb2'>
-                    <a href='#' onClick={onClickGnb2Top}>정책지표</a>
+                    <a href='#' aria-expanded={false} onClick={onClickGnb2Top}>정책지표</a>
                     <div className='submenu'>
                         <ul className='sub'>
                             <li>
@@ -307,7 +307,7 @@ const Header = () => {
                     </div>
                 </li>
                 <li className='lnb2'>
-                    <a href='#' onClick={onClickGnb2Top}>시민실천</a>
+                    <a href='#' aria-expanded={false} onClick={onClickGnb2Top}>시민실천</a>
                     <div className='submenu'>
                         <ul className='sub'>
                             <li>
@@ -323,7 +323,7 @@ const Header = () => {
                     </div>
                 </li>
                 <li className='lnb2'>
-                    <a href='#' onClick={onClickGnb2Top}>소통하기</a>
+                    <a href='#' aria-expanded={false} onClick={onClickGnb2Top}>소통하기</a>
                     <div className='submenu'>
                         <ul className='sub'>
                             <li>
@@ -339,7 +339,7 @@ const Header = () => {
                     </div>
                 </li>
                 <li className='lnb2'>
-                    <a href='#' onClick={onClickGnb2Top}>우리동네 배출지도</a>
+                    <a href='#' aria-expanded={false} onClick={onClickGnb2Top}>우리동네 배출지도</a>
                     <div className='submenu'>
                         <ul className='sub'>
                             <li>
@@ -387,9 +387,8 @@ const Header = () => {
                 {/*menu_inner*/}
                 <div id='menu_inner'>
                     {/*logo*/}
-                    <div id='logo'>
-                        <a href='#' aria-label='홈'>
-                        </a>
+                    <div id='logo' className='white'>
+                        <a href='#' aria-label='홈'></a>
                     </div>
                     {/*gnb*/}
                     <nav id='gnb1'>

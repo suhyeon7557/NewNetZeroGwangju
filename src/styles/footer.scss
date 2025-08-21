@@ -1,3 +1,208 @@
-footer{
-    color: #0000ff;
+/*logo*/
+#logo {
+    width: 130px;
+    height: 50px;
+
+    &.black a {
+        background: url('/logo_black.svg') no-repeat center center;
+        background-size: contain;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+#footer {
+    position: relative;
+    border-top: 1px solid #999;
+    background-color: #fff;
+    width: 100%;
+}
+#footer .footer_wrap {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .section {
+        width: 1550px;
+        margin: 0 auto;
+        padding: 2.5rem 0;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        gap: 30px;
+        align-items: center;
+
+        .footer_info {
+            display: flex;
+            flex-direction: column;
+        }
+        p.copyright {
+            font-size: 0.85rem;
+        }
+        .footer_sns {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            margin-left: auto;
+
+            ul {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            ul > li {
+                width: 40px;
+                height: 40px;
+            }
+            ul > li > a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            /* 올바른 파일명으로 매핑 (public 폴더 자원 기준) */
+            ul > li:nth-child(1) > a { background-image: url('/ic_facebool.svg'); }
+            ul > li:nth-child(2) > a { background-image: url('/ic_instagram.svg'); }
+            ul > li:nth-child(3) > a { background-image: url('/ic_youtube.svg'); }
+        }
+    }
+
+}
+
+    .footer_banner {
+        width: 100%;
+        background-color: #fff;
+        border-bottom: 1px solid #eee;
+
+        #banner_f_slider {
+            --swiper-navigation-color: #000;
+            --swiper-navigation-size: 14px;
+            /* 컨트롤 영역과 슬라이드 표시 영역을 분리 정의 */
+            --controls-gap: 160px; /* 우측 컨트롤 영역 폭 (가려짐 방지로 확대) */
+            --slides-inner-width: 1430px; /* 요청: 슬라이드 표시 영역 1430px */
+            position: relative;
+            width: calc(var(--slides-inner-width) + var(--controls-gap));
+            margin: 0 auto;
+            padding: 20px 140px 20px 20px;
+            overflow: hidden;
+            /* 우측 컨트롤 영역 시각적 마스크 (슬라이드 클릭 방지 및 덮개) */
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 140px;
+                height: 100%;
+                background: #fff;
+                z-index: 90; /* 슬라이드 위, 컨트롤 아래(컨트롤 z-index 100) */
+                pointer-events: none;
+            }
+            display: block; /* Swiper 컨테이너는 블록으로 유지 */
+            align-items: center;
+            gap: 16px;
+
+            .swiper-wrapper {
+                display: flex;
+                align-items: center;
+                transition-timing-function: ease; /* 기본 전환으로 복원 */
+                will-change: transform;
+            }
+            .swiper-slide {
+                flex: 0 0 auto;
+                width: auto !important;
+                a {
+                    display: inline-block;
+                    padding: 8px 20px;
+                    font-size: 0.95rem;
+                    color: #333;
+                    background: #fff;
+                    transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+                }
+            }
+
+            .swiper-controls {
+                position: absolute;
+                right: 16px;
+                top: 50%;
+                transform: translateY(-50%);
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                z-index: 100;
+            }
+
+            .swiper-button-prev,
+            .swiper-button-next {
+                position: static; /* Swiper 기본 absolute 해제 */
+                inset: auto;
+                transform: none;
+                margin-top: 0 !important; /* Swiper 기본 마이너스 margin 상쇄 */
+                margin-bottom: 0;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                border: 1px solid #999;
+                background: #fff center center / 10px no-repeat;
+                cursor: pointer;
+                transition: border-color .2s ease, background-color .2s ease;
+            }
+            .swiper-button-prev::after,
+            .swiper-button-next::after { display: none; } /* 기본 폰트 아이콘 숨김 */
+            .swiper-button-prev { background-image: url('/ic_prev_black.svg'); background-size: 8px; }
+            .swiper-button-next { background-image: url('/ic_next_black.svg'); background-size: 8px; }
+            .swiper-button-prev:hover { background-color: #000; border-color: #000; background-image: url('/ic_prev_white.svg'); }
+            .swiper-button-next:hover { background-color: #000; border-color: #000; background-image: url('/ic_next_white.svg'); }
+
+            .play_stop {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+
+                .toggle {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    border: 1px solid #999;
+                    background: #fff center center / 10px no-repeat;
+                    cursor: pointer;
+                    transition: border-color .2s ease, background-color .2s ease;
+                }
+                .toggle.playing { background-image: url('/ic_stop_black.svg'); background-size: 8px; }
+                .toggle.paused { background-image: url('/ic_play_black.svg'); background-size: 8px; }
+                .toggle.playing:hover { background-color: #000; border-color: #000; background-image: url('/ic_stop_white.svg'); }
+                .toggle.paused:hover { background-color: #000; border-color: #000; background-image: url('/ic_play_white.svg'); }
+            }
+        }
+    }
+
+@media (max-width: 1500px) {
+    #footer {
+        padding: 0 20px;
+    }
+    #footer .footer_wrap .footer_banner #banner_f_slider {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/* screen-reader only */
+.sr_only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }

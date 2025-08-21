@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "../styles/header.scss";
 import "../styles/footer.scss";
+import "swiper/css";
+import "swiper/css/navigation";
 
 import Header from "../layout/header";
 import Footer from "../layout/footer";
