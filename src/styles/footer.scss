@@ -92,6 +92,19 @@
             width: calc(var(--slides-inner-width) + var(--controls-gap));
             margin: 0 auto;
             padding: 20px 140px 20px 20px;
+            overflow: hidden;
+            /* 우측 컨트롤 영역 시각적 마스크 (슬라이드 클릭 방지 및 덮개) */
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 140px;
+                height: 100%;
+                background: #fff;
+                z-index: 90; /* 슬라이드 위, 컨트롤 아래(컨트롤 z-index 100) */
+                pointer-events: none;
+            }
             display: block; /* Swiper 컨테이너는 블록으로 유지 */
             align-items: center;
             gap: 16px;
@@ -99,7 +112,8 @@
             .swiper-wrapper {
                 display: flex;
                 align-items: center;
-                transition-timing-function: linear !important; /* 연속 마퀴 느낌 */
+                transition-timing-function: ease; /* 기본 전환으로 복원 */
+                will-change: transform;
             }
             .swiper-slide {
                 flex: 0 0 auto;
@@ -142,10 +156,10 @@
             }
             .swiper-button-prev::after,
             .swiper-button-next::after { display: none; } /* 기본 폰트 아이콘 숨김 */
-            .swiper-button-prev { background-image: url('/ic_prev_black.svg'); }
-            .swiper-button-next { background-image: url('/ic_next_black.svg'); }
-            .swiper-button-prev:hover,
-            .swiper-button-next:hover { border-color: #999; background-color: #fff; }
+            .swiper-button-prev { background-image: url('/ic_prev_black.svg'); background-size: 8px; }
+            .swiper-button-next { background-image: url('/ic_next_black.svg'); background-size: 8px; }
+            .swiper-button-prev:hover { background-color: #000; border-color: #000; background-image: url('/ic_prev_white.svg'); }
+            .swiper-button-next:hover { background-color: #000; border-color: #000; background-image: url('/ic_next_white.svg'); }
 
             .play_stop {
                 display: flex;
@@ -161,9 +175,10 @@
                     cursor: pointer;
                     transition: border-color .2s ease, background-color .2s ease;
                 }
-                .toggle.playing { background-image: url('/ic_stop_black.svg'); }
-                .toggle.paused { background-image: url('/ic_play_black.svg'); }
-                .toggle:hover { border-color: #999; background-color: #f0f0f0; }
+                .toggle.playing { background-image: url('/ic_stop_black.svg'); background-size: 8px; }
+                .toggle.paused { background-image: url('/ic_play_black.svg'); background-size: 8px; }
+                .toggle.playing:hover { background-color: #000; border-color: #000; background-image: url('/ic_stop_white.svg'); }
+                .toggle.paused:hover { background-color: #000; border-color: #000; background-image: url('/ic_play_white.svg'); }
             }
         }
     }

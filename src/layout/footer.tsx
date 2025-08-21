@@ -10,22 +10,27 @@ const Footer = () => {
 
     useEffect(() => {
         if (!swiperContainerRef.current) return;
-        swiperRef.current = new Swiper(swiperContainerRef.current, {
+        const containerEl = swiperContainerRef.current as HTMLElement;
+
+        swiperRef.current = new Swiper(containerEl, {
             modules: [Navigation, Autoplay, A11y],
             slidesPerView: 'auto',
             spaceBetween: 30,
             loop: true,
             speed: 600,
-            navigation: {
-                nextEl: '.footer_banner .swiper-button-next',
-                prevEl: '.footer_banner .swiper-button-prev',
-            },
             autoplay: {
                 delay: 2500,
                 disableOnInteraction: false,
                 stopOnLastSlide: false,
+                pauseOnMouseEnter: false,
             },
-            loopAdditionalSlides: 10,
+            navigation: {
+                nextEl: '.footer_banner .swiper-button-next',
+                prevEl: '.footer_banner .swiper-button-prev',
+            },
+            observer: true,
+            observeParents: true,
+            allowTouchMove: true,
             breakpoints: {
                 0: { spaceBetween: 12 },
                 768: { spaceBetween: 16 },
@@ -34,10 +39,25 @@ const Footer = () => {
                 1500: { spaceBetween: 30 },
             },
             a11y: { enabled: true },
+            on: {
+                init: (sw) => {
+                    if (sw.autoplay && typeof sw.autoplay.start === 'function') {
+                        sw.autoplay.start();
+                    }
+                },
+            },
         });
+
+        const onResize = () => {
+            swiperRef.current?.update();
+        };
+
+        window.addEventListener('resize', onResize);
+
         return () => {
             swiperRef.current?.destroy(true, true);
             swiperRef.current = null;
+            window.removeEventListener('resize', onResize);
         };
     }, []);
 
@@ -59,17 +79,16 @@ const Footer = () => {
                 <div className='footer_banner'>
                     <div className='swiper' id='banner_f_slider' ref={swiperContainerRef}>
                         <div className='swiper-wrapper'>
-                            <div className='swiper-slide'><a href='https://me.go.kr/home/web/main.do' target='_blank' title='새창' rel='noopener'>환경부</a></div>
-                            <div className='swiper-slide'><a href='https://www.keci.or.kr' target='_blank' title='새창' rel='noopener'>한국환경보전원</a></div>
-                            <div className='swiper-slide'><a href='https://www.keco.or.kr/web/index.do' target='_blank' title='새창' rel='noopener'>한국환경공단</a></div>
-                            <div className='swiper-slide'><a href='https://www.keco.or.kr/ecolove/main.do' target='_blank' title='새창' rel='noopener'>환경사랑홍보교육관</a></div>
-                            <div className='swiper-slide'><a href='https://cpoint.or.kr/' target='_blank' title='새창' rel='noopener'>탄소중립포인트</a></div>
-                            <div className='swiper-slide'><a href='https://keci.or.kr/gradcc' target='_blank' title='새창' rel='noopener'>기후변화특성화대학원</a></div>
-                            <div className='swiper-slide'><a href='https://www.kei.re.kr/' target='_blank' title='새창' rel='noopener'>KEI한국환경연구원</a></div>
-                            <div className='swiper-slide'><a href='https://www.keiti.re.kr/site/keiti/main.do' target='_blank' title='새창' rel='noopener'>KEITI</a></div>
-                            <div className='swiper-slide'><a href='http://www.climateforum.or.kr/' target='_blank' title='새창' rel='noopener'>국회기후변화포럼</a></div>
-                            <div className='swiper-slide'><a href='http://www.climate.go.kr/atlas' target='_blank' title='새창' rel='noopener'>기상청 기후변화상황지도</a></div>
-                            <div className='swiper-slide'><a href='https://kaccc.kei.re.kr/' target='_blank' title='새창' rel='noopener'>국가기후위기적응센터</a></div>
+                            <div className='swiper-slide'><a href='https://www.gen.go.kr/main/main.php' target='_blank' title='새창' rel='noopener'>광주광역시 교육청</a></div>
+                            <div className='swiper-slide'><a href='https://www.me.go.kr/ysg/web/main.do' target='_blank' title='새창' rel='noopener'>영산강유역환경청</a></div>
+                            <div className='swiper-slide'><a href='https://welfare.gwangju.go.kr/main' target='_blank' title='새창' rel='noopener'>광주복지플랫폼</a></div>
+                            <div className='swiper-slide'><a href='https://gjenergyvillage.com/' target='_blank' title='새창' rel='noopener'>에너지전환마을 지원 플랫폼</a></div>
+                            <div className='swiper-slide'><a href='https://gjeec.or.kr/' target='_blank' title='새창' rel='noopener'>광주광역시 환경교육통합시스템</a></div>
+                            <div className='swiper-slide'><a href='https://gcea.or.kr/network/' target='_blank' title='새창' rel='noopener'>기후환경네트워크</a></div>
+                            <div className='swiper-slide'><a href='https://blog.naver.com/seseguide' target='_blank' title='새창' rel='noopener'>에너지관리공단 광주전남지역본부</a></div>
+                            <div className='swiper-slide'><a href='https://hometax.go.kr/websquare/websquare.html?w2xPath=/ui/pp/index_pp.xml&menuCd=index3' target='_blank' title='새창' rel='noopener'>홈텍스</a></div>
+                            <div className='swiper-slide'><a href='https://www.gwangju.go.kr/main.do' target='_blank' title='새창' rel='noopener'>광주광역시</a></div>
+                            <div className='swiper-slide'><a href='https://www.keiti.re.kr/site/keiti/main.do' target='_blank' title='새창' rel='noopener'>한국환경산업기술원</a></div>
                         </div>
                         <div className='swiper-controls'>
                             <div className='swiper-button-prev' aria-label='Previous slide'></div>
