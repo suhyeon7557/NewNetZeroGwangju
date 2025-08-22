@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 
 import Header from "../layout/header";
 import Footer from "../layout/footer";
+import TopScroll from "../layout/topscroll";
 
 export const metadata: Metadata = {
 	title: "광주넷제로",
@@ -17,12 +18,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="ko">
 			<body>
-                <div className="Netzero" style={{background: 'url(/main_visual01.svg) no-repeat center center', width: '100%', height: '100%'}}>
+                <div className="Netzero">
                     <Header />
                     <main>
                         {children}
                     </main>
                     <Footer />  
+                    <TopScroll />
                 </div>
 			</body>
 		</html>
