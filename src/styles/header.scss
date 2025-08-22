@@ -704,6 +704,7 @@ html.gnb2-open #header.scrolled #menu_inner .btn_hamburger a::after {
     -webkit-transition: color 0.3s;
     transition: color 0.3s;
 }
+
 /* 모바일: 상위 a 우측 V 아이콘 */
 @media (max-width: 768px) {
     #gnb2 > ul > li > a {
@@ -806,10 +807,9 @@ html.gnb2-open #header.scrolled #menu_inner .btn_hamburger a::after {
 
 @media (max-width: 1500px) {
     #menu_inner {
-        padding: 0 20px;
+        padding: 0 20px 0 20px;
     }
 }
-
 
 /* 데스크톱 */
 @media (max-width: 1024px) {
@@ -817,22 +817,43 @@ html.gnb2-open #header.scrolled #menu_inner .btn_hamburger a::after {
         width: 100px;
         margin-top: 10px;
     }
-    #menu_inner .btn_hamburger {
-        margin-top: 20px;
+    /* 로고 배경 사이즈를 고정 폭에 맞춰 맞춤 */
+    #logo.white a,
+    #logo.black a,
+    html.gnb2-open #logo a,
+    .scrolled #logo a,
+    .scrolled .header_wrap.menu-hover #logo a,
+    .scrolled .header_wrap.menu-open #logo a {
+        background-size: 100px auto;
     }
     #menu_inner {
-        gap: 24px;
+        padding: 0 15px 0 0;
+    }
+    #menu_inner .btn_hamburger {
+        margin-top: 20px;
     }
     #climateclock, #gnb1 {
         display: none;
     }
     #gnb2.active {
-        height: 60vh;
+        height: 50vh;
         padding-top: 50px;
     }
     #gnb2 > ul > li > a {
-        font-size: 1.3rem;
-        line-height: 2.8rem;
+        font-size: 1.2rem;
+        line-height: 2rem;
+    }
+    #gnb2 > ul {
+        margin-top: 0;
+    }
+    #gnb2 > ul > li {
+        gap: 10px;
+    }
+    #gnb2.active::before {
+        font-size: 1.6rem;
+    }
+    #gnb2 > ul > li > .submenu > ul > li a {
+        font-size: 1rem;
     }
 }
 
@@ -903,8 +924,6 @@ html.gnb2-open #header.scrolled #menu_inner .btn_hamburger a::after {
         align-items: center;
         justify-content: space-between;
         flex-wrap: nowrap;
-        gap: 12px;
-        padding: 0 16px;
     }
     #menu_inner .btn_hamburger
     #menu_inner .btn_hamburger a {
@@ -934,14 +953,14 @@ html.gnb2-open #header.scrolled #menu_inner .btn_hamburger a::after {
     }
     /* gnb2 레이어: 전체 화면 높이 기반 */
     #gnb2 {
-        width: 50%;
+        width: 100%;
         right: 0;
         left: auto;
     }
     #gnb2.active {
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
-        width: 50%;
+        width: 300px;
         padding-top: 35px;
     }
     #gnb2 > ul {
@@ -1006,3 +1025,15 @@ html.gnb2-open #header.scrolled #menu_inner .btn_hamburger a::after {
         display: none !important;
     }
 }
+
+
+/* 모바일 */
+@media (max-width: 400px) {
+    #gnb2.active {
+        width: 100%;
+    }
+}
+
+
+
+
