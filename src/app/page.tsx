@@ -1,8 +1,8 @@
-import Common from "../layout/common";
+import SubPage from "../pages/subpage/subpage";
 
 export default function Home() {
 	return (
-		<Common/>
+		<SubPage/>
 	);
 }
 

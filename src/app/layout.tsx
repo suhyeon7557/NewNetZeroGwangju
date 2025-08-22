@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "../styles/header.scss";
 import "../styles/footer.scss";
+import "../styles/common.scss";
 import "swiper/css";
 import "swiper/css/navigation";
 
 import Header from "../layout/header";
 import Footer from "../layout/footer";
+import TopScroll from "../layout/topscroll";
+import Notice from "../layout/notice";
 
 export const metadata: Metadata = {
 	title: "광주넷제로",
@@ -17,12 +20,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="ko">
 			<body>
-                <div className="Netzero" style={{background: 'url(/main_visual01.svg) no-repeat center center', width: '100%', height: '100%'}}>
+                <div className="Netzero">
                     <Header />
                     <main>
+                        <h2 className='notext' style={{display: 'none'}}>컨텐츠 영역</h2>
                         {children}
                     </main>
                     <Footer />  
+                    <Notice />
+                    <TopScroll />
                 </div>
 			</body>
 		</html>
