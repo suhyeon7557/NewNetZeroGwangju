@@ -356,7 +356,7 @@ const Header = () => {
     return (
         <>
         <header id='header' ref={headerRef}>
-            <h2 className='notext' style={{display: 'none'}}>헤더영역</h2>
+            <h2 className='visually-hidden' style={{display: 'none'}}>헤더영역</h2>
             {/*climateclock*/}
             <div id='climateclock'>
                 <div className='climateclock_inner'>
