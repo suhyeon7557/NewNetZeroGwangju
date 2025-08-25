@@ -1293,3 +1293,91 @@ Import trace for requested module:
  GET /fonts/GmarketSans.ttf 404 in 56ms
  GET / 200 in 88ms
  GET /fonts/GmarketSans.ttf 404 in 71ms
+ ✓ Compiled in 480ms (1023 modules)
+ GET / 200 in 50ms
+ ✓ Compiled /_not-found in 151ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 285ms
+ GET / 200 in 144ms
+ GET /fonts/GmarketSans.ttf 404 in 70ms
+ ✓ Compiled in 259ms (1028 modules)
+ GET / 200 in 40ms
+ GET /fonts/GmarketSans.ttf 404 in 116ms
+ ✓ Compiled in 502ms (1028 modules)
+ GET / 200 in 63ms
+ GET /fonts/GmarketSans.ttf 404 in 131ms
+ ✓ Compiled in 405ms (940 modules)
+ ⨯ ReferenceError: Layout is not defined
+    at Home (src\app\page.tsx:5:3)
+  3 | export default function Home() {
+  4 | 	return (
+> 5 | 		<Layout/>
+    | 		^
+  6 | 	);
+  7 | }
+  8 | {
+  digest: '101606526'
+}
+ GET / 200 in 118ms
+ ✓ Compiled in 637ms (1015 modules)
+ GET / 200 in 324ms
+ GET /fonts/GmarketSans.ttf 404 in 85ms
+ ✓ Compiled in 243ms (1015 modules)
+ GET / 200 in 57ms
+ GET /fonts/GmarketSans.ttf 404 in 124ms
+ ✓ Compiled in 458ms (1023 modules)
+ GET / 200 in 105ms
+ ✓ Compiled /_not-found in 143ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 274ms
+ GET / 200 in 22ms
+ GET /fonts/GmarketSans.ttf 404 in 66ms
+ ✓ Compiled in 234ms (1028 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 81ms
+ GET / 200 in 96ms
+ GET /fonts/GmarketSans.ttf 404 in 64ms
+ GET / 200 in 63ms
+ GET /fonts/GmarketSans.ttf 404 in 62ms
+ ✓ Compiled in 762ms (1015 modules)
+ GET / 200 in 90ms
+ GET /fonts/GmarketSans.ttf 404 in 130ms
+ ✓ Compiled in 236ms (1015 modules)
+ GET / 200 in 138ms
+ GET /fonts/GmarketSans.ttf 404 in 123ms
+ ✓ Compiled in 372ms (1010 modules)
+ GET / 200 in 64ms
+ ✓ Compiled /_not-found in 143ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 328ms
+ ✓ Compiled in 211ms (1015 modules)
+ GET / 200 in 39ms
+ GET /fonts/GmarketSans.ttf 404 in 136ms
+ ✓ Compiled in 420ms (1028 modules)
+ GET / 200 in 56ms
+ GET /fonts/GmarketSans.ttf 404 in 117ms
+ ✓ Compiled in 227ms (1015 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 140ms
+ GET / 200 in 105ms
+ GET / 200 in 72ms
+ GET / 200 in 74ms
+ GET / 200 in 69ms
+ GET /fonts/GmarketSans.ttf 404 in 61ms
+ ✓ Compiled in 411ms (1010 modules)
+ GET / 200 in 62ms
+ ✓ Compiled /_not-found in 157ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 296ms
+ ✓ Compiled in 192ms (1015 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 88ms
+ GET / 200 in 99ms
+ GET /fonts/GmarketSans.ttf 404 in 62ms
+ ✓ Compiled in 408ms (1010 modules)
+ GET / 200 in 92ms
+ ✓ Compiled /_not-found in 159ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 295ms
+ ✓ Compiled in 220ms (1015 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 152ms
+ GET / 200 in 111ms
+ GET / 200 in 83ms
+ GET / 200 in 75ms
+ GET /fonts/GmarketSans.ttf 404 in 68ms
