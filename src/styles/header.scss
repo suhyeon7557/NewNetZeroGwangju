@@ -117,6 +117,9 @@
     @media (max-width: 1024px) {
         .header_wrap::before { top: 60px; }
     }
+    @media (max-width: 768px) {
+        .header_wrap::before { top: 54px; }
+    }
     .header_wrap::after {
         content: '';
         width: 100%;
@@ -805,7 +808,7 @@ html.gnb2-open #header.scrolled #menu_inner .btn_hamburger a::after {
 
 
 
-@media (max-width: 1500px) {
+@media (max-width: 1550px) {
     #menu_inner {
         padding: 0 20px 0 20px;
     }
@@ -827,7 +830,7 @@ html.gnb2-open #header.scrolled #menu_inner .btn_hamburger a::after {
         background-size: 100px auto;
     }
     #menu_inner {
-        padding: 0 15px 0 0;
+        padding: 0 15px 0 15px;
     }
     #menu_inner .btn_hamburger {
         margin-top: 20px;

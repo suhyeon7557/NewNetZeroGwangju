@@ -1,0 +1,18 @@
+
+> netzero@0.1.0 predev
+> powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/kill-port-3000.ps1
+
+
+> netzero@0.1.0 dev
+> next dev -H 127.0.0.1 -p 3000
+
+   ▲ Next.js 15.4.6
+   - Local:        http://127.0.0.1:3000
+   - Network:      http://127.0.0.1:3000
+
+ ✓ Starting...
+ ✓ Ready in 2.1s
+ ○ Compiling / ...
+ ✓ Compiled / in 4s (747 modules)
+ GET / 200 in 4392ms
+ ✓ Compiled in 270ms (682 modules)
