@@ -1,24 +1,22 @@
 /*nav_page*/
-
-
 .nav_wrap {
     position: relative;
     width: 100%;
-    height: 280px;
+    overflow: hidden;
 }
 .nav_wrap .nav_bg_img {
+    position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    z-index: -1;
 }
 .nav_wrap .nav_inner {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
     width: 100%;
+    padding: 140px 0 20px 0;
 }
+
+/* nav_content_wrap */
 .nav_content_wrap h3 {
     font-size: 2rem;
     font-weight: 550;
@@ -34,12 +32,8 @@
     margin: 0 auto; 
     color: #fff; 
 }
-.cont_wrap {
-    max-width: 1550px;
-    width: 100%;
-    margin: 0 auto;
-}
 
+/* sub_nav */
 .sub_nav {
     width: 100%;
     border-bottom: 1px solid #dbdbdb;
@@ -50,11 +44,10 @@
     max-width: 1550px;
     margin: 0 auto;
     width: 100%;
-    height: 60px;
+    height: 50px;
 }
-
 .sub_nav .subhome {
-    width: 60px;
+    width: 50px;
     height: 100%;
     text-align: center;
     cursor: pointer;
@@ -74,6 +67,8 @@
     vertical-align: middle;
     max-width: 100%;
 }
+
+/* sub_nav_gnb */
 #sub_nav_gnb {
     display: inline-block;
     zoom: 1;
@@ -83,9 +78,9 @@
     position: relative;
     width: auto;
     min-width: 150px;
-    height: 60px;
+    height: 50px;
     float: left;
-    line-height: 60px;
+    line-height: 50px;
 }
 #sub_nav_gnb .lnb_area > a::before {
     position: absolute;
@@ -94,7 +89,7 @@
     height: 9px;
     display: block;
     right: 15px;
-    top: 25px;
+    top: 20px;
     background: url('/ic_select.svg') no-repeat center center;
 }
 #sub_nav_gnb .lnb_area a {
@@ -103,12 +98,12 @@
     align-items: center;
     padding: 0 45px 0 20px;
     color: #999;
-    height: 60px;
-    line-height: 60px;
+    height: 50px;
+    line-height: 50px;
 }
 #sub_nav_gnb .lnb_area .lnb_list {
 	position: relative;
-	background-color: #f9f9f9;
+	background-color: #fff;
 	z-index: 10;
 	border: 1px solid #dbdbdb;
 	overflow-y: hidden;
@@ -122,16 +117,13 @@
 #sub_nav_gnb .lnb_area a {
     border-left: 1px solid #dbdbdb;
 }
+#sub_nav_gnb .lnb_area a:hover {
+    color: #B9E300;
+}
 #sub_nav_gnb .lnb_area.b_r a {
     border-right: 1px solid #dbdbdb;
 }
-@media (max-width: 1500px) {
-    .nav_content_wrap {
-        padding: 0 20px;
-    }
-}
 
-/* 1콤보/2콤보: 텍스트 길이에 상관없이 고정 폭 + 말줄임 처리 */
 #sub_nav_gnb .lnb_area {
 	width: 220px; /* 고정폭 */
 }
@@ -151,8 +143,6 @@
 	visibility: hidden;
 	pointer-events: none;
 }
-
-/* 부드러운 드롭다운 전환 */
 #sub_nav_gnb .lnb_area .lnb_list {
 	display: block; /* 전환을 위해 block으로 두고 숨김은 속성으로 처리 */
 	opacity: 0;
@@ -172,6 +162,221 @@
 	padding-bottom: 6px;
 	visibility: visible;
 	pointer-events: auto;
-	/* 열렸을 때만 스크롤 */
 	overflow-y: auto;
+}
+
+/* cont_wrap */
+#cont_wrap {
+    position: relative;
+    padding: 80px 0 0 0;
+    max-width: 1550px;
+    width: 100%;
+    margin: 0 auto;
+}
+#cont_wrap .cont_inner {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+#cont_wrap .cont_inner h2 {
+    font-size: 2rem;
+    font-weight: 550;
+    text-align: center;
+}
+
+.tab_menu {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.tab_menu a {
+    border-radius: 30px;
+    background-color: #F2F2F2;
+    color: #999;
+    font-size: 1.15rem;
+    padding: 15px 40px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.tab_menu a:hover {
+    color: #151329;
+    transition: all 0.3s ease;
+}
+.tab_menu a.active {
+    background-color: #151329;
+    color: #fff;
+    font-weight: 550;
+}
+
+
+/* search_wrap */
+.search_wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.search_wrap .info_wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.search_wrap .info_wrap .info_text01 {
+    position: relative;
+    display: flex;
+    gap: 5px;
+}
+.search_wrap .info_wrap .info_text01::after {
+    content: '';
+    position: relative;
+    display: inline-block;
+    width: 2px;
+    height: 15px;
+    background-color: #999;
+    right: 0;
+    top: 2px;
+    margin-left: 10px;
+}
+.search_wrap .info_wrap .info_text02 .current_page_number {
+    margin-left: 10px;
+}
+
+/* search_area */
+select {
+    background: url('/ic_select.svg') no-repeat right 10px center;
+    background-size: 15px;
+}
+.search_area {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.search_criteria {
+    border: 1px solid #999;
+    padding: 7px 30px 7px 10px;
+    width: 130px;
+    border-radius: 5px;
+    color: #000;
+    background-color: #fff;
+}
+.search_input {
+    background-color: #f2f2f2;
+    padding: 10px 15px;
+    width: 300px;
+    border-radius: 5px;
+    color: #000;
+}
+
+
+
+/* 버튼 타입 */
+.btn_lime_bg {
+    background-color: #B9E300;
+    color: #000;
+    padding: 10px 30px;
+}
+.btn_gray_line {
+    background-color: #fff;
+    color:#000;
+    padding: 10px 30px;
+    border: 1px solid #DBDBDB;
+}
+.bd_radius {
+    border-radius: 5px;
+}
+.no_bd_radius {
+    border-radius: 0;
+}
+
+/* 텍스트 색상 */
+.text_lime {
+    color : #B9E300;
+}
+.text_gray {
+    color :#999;
+}
+.text_navy {
+    color :#151329;
+}
+
+/* 텍스트 굵기 */
+.text_bold {
+    font-weight: 550;
+}
+
+@media (max-width: 1550px) {
+    .nav_content_wrap {
+        padding: 0 20px;
+    }
+    #cont_wrap {
+        padding: 80px 20px 0 20px;
+    }
+}
+
+@media (max-width: 1024px) {
+    #cont_wrap {
+        padding: 30px 20px 0 20px;
+    }
+    .nav_content_wrap h3 {
+        font-size: 1.8rem;
+    }
+    .tab_menu a {
+        padding: 10px 30px;
+    }
+    .search_wrap {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .search_wrap .info_wrap {
+        display: none;
+    }
+}
+@media (max-width: 768px) {
+    .nav_content_wrap {
+        padding: 0 20px;
+    }
+    .sub_nav {
+        display: none;
+    }
+    .nav_wrap .nav_inner {
+        padding: 100px 0 15px 0;
+    }
+    .nav_content_wrap h3 {
+        font-size: 1.5rem;
+    }
+    .nav_content_wrap p {
+        font-size: 1rem;
+    }
+    #cont_wrap .cont_inner  {
+        gap: 10px;
+    }
+    #cont_wrap .cont_inner h2 {
+        font-size: 1.5rem;
+    }
+    .tab_menu a {
+        padding: 7px 20px;
+        font-size: 1rem;
+    }
+    .search_area {
+        width: 100%;
+    }
+    .search_area .search_criteria {
+        width: 100px;
+    }
+    .search_area input {
+        width: calc(100% - 220px);
+    }
+    .search_area .search_btn {
+        width: 100px;
+    }
 }
