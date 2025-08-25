@@ -50,25 +50,75 @@
     max-width: 1550px;
     margin: 0 auto;
     width: 100%;
+    height: 60px;
 }
 
 .sub_nav .subhome {
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
     border-left: 1px solid #dbdbdb; 
+    float: left;
 }
-.sub_nav .subhome::before {
-    content: '';
-    display: block;
-    width: 30px;
-    height: 30px;
+.sub_nav .subhome a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+}
+.sub_nav .subhome img {
+    border: 0 none;
+    vertical-align: middle;
+    max-width: 100%;
+}
+#sub_nav_gnb {
+    display: inline-block;
+    zoom: 1;
+    align-items: center;
+}
+#sub_nav_gnb .lnb_area {
     position: relative;
-    background: url('/ic_nav_home.svg') no-repeat center center;
+    width: auto;
+    min-width: 150px;
+    height: 60px;
+    float: left;
+    line-height: 60px;
 }
-
-
-
-
+#sub_nav_gnb .lnb_area a::before {
+    position: absolute;
+    content: '';
+    width: 14px;
+    height: 9px;
+    display: block;
+    right: 15px;
+    top: 25px;
+    background: url('/ic_select.svg') no-repeat center center;
+}
+#sub_nav_gnb .lnb_area a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 45px 0 20px;
+    color: #999;
+    height: 60px;
+    line-height: 60px;
+}
+#sub_nav_gnb .lnb_area .lnb_list {
+    display: none;
+    position: relative;
+    background-color: #f9f9f9;
+    z-index: 10;
+    border: 1px solid #dbdbdb;
+}
+#sub_nav_gnb .lnb_area a {
+    border-left: 1px solid #dbdbdb;
+}
+#sub_nav_gnb .lnb_area.b_r a {
+    border-right: 1px solid #dbdbdb;
+}
 @media (max-width: 1500px) {
     .nav_content_wrap {
         padding: 0 20px;

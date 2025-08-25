@@ -16,15 +16,15 @@ const SubPage = () => {
                 <div className='sub_nav_wrap'>
                     <div className='subhome'>
                         <a href='/'>
-                            <img src='/ic_nav_home.svg' alt='홈'></img>
+                            <img src='/ic_navhome.svg' alt='홈'></img>
                         </a>
                     </div>
                     <ul id='sub_nav_gnb'>
-                        <li className='sub_nav_lnb'>
-                            <a href='#'>
+                        <li className='lnb_area'>
+                            <a href='#' title='탄소중립 소통하기 메뉴로 이동하기'>
                                 탄소중립 소통하기
                             </a>
-                            <ul className='sub_nav_list'>
+                            <ul className='lnb_list'>
                                 <li>
                                     <a href='#' title='기후변화 메뉴로 이동하기'>
                                         기후변화
@@ -198,6 +198,28 @@ const SubPage = () => {
                                             </a>
                                         </li>
                                     </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li className='lnb_area b_r'>
+                            <a href='#' title='공지사항 메뉴로 이동하기'>
+                                공지사항
+                            </a>
+                            <ul className='lnb_list'>
+                                <li>
+                                    <a href='#' title='연구보고서 메뉴로 이동하기'>
+                                        연구보고서
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href='#' title='탄소중립 지원센터 메뉴로 이동하기'>
+                                        탄소중립 지원센터
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href='#' title='문의하기 메뉴로 이동하기'>
+                                        문의하기
+                                    </a>
                                 </li>
                             </ul>
                         </li>
