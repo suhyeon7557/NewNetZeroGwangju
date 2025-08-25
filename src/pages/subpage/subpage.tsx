@@ -1,6 +1,175 @@
+'use client';
 import React from 'react';
+import Link from 'next/link';
 
 const SubPage = () => {
+    React.useEffect(() => {
+        const subNav = document.querySelector('.sub_nav');
+        const subNavGnb = document.getElementById('sub_nav_gnb');
+        if (!subNav || !subNavGnb) return;
+
+        const lnbAreas = Array.from(subNavGnb.querySelectorAll(':scope > li.lnb_area')) as HTMLLIElement[];
+        if (lnbAreas.length < 2) return;
+
+        const firstArea = lnbAreas[0];
+        const secondArea = lnbAreas[1];
+
+        const firstAnchor = firstArea.querySelector(':scope > a') as HTMLAnchorElement | null;
+        const secondAnchor = secondArea.querySelector(':scope > a') as HTMLAnchorElement | null;
+        const firstList = firstArea.querySelector(':scope > .lnb_list') as HTMLUListElement | null;
+        const secondList = secondArea.querySelector(':scope > .lnb_list') as HTMLUListElement | null;
+        if (!firstAnchor || !secondAnchor || !firstList || !secondList) return;
+
+        let openedList: HTMLUListElement | null = null;
+
+        const closeAll = () => {
+            if (firstList) firstList.classList.remove('open');
+            if (secondList) secondList.classList.remove('open');
+            openedList = null;
+        };
+
+        const toggleList = (list: HTMLUListElement) => {
+            const willOpen = !list.classList.contains('open');
+            closeAll();
+            if (willOpen) {
+                list.classList.add('open');
+                openedList = list;
+            }
+        };
+
+        const rebuildSecondFromSubUl = (subUl: HTMLUListElement | null) => {
+            secondList.innerHTML = '';
+            if (subUl) {
+                const subLis = Array.from(subUl.querySelectorAll(':scope > li')) as HTMLLIElement[];
+                subLis.forEach((li) => {
+                    const link = li.querySelector('a');
+                    const text = link ? (link.textContent || '').trim() : (li.textContent || '').trim();
+                    const newLi = document.createElement('li');
+                    const newA = document.createElement('a');
+                    newA.setAttribute('href', '#');
+                    newA.textContent = text;
+                    newLi.appendChild(newA);
+                    secondList.appendChild(newLi);
+                });
+                const firstSubItem = secondList.querySelector('li > a') as HTMLAnchorElement | null;
+                secondAnchor.textContent = firstSubItem ? (firstSubItem.textContent || '').trim() : '메뉴 선택';
+            } else {
+                secondAnchor.textContent = '메뉴 선택';
+            }
+        };
+
+        // 1콤보 중복 제거 (텍스트 기준)
+        const dedupeFirstCombo = () => {
+            const seen = new Set<string>();
+            const items = Array.from(firstList.querySelectorAll(':scope > li')) as HTMLLIElement[];
+            items.forEach((li) => {
+                const a = li.querySelector(':scope > a');
+                const txt = a ? (a.textContent || '').trim() : (li.textContent || '').trim();
+                const key = txt.replace(/\s+/g, ' ');
+                if (seen.has(key)) {
+                    li.parentElement?.removeChild(li);
+                } else {
+                    seen.add(key);
+                }
+            });
+        };
+
+        const onClickFirstAnchor = (e: Event) => {
+            e.preventDefault();
+            toggleList(firstList);
+        };
+        const onClickSecondAnchor = (e: Event) => {
+            e.preventDefault();
+            toggleList(secondList);
+        };
+
+        const onOutsideClick = (e: MouseEvent) => {
+            const t = e.target as Node;
+            if (!subNav.contains(t)) {
+                closeAll();
+            }
+        };
+
+        const onKeydown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') closeAll();
+        };
+
+        // 첫 번째 콤보 내부 항목 클릭 시: 두 번째 콤보에 서브메뉴 동기화
+        const bindFirstListItemClicks = () => {
+            const firstItems = Array.from(firstList.querySelectorAll(':scope > li > a')) as HTMLAnchorElement[];
+            firstItems.forEach((a) => {
+                a.addEventListener('click', (ev) => {
+                    ev.preventDefault();
+                    const selectedText = (a.textContent || '').trim();
+                    if (selectedText) firstAnchor.textContent = selectedText;
+
+                    const parentLi = a.parentElement as HTMLLIElement | null;
+                    const subUl = parentLi ? (parentLi.querySelector(':scope > ul') as HTMLUListElement | null) : null;
+
+                    rebuildSecondFromSubUl(subUl);
+
+                    // 첫 번째 닫고 두 번째는 자동으로 열지 않음
+                    firstList.classList.remove('open');
+                    secondList.classList.remove('open');
+                    openedList = null;
+                });
+            });
+        };
+
+        // 두 번째 콤보 리스트 항목 클릭 시: 텍스트만 반영하고 닫기
+        const bindSecondListClicks = () => {
+            secondList.addEventListener('click', (ev) => {
+                const target = ev.target as HTMLElement;
+                const a = target.closest('a');
+                if (a && secondList.contains(a)) {
+                    ev.preventDefault();
+                    const txt = (a.textContent || '').trim();
+                    if (txt) secondAnchor.textContent = txt;
+                    closeAll();
+                }
+            });
+        };
+
+        // 초기 바인딩
+        dedupeFirstCombo();
+        firstAnchor.addEventListener('click', onClickFirstAnchor);
+        secondAnchor.addEventListener('click', onClickSecondAnchor);
+        document.addEventListener('click', onOutsideClick);
+        document.addEventListener('keydown', onKeydown);
+        bindFirstListItemClicks();
+        bindSecondListClicks();
+
+        // 초기 진입 시: 첫 콤보의 현재 텍스트 기준으로 두 번째 콤보 동기화
+        const currentMain = (firstAnchor.textContent || '').trim();
+        let matchAnchor = Array.from(firstList.querySelectorAll(':scope > li > a')).find((a) => {
+            return (a.textContent || '').trim() === currentMain;
+        }) as HTMLAnchorElement | undefined;
+        if (!matchAnchor) {
+            matchAnchor = firstList.querySelector(':scope > li > a') as HTMLAnchorElement | null || undefined;
+            if (matchAnchor) {
+                const txt = (matchAnchor.textContent || '').trim();
+                if (txt) firstAnchor.textContent = txt;
+            }
+        }
+        if (matchAnchor) {
+            const li = matchAnchor.parentElement as HTMLLIElement | null;
+            const subUl = li ? (li.querySelector(':scope > ul') as HTMLUListElement | null) : null;
+            rebuildSecondFromSubUl(subUl);
+            // 초기에는 모두 닫은 상태 유지
+            firstList.classList.remove('open');
+            secondList.classList.remove('open');
+            openedList = null;
+        }
+
+        // 언마운트 시 정리
+        return () => {
+            firstAnchor.removeEventListener('click', onClickFirstAnchor);
+            secondAnchor.removeEventListener('click', onClickSecondAnchor);
+            document.removeEventListener('click', onOutsideClick);
+            document.removeEventListener('keydown', onKeydown);
+        };
+    }, []);
+
     return (
         <div aria-label='탄소중립 페이지 영역' className='nav_page'>
             <div className='nav_wrap'>
@@ -15,9 +184,9 @@ const SubPage = () => {
             <nav className='sub_nav' aria-label='페이지 내비게이션 바 영역'>
                 <div className='sub_nav_wrap'>
                     <div className='subhome'>
-                        <a href='/'>
+                        <Link href='/' aria-label='홈'>
                             <img src='/ic_navhome.svg' alt='홈'></img>
-                        </a>
+                        </Link>
                     </div>
                     <ul id='sub_nav_gnb'>
                         <li className='lnb_area'>
