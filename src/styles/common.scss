@@ -380,3 +380,9 @@ select {
         width: 100px;
     }
 }
+
+@media (max-width: 450px){
+    .tab_menu a {
+        font-size : .85rem;
+    }
+}

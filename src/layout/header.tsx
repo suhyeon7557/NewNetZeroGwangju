@@ -162,7 +162,14 @@ const Header = () => {
         if (!headerEl) return;
 
         const computeOffset = () => {
-            document.documentElement.style.setProperty('--header-offset', `40px`);
+            try {
+                const h = headerEl.getBoundingClientRect().height;
+                document.documentElement.style.setProperty('--header-offset', `${Math.round(h)}px`);
+                const mainEl = document.querySelector('main') as HTMLElement | null;
+                if (mainEl) mainEl.style.paddingTop = `var(--header-offset, ${Math.round(h)}px)`;
+            } catch {
+                document.documentElement.style.setProperty('--header-offset', `80px`);
+            }
         };
         const applyScrolled = (isScrolled: boolean) => {
             if (isScrolled) {
