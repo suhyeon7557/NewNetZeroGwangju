@@ -397,8 +397,8 @@ const SubPage = () => {
             </nav>
             <div id='cont_wrap' aria-label='컨텐츠 영역'>
                 <div className='cont_inner'>
-                    <h2 className='page_title'>연구보고서</h2>
-                    <div className='tab_menu' aria-label='탭 메뉴 영역'>
+                    <h2 className='page_title'>공지사항</h2>
+                    {/* <div className='tab_menu' aria-label='탭 메뉴 영역'>
                         <a href='#' className='tab_item active' aria-label='전체 탭 메뉴로 이동하기'>
                             전체
                         </a>
@@ -408,7 +408,7 @@ const SubPage = () => {
                         <a href='#' className='tab_item' aria-label='정책과제 탭 메뉴로 이동하기'>
                             정책과제
                         </a>
-                    </div>
+                    </div> */}
                     <div className='search_wrap' aria-label='검색 영역'>
                         <div className='info_wrap'>
                             <div className='info_text01'>
@@ -429,6 +429,176 @@ const SubPage = () => {
                             </select>
                             <input type='text' className='search_input' placeholder='검색어를 입력해주세요.' />
                             <button className='search_btn btn_lime_bg bd_radius'>검색</button>
+                        </div>
+                    </div>
+                    <div className='list_wrap' aria-label='공지사항 목록 영역'>
+                        <div className='table_wrap'>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>번호</th>
+                                        <th>제목</th>
+                                        <th>작성자</th>
+                                        <th>등록일</th>
+                                        <th>첨부파일</th>
+                                        <th>조회수</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td className='top_notice'>
+                                            <span>1</span>
+                                        </td>
+                                        <td className='title'>
+                                            <a href='#'>
+                                                공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.
+                                            </a>
+                                        </td>
+                                        <td className='author'>탄소중립지원센터</td>
+                                        <td className='date'>2025-07-02</td>
+                                        <td className='file pdf'>
+                                            <a href='#' download='파일명입니다.pdf'>
+                                                <span className='file_icon'></span>
+                                            </a>
+                                        </td>
+                                        <td className='view_count'>511</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='top_notice'>
+                                            <span>2</span>
+                                        </td>
+                                        <td className='title new'>
+                                            <a href='#'>
+                                                공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.
+                                            </a>
+                                        </td>
+                                        <td className='author'>기후에너지연구실</td>
+                                        <td className='date'>2025-07-11</td>
+                                        <td className='file jpg'>
+                                            <a href='#' download='파일명입니다.jpg'>
+                                                <span className='file_icon'></span>
+                                            </a>
+                                        </td>
+                                        <td className='view_count'>511</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='notice_num'>
+                                            <span>3</span>
+                                        </td>
+                                        <td className='title new'>
+                                            <a href='#'>
+                                                공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.
+                                            </a>
+                                        </td>
+                                        <td className='author'>탄소중립지원센터</td>
+                                        <td className='date'>2025-07-12</td>
+                                        <td className='file hwp'>
+                                            <a href='#' download='파일명입니다.hwp'>
+                                                <span className='file_icon'></span>
+                                            </a>
+                                        </td>
+                                        <td className='view_count'>511</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='notice_num'>
+                                            <span>4</span>
+                                        </td>
+                                        <td className='title'>공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.</td>
+                                        <td className='author'>사업진흥실</td>
+                                        <td className='date'>2025-07-20</td>
+                                        <td className='file xls'>
+                                            <a href='#' download='파일명입니다.xlsx'>
+                                                <span className='file_icon'></span>
+                                            </a>
+                                        </td>
+                                        <td className='view_count'>511</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='notice_num'>
+                                            <span>5</span>
+                                        </td>
+                                        <td className='title'>공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.</td>
+                                        <td className='author'>사업진흥실</td>
+                                        <td className='date'>2025-07-20</td>
+                                        <td className='file jpg'>
+                                            <a href='#' download='파일명입니다.jpg'>
+                                                <span className='file_icon'></span>
+                                            </a>
+                                        </td>
+                                        <td className='view_count'>511</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='notice_num'>
+                                            <span>6</span>
+                                        </td>
+                                        <td className='title'>공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.</td>
+                                        <td className='author'>사업진흥실</td>
+                                        <td className='date'>2025-07-20</td>
+                                        <td className='file non'>
+                                            <a href='#'>
+                                                <span className='file_icon'></span>
+                                            </a>
+                                        </td>
+                                        <td className='view_count'>511</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='notice_num'>
+                                            <span>7</span>
+                                        </td>
+                                        <td className='title'>공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.</td>
+                                        <td className='author'>사업진흥실</td>
+                                        <td className='date'>2025-07-20</td>
+                                        <td className='file pdf'>
+                                            <a href='#' download='파일명입니다.pdf'>
+                                                <span className='file_icon'></span>
+                                            </a>
+                                        </td>
+                                        <td className='view_count'>511</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='notice_num'>
+                                            <span>8</span>
+                                        </td>
+                                        <td className='title'>공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.</td>
+                                        <td className='author'>사업진흥실</td>
+                                        <td className='date'>2025-07-20</td>
+                                        <td className='file pdf'>
+                                            <a href='#' download='파일명입니다.pdf'>
+                                                <span className='file_icon'></span>
+                                            </a>
+                                        </td>
+                                        <td className='view_count'>511</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='notice_num'>
+                                            <span>9</span>
+                                        </td>
+                                        <td className='title'>공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.</td>
+                                        <td className='author'>사업진흥실</td>
+                                        <td className='date'>2025-07-20</td>
+                                        <td className='file doc'>
+                                            <a href='#' download='파일명입니다.pdf'>
+                                                <span className='file_icon'></span>
+                                            </a>
+                                        </td>
+                                        <td className='view_count'>511</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='notice_num'>
+                                            <span>10</span>
+                                        </td>
+                                        <td className='title'>공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.</td>
+                                        <td className='author'>사업진흥실</td>
+                                        <td className='date'>2025-07-20</td>
+                                        <td className='file non'>
+                                            <a href='#' download='파일명입니다.pdf'>
+                                                <span className='file_icon'></span>
+                                            </a>
+                                        </td>
+                                        <td className='view_count'>511</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

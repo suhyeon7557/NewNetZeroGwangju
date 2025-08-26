@@ -194,6 +194,7 @@
     &.scrolled .header_wrap.menu-hover,
     &.scrolled .header_wrap.menu-open {
         background-color: rgba(255, 255, 255, 255);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.30);
     }
     /* 스크롤 + gnb1 상호작용 중에는 어두운 오버레이 비활성화하여 배경을 흰색으로 유지 */
     &.scrolled .header_wrap.menu-hover::after,

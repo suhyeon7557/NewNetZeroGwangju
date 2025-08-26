@@ -314,6 +314,29 @@ select {
     font-weight: 550;
 }
 
+/* 테이블 */
+table td {
+    color: #999;
+}
+table thead {
+    border-top: 2px solid #000;
+}
+table tbody td {
+    border-top: 1px solid #dbdbdb;
+}
+tbody tr {
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+table thead tr:hover {
+    background: none;
+    background-color: transparent;
+}
+table tbody tr:hover {
+    background-color: #f8f8f8;
+    background: linear-gradient(to bottom,#ffffff 0%, rgba(185,227,0,0.1) 50%, #ffffff 100%);
+}
+
 /* 체크박스 */
 .checkbox_icon {
     display: inline-block;
@@ -329,8 +352,8 @@ select {
     position: fixed;
     right: 30px;
     bottom: 85px; /* topscroll(45) + gap(9) + shadow 고려 여유 */
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border-radius: 999px;
     background-color: #ffffff;
     border: none;
@@ -355,7 +378,6 @@ select {
     transform: translateY(1px);
  }
 
-/* Badge on notice button */
  .notice-badge {
     position: absolute;
     top: -6px;
@@ -374,11 +396,10 @@ select {
     line-height: 1;
  }
 
-/* Notice panel */
 .notice-panel {
     position: fixed;
-    right: 50px;
-    bottom: 160px;
+    right: 30px;
+    bottom: 85px;
     width: 320px;
     max-height: 60vh;
     border-radius: 12px;
@@ -426,7 +447,8 @@ select {
     width: 100%;
     height: auto;
  }
- /* 공지 슬라이드 이미지 상단 모서리 둥글림 */
+
+ /* notice-panel */
  .notice-panel .swiper-slide.notice-item img {
      border-top-left-radius: 20px;
      border-top-right-radius: 20px;
@@ -566,15 +588,15 @@ select {
  }
  .close_btn:hover {
     color: #000;
-  }
+ }
 
 /* Top Scroll Button */
 .topscroll {
     position: fixed;
     right: 30px;
     bottom: 30px;
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border-radius: 999px;
     background-color: #151329;
     border: none;
@@ -588,19 +610,140 @@ select {
     transition: opacity .22s ease, transform .22s ease, box-shadow .2s ease, background-color .2s ease;
     z-index: 1000;
   }
-  .topscroll img { width: 20px; height: 20px; }
-  .topscroll.visible { opacity: 1; transform: translateY(0); }
-  .topscroll { pointer-events: none; }
-  .topscroll.visible { pointer-events: auto; }
-  .topscroll:hover { box-shadow: 0 10px 28px rgba(0,0,0,0.24); }
-  .topscroll:active { transform: translateY(1px); }
+.topscroll img {width: 20px; height: 20px; }
+.topscroll.visible { opacity: 1; transform: translateY(0); }
+.topscroll { pointer-events: none; }
+.topscroll.visible { pointer-events: auto; }
+.topscroll:hover { box-shadow: 0 10px 28px rgba(0,0,0,0.24); }
+.topscroll:active { transform: translateY(1px); }
   
-  @media (max-width: 768px) {
+
+/* list_wrap */
+.list_wrap {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.list_wrap .table_wrap {
+    width: 100%;
+}
+.table_wrap table td:nth-child(2) {
+    color: #000;
+}
+.table_wrap table thead tr {
+    font-size: .90rem;
+}
+.table_wrap table thead th, td {
+    padding: 15px 20px;
+}
+.table_wrap table tbody td {
+    padding: 20px;
+}
+.table_wrap table tbody td.title {
+    text-align: left;
+}
+.table_wrap table tbody td.new{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+.table_wrap table tbody td.new::after {
+    content: 'N';
+    display: block;
+    width: 20px;
+    height: 20px;
+    color: #fff;
+    font-size: 0.70rem;
+    text-align: center;
+    line-height: 22px;
+    border-radius: 50%;
+    background-color: #B9E300;
+}
+.table_wrap table td.title {
+    font-size: 1rem;
+}
+.table_wrap table td.author, td.date, td.view_count {
+    font-size: 0.90rem;
+}
+.top_notice {
+    position: relative;
+}
+.top_notice span {
+    position: relative;
+    z-index: 1;
+    color: transparent;
+    display: inline-block;
+    text-align: center;
+}
+.top_notice span:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background: url('/ic_alram.svg') no-repeat center center;
+    background-size: 16px;
+    background-color: #151329;
+    border-radius: 50%;
+    z-index: 10;
+}
+.file_icon {
+    position: relative;
+}
+.file_icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 20px;
+    vertical-align: middle;
+}
+.file.pdf .file_icon {
+    background-image: url('/ic_pdffile.svg');
+}
+.file.jpg .file_icon {
+    background-image: url('/ic_jpgfile.svg');
+}
+.file.hwp .file_icon {
+    background-image: url('/ic_hwpfile.svg');
+}
+.file.doc .file_icon {
+    background-image: url('/ic_docfile.svg');
+}
+.file.non .file_icon {
+    background-image: url('/ic_nonfile.svg');
+}
+.file.xls .file_icon {
+    background-image: url('/ic_xlsfile.svg');
+}
+.file.non a[href='#'] {
+    cursor: default;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
     .topscroll { right: 16px; bottom: 16px;  }
     .topscroll img { width: 24px; height: 24px; }
     .notice-fab { right: 16px; bottom: 76px; }
     .notice-fab img { width: 24px; height: 24px; }
-    .notice-panel { right: 16px; bottom: 136px; width: min(92vw, 360px); }
+    .notice-panel { right: 16px; bottom: 85px; width: min(92vw, 360px); }
   
   }
 
