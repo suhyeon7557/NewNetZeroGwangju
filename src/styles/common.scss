@@ -314,6 +314,296 @@ select {
     font-weight: 550;
 }
 
+/* 체크박스 */
+.checkbox_icon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #333;
+    background : url('/ic_check.svg') no-repeat center center;
+    background-size: 10px;
+}
+
+/*side 공지사항 */
+.notice-fab {
+    position: fixed;
+    right: 30px;
+    bottom: 85px; /* topscroll(45) + gap(9) + shadow 고려 여유 */
+    width: 45px;
+    height: 45px;
+    border-radius: 999px;
+    background-color: #ffffff;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    cursor: pointer;
+    z-index: 1000;
+ }
+ .notice-panel .swiper-slide {
+    padding:7px;
+ }
+ .notice-fab img {
+    width: 20px;
+    height: 20px;
+ }
+ .notice-fab:hover {
+     box-shadow: 0 10px 28px rgba(0,0,0,0.24);
+ }
+ .notice-fab:active {
+    transform: translateY(1px);
+ }
+
+/* Badge on notice button */
+ .notice-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 9px;
+    background-color: #ef4444; /* red */
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+ }
+
+/* Notice panel */
+.notice-panel {
+    position: fixed;
+    right: 50px;
+    bottom: 160px;
+    width: 320px;
+    max-height: 60vh;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .22s ease, transform .22s ease;
+    pointer-events: none;
+    z-index: 1000;
+ }
+.notice-panel.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+ }
+
+.notice-toggle:checked ~ .notice-panel {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+ }
+.notice-toggle:checked ~ .notice-panel:has(.today_checkbox:checked) {
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+}
+.notice-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 12px 12px 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+ }
+.notice-list {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    max-height: calc(60vh - 48px);
+    overflow: auto;
+ }
+.notice-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+ }
+ /* 공지 슬라이드 이미지 상단 모서리 둥글림 */
+ .notice-panel .swiper-slide.notice-item img {
+     border-top-left-radius: 20px;
+     border-top-right-radius: 20px;
+ }
+ .notice-panel .swiper-slide.notice-item a {
+     border-top-left-radius: 20px;
+     border-top-right-radius: 20px;
+     overflow: hidden;
+     display: block;
+ }
+.notice-item {
+    border-radius: 8px;
+ }
+.notice-item a, .notice-item span{ 
+    color: #111827;
+    font-size: 14px;
+    text-decoration: none;
+    display: block;
+ }
+.notice-item a:hover {
+    text-decoration: underline;
+ }
+
+.notice-panel-footer {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ }
+ .notice-panel-footer .controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+ }
+ .playback_controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+ }
+ .playback_controls .play_btn,
+ .playback_controls .stop_btn {
+    background: none;
+    border: 0;
+    padding: 0;
+    display: inline-flex;
+    margin: 0 7px 0 5px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+ }
+ .playback_controls .play_btn img,
+ .playback_controls .stop_btn img {
+    width: 13px;
+    height: 13px;
+ }
+ .playback_controls .play_btn { display: none; }
+ .playback_controls .stop_btn { display: inline-flex; }
+ .notice-panel.is-playing .play_btn { display: none; }
+ .notice-panel.is-playing .stop_btn { display: inline-flex; }
+ .notice-panel.is-paused .play_btn { display: inline-flex; }
+ .notice-panel.is-paused .stop_btn { display: none; }
+ .progress_dots {
+    display: flex;
+    gap: 4px;
+ }
+ .progress_dots .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: #999;
+    cursor: pointer;
+ }
+ .progress_dots .dot.active {
+    background-color: #000;
+    width: 22px;
+    height: 9px;
+    border-radius: 30px;
+    cursor: pointer;
+ }
+ .checkbox_container {
+    display: flex;
+    font-size: 1rem;
+    color: #999;
+    align-items: center;
+    gap: 20px;
+ }
+ .checkbox_container .checkbox_label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: .85rem;
+    position: relative;
+ }
+ .today_checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+ }
+ .checkobox_custom {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    border: 1px solid #666;
+    transition: all 0.2s ease-in-out;
+ }
+ .checkbox_text {
+    margin-left: 8px;
+    color: #666;
+    transition: color 0.2s ease-in-out;
+ }
+ .checkbox_text:hover {
+    color: #000;
+ }
+ .close_btn {
+    border: none;
+    background: none;
+    font-size: .85rem;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+ .close_btn::before {
+    content: '';
+    position: relative;
+    display: inline-block;
+    width: 15px;
+    height: 9px;
+    background: url('/ic_close_lineblack.svg') no-repeat center center;
+    margin-right: 3px;
+ }
+ .close_btn:hover {
+    color: #000;
+  }
+
+/* Top Scroll Button */
+.topscroll {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 45px;
+    height: 45px;
+    border-radius: 999px;
+    background-color: #151329;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .22s ease, transform .22s ease, box-shadow .2s ease, background-color .2s ease;
+    z-index: 1000;
+  }
+  .topscroll img { width: 20px; height: 20px; }
+  .topscroll.visible { opacity: 1; transform: translateY(0); }
+  .topscroll { pointer-events: none; }
+  .topscroll.visible { pointer-events: auto; }
+  .topscroll:hover { box-shadow: 0 10px 28px rgba(0,0,0,0.24); }
+  .topscroll:active { transform: translateY(1px); }
+  
+  @media (max-width: 768px) {
+    .topscroll { right: 16px; bottom: 16px;  }
+    .topscroll img { width: 24px; height: 24px; }
+    .notice-fab { right: 16px; bottom: 76px; }
+    .notice-fab img { width: 24px; height: 24px; }
+    .notice-panel { right: 16px; bottom: 136px; width: min(92vw, 360px); }
+  
+  }
+
 @media (max-width: 1550px) {
     .nav_content_wrap {
         padding: 0 20px;
@@ -357,6 +647,9 @@ select {
     .nav_content_wrap p {
         font-size: 1rem;
     }
+    #cont_wrap {
+        padding: 20px 10px 0 10px;
+    }
     #cont_wrap .cont_inner  {
         gap: 10px;
     }
@@ -379,10 +672,49 @@ select {
     .search_area .search_btn {
         width: 100px;
     }
+    .notice-fab { 
+        right: 16px;
+        bottom: 76px;
+    }
+    .notice-fab img {
+        width: 24px;
+        height: 24px;
+    }
+    .notice-panel {
+        right: 16px;
+        bottom: 136px;
+        width: min(92vw, 360px);
+    }
 }
 
 @media (max-width: 450px){
+    #cont_wrap .cont_inner h2 {
+        font-size : 1.2rem;
+    }
     .tab_menu a {
         font-size : .85rem;
     }
+    .search_area {
+        font-size: .75rem;
+    }
+    .search_area .search_criteria {
+        width: 65px;
+    }
+    .search_area {
+        gap: 5px;
+    }
+    .search_area select {
+        background-size: 10px;
+    }
+    .search_criteria {
+        padding: 7px 15px 7px 5px;
+    }
+    .search_area input {
+        width: calc(100% - 133px);
+    }
+    .search_area .search_btn {
+        width: 60px;
+        padding: 10px 15px;
+    }
 }
+

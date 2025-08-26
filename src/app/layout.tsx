@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 	description: "광주 넷제로 서비스",
 };
 
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="ko">
