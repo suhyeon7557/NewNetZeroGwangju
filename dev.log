@@ -1381,3 +1381,14 @@ Import trace for requested module:
  GET / 200 in 83ms
  GET / 200 in 75ms
  GET /fonts/GmarketSans.ttf 404 in 68ms
+ ✓ Compiled in 394ms (1010 modules)
+ GET / 200 in 54ms
+ ✓ Compiled /_not-found in 309ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 453ms
+ ✓ Compiled in 364ms (1015 modules)
+ GET / 200 in 54ms
+ GET /fonts/GmarketSans.ttf 404 in 137ms
+ ✓ Compiled in 223ms (1015 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 113ms
+^C^C
