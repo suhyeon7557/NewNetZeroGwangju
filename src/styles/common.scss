@@ -357,6 +357,9 @@ select {
     .nav_content_wrap p {
         font-size: 1rem;
     }
+    #cont_wrap {
+        padding: 20px 10px 0 10px;
+    }
     #cont_wrap .cont_inner  {
         gap: 10px;
     }
@@ -382,7 +385,32 @@ select {
 }
 
 @media (max-width: 450px){
+    #cont_wrap .cont_inner h2 {
+        font-size : 1.2rem;
+    }
     .tab_menu a {
         font-size : .85rem;
+    }
+    .search_area {
+        font-size: .75rem;
+    }
+    .search_area .search_criteria {
+        width: 65px;
+    }
+    .search_area {
+        gap: 5px;
+    }
+    .search_area select {
+        background-size: 10px;
+    }
+    .search_criteria {
+        padding: 7px 15px 7px 5px;
+    }
+    .search_area input {
+        width: calc(100% - 133px);
+    }
+    .search_area .search_btn {
+        width: 60px;
+        padding: 10px 15px;
     }
 }
