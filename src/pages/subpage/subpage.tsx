@@ -395,8 +395,43 @@ const SubPage = () => {
                     </ul>
                 </div>
             </nav>
-            <div className='cont_wrap'>
-                <p>여기다가 컨텐츠 있는곳</p>
+            <div id='cont_wrap' aria-label='컨텐츠 영역'>
+                <div className='cont_inner'>
+                    <h2 className='page_title'>연구보고서</h2>
+                    <div className='tab_menu' aria-label='탭 메뉴 영역'>
+                        <a href='#' className='tab_item active' aria-label='전체 탭 메뉴로 이동하기'>
+                            전체
+                        </a>
+                        <a href='#' className='tab_item' aria-label='수탁과제 탭 메뉴로 이동하기'>
+                            수탁과제
+                        </a>
+                        <a href='#' className='tab_item' aria-label='정책과제 탭 메뉴로 이동하기'>
+                            정책과제
+                        </a>
+                    </div>
+                    <div className='search_wrap' aria-label='검색 영역'>
+                        <div className='info_wrap'>
+                            <div className='info_text01'>
+                                <span>전체</span>
+                                <span className='count text_lime text_bold'>12</span>건
+                            </div>
+                            <div className='info_text02'>
+                                <span>현재 페이지</span>
+                                <span className='current_page_number text_lime text_bold'>1</span> /
+                                <span className='total_page_number'>2</span>
+                            </div>
+                        </div>
+                        <div className='search_area'>
+                            <select className='search_criteria'>
+                                <option value='title'>제목</option>
+                                <option value='name'>작성자</option>
+                                <option value='date'>발행연도</option>
+                            </select>
+                            <input type='text' className='search_input' placeholder='검색어를 입력해주세요.' />
+                            <button className='search_btn btn_lime_bg bd_radius'>검색</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

@@ -25,16 +25,50 @@
 		--foreground: #ededed;
 	}
 }
-html {
-	width: 100%;
-	height: 100%;
-}
-body {
-	font-family: 'Gmarket Sans', Arial, Helvetica, sans-serif;
-	width: 100%;
-	height: 100%;
+/* 1. 기본 스타일 초기화 */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. body 기본 스타일 정의 */
+body {
+  font-family: 'Gmarket Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 6. 텍스트 줄임 처리 */
+.txt_cut1 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.txt_cut2, .txt_cut3, .txt_cut4, .txt_cut5 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.txt_cut2 { -webkit-line-clamp: 2; }
+.txt_cut3 { -webkit-line-clamp: 3; }
+.txt_cut4 { -webkit-line-clamp: 4; }
+.txt_cut5 { -webkit-line-clamp: 5; }
+
+/* 7. 영역 메시지 지우기 */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -71,6 +105,63 @@ body {
 }
 ::-webkit-scrollbar-corner {
 	background: #e9ece3;
+}
+
+/* 3. 모든 요소가 부모 스타일을 상속받도록 설정 */
+h1, h2, h3, h4, h5, h6,
+p, a, span, label, strong, em,
+input, button, textarea, select,
+ul, ol, li, table, thead, tbody, tr, th, td {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+/* 4. 특정 태그에 대한 추가 설정 */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+label, select, input, textarea {
+    vertical-align: middle;
+}
+
+button, input, textarea, select {
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+button {
+  cursor: pointer;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+/* outline: none 사용 시 시각적 포커스 스타일을 제공하여 웹 접근성 보완 */
+input:focus, button:focus, textarea:focus {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+table {
+  border-collapse: collapse;
 }
 
 main {
@@ -116,6 +207,8 @@ main {
 @media (max-width: 768px) {
   .topscroll { right: 16px; bottom: 16px; width: 54px; height: 54px; }
   .topscroll img { width: 24px; height: 24px; }
+
+  
 }
 
 /* Notice Floating Button (same size/pos as topscroll, white bg, always visible) */
@@ -200,6 +293,7 @@ main {
   .notice-fab { right: 16px; bottom: 76px; width: 54px; height: 54px; }
   .notice-fab img { width: 24px; height: 24px; }
   .notice-panel { right: 16px; bottom: 136px; width: min(92vw, 360px); }
+  body {font-size: 14px;}
 }
 
 /* Button: Btn_blue */

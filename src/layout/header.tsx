@@ -158,28 +158,105 @@ const Header = () => {
     // 스크롤 시 헤더 상단 고정 상태에서 배경/텍스트/아이콘 색 전환
     useEffect(() => {
         const headerEl = headerRef.current;
+        const headerWrapEl = headerWrapRef.current;
         if (!headerEl) return;
+
         const computeOffset = () => {
-            // 요청에 따라 헤더 오프셋을 40px로 고정 적용
             document.documentElement.style.setProperty('--header-offset', `40px`);
         };
-        const onScroll = () => {
-            if (window.scrollY > 0) {
+        const applyScrolled = (isScrolled: boolean) => {
+            if (isScrolled) {
                 headerEl.classList.add('scrolled');
+                if (headerWrapEl) headerWrapEl.classList.add('scrolled');
             } else {
                 headerEl.classList.remove('scrolled');
+                if (headerWrapEl) headerWrapEl.classList.remove('scrolled');
             }
-            computeOffset();
         };
+
+        const getCandidates = () => {
+            const list: Array<EventTarget & { scrollTop?: number }> = [];
+            const se = (document.scrollingElement || document.documentElement) as HTMLElement;
+            const mainEl = document.querySelector('main') as HTMLElement | null;
+            const netzeroEl = document.querySelector('.Netzero') as HTMLElement | null;
+            list.push(window as unknown as EventTarget & { scrollTop?: number });
+            list.push(document as unknown as EventTarget & { scrollTop?: number });
+            if (se) list.push(se as unknown as EventTarget & { scrollTop?: number });
+            if (mainEl) list.push(mainEl as unknown as EventTarget & { scrollTop?: number });
+            if (netzeroEl) list.push(netzeroEl as unknown as EventTarget & { scrollTop?: number });
+            return list;
+        };
+
+        const readScrollY = () => {
+            const se = (document.scrollingElement || document.documentElement) as HTMLElement;
+            const mainEl = document.querySelector('main') as HTMLElement | null;
+            const netzeroEl = document.querySelector('.Netzero') as HTMLElement | null;
+            const candidates: number[] = [];
+            if (typeof window !== 'undefined' && typeof window.scrollY === 'number') candidates.push(window.scrollY);
+            if (se) candidates.push(se.scrollTop || 0);
+            if (document.body) candidates.push(document.body.scrollTop || 0);
+            if (mainEl) candidates.push(mainEl.scrollTop || 0);
+            if (netzeroEl) candidates.push(netzeroEl.scrollTop || 0);
+            return Math.max(...candidates, 0);
+        };
+
+        let rafId = 0;
+        let lastScroll = -1;
+        let lastLogged: boolean | null = null;
+        const logState = (scrolled: boolean, where: string) => {
+            if (lastLogged === scrolled) return;
+            lastLogged = scrolled;
+            try {
+                console.log('[HeaderScroll]', where, {
+                    scrollY: readScrollY(),
+                    scrolled,
+                    headerHas: headerEl.classList.contains('scrolled'),
+                    wrapHas: headerWrapEl ? headerWrapEl.classList.contains('scrolled') : 'no-wrap-ref',
+                });
+            } catch {}
+        };
+
+        const tick = () => {
+            const cur = readScrollY();
+            if (cur !== lastScroll) {
+                const sc = cur > 0;
+                applyScrolled(sc);
+                logState(sc, 'rAF');
+                lastScroll = cur;
+            }
+            rafId = window.requestAnimationFrame(tick);
+        };
+
+        const onAnyScroll = () => {
+            const cur = readScrollY();
+            const sc = cur > 0;
+            applyScrolled(sc);
+            logState(sc, 'scroll');
+            lastScroll = cur;
+        };
+
+        try { console.log('[HeaderScroll] mounted', { headerEl: !!headerEl, headerWrapEl: !!headerWrapEl }); } catch {}
+
         computeOffset();
-        window.addEventListener('scroll', onScroll, { passive: true });
+        onAnyScroll();
+
+        const containers = getCandidates();
+        containers.forEach((c) => {
+            c.addEventListener?.('scroll', onAnyScroll as EventListener, { passive: true } as AddEventListenerOptions);
+        });
         window.addEventListener('resize', computeOffset);
         const ro = new ResizeObserver(computeOffset);
         ro.observe(headerEl);
+
+        rafId = window.requestAnimationFrame(tick);
+
         return () => {
-            window.removeEventListener('scroll', onScroll);
+            containers.forEach((c) => {
+                c.removeEventListener?.('scroll', onAnyScroll as EventListener);
+            });
             window.removeEventListener('resize', computeOffset);
             ro.disconnect();
+            if (rafId) cancelAnimationFrame(rafId);
         };
     }, []);
     const onClickHamburger = (e: React.MouseEvent) => {

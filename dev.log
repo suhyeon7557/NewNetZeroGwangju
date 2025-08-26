@@ -16,3 +16,1379 @@
  ✓ Compiled / in 4s (747 modules)
  GET / 200 in 4392ms
  ✓ Compiled in 270ms (682 modules)
+ GET / 200 in 235ms
+ GET / 200 in 56ms
+ ✓ Compiled /_not-found in 336ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 522ms
+ ✓ Compiled in 234ms (687 modules)
+ GET / 200 in 63ms
+ GET /fonts/GmarketSans.ttf 404 in 90ms
+ ✓ Compiled in 210ms (700 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 95ms
+ ✓ Compiled in 249ms (700 modules)
+ GET / 200 in 62ms
+ GET /fonts/GmarketSans.ttf 404 in 113ms
+ ✓ Compiled in 223ms (695 modules)
+ GET / 200 in 100ms
+ ✓ Compiled /_not-found in 170ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 348ms
+ GET / 200 in 31ms
+ GET /fonts/GmarketSans.ttf 404 in 57ms
+ ✓ Compiled in 195ms (700 modules)
+ GET / 200 in 50ms
+ GET /fonts/GmarketSans.ttf 404 in 100ms
+ ✓ Compiled in 149ms (700 modules)
+ GET / 200 in 51ms
+ GET /fonts/GmarketSans.ttf 404 in 94ms
+ ✓ Compiled in 186ms (700 modules)
+ GET / 200 in 50ms
+ GET /fonts/GmarketSans.ttf 404 in 115ms
+ ✓ Compiled in 166ms (700 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 89ms
+ ✓ Compiled in 155ms (700 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 94ms
+ ✓ Compiled in 604ms (682 modules)
+ GET / 200 in 101ms
+ ✓ Compiled /_not-found in 116ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 299ms
+ ✓ Compiled in 344ms (687 modules)
+ GET / 200 in 40ms
+ GET /fonts/GmarketSans.ttf 404 in 108ms
+ ✓ Compiled in 491ms (682 modules)
+ GET / 200 in 95ms
+ ✓ Compiled /_not-found in 124ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 302ms
+ ✓ Compiled in 194ms (687 modules)
+ GET / 200 in 58ms
+ GET /fonts/GmarketSans.ttf 404 in 115ms
+ ✓ Compiled in 318ms (700 modules)
+ GET / 200 in 56ms
+ GET /fonts/GmarketSans.ttf 404 in 114ms
+ ✓ Compiled in 237ms (700 modules)
+ GET / 200 in 59ms
+ GET /fonts/GmarketSans.ttf 404 in 155ms
+ ✓ Compiled in 157ms (700 modules)
+ GET / 200 in 38ms
+ GET /fonts/GmarketSans.ttf 404 in 125ms
+ ✓ Compiled in 271ms (700 modules)
+ GET / 200 in 47ms
+ GET /fonts/GmarketSans.ttf 404 in 109ms
+ ✓ Compiled in 178ms (700 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 118ms
+ ✓ Compiled in 181ms (700 modules)
+ GET / 200 in 47ms
+ GET /fonts/GmarketSans.ttf 404 in 120ms
+ ✓ Compiled in 180ms (700 modules)
+ GET / 200 in 62ms
+ GET /fonts/GmarketSans.ttf 404 in 122ms
+ ✓ Compiled in 166ms (700 modules)
+ GET / 200 in 50ms
+ GET /fonts/GmarketSans.ttf 404 in 125ms
+ ✓ Compiled in 350ms (687 modules)
+ GET / 200 in 54ms
+ GET /fonts/GmarketSans.ttf 404 in 103ms
+ ✓ Compiled in 249ms (700 modules)
+ GET / 200 in 71ms
+ GET /fonts/GmarketSans.ttf 404 in 110ms
+ ✓ Compiled in 292ms (700 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 111ms
+ ✓ Compiled in 183ms (700 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 86ms
+ ✓ Compiled in 157ms (700 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 102ms
+ ✓ Compiled in 161ms (700 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 104ms
+ ✓ Compiled in 172ms (687 modules)
+ GET / 200 in 63ms
+ GET /fonts/GmarketSans.ttf 404 in 97ms
+ ✓ Compiled in 214ms (687 modules)
+ GET / 200 in 38ms
+ GET /fonts/GmarketSans.ttf 404 in 98ms
+ ✓ Compiled in 231ms (687 modules)
+ GET / 200 in 51ms
+ GET /fonts/GmarketSans.ttf 404 in 79ms
+ ✓ Compiled in 209ms (687 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 96ms
+ ✓ Compiled in 174ms (687 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 108ms
+ ✓ Compiled in 208ms (687 modules)
+ GET / 200 in 52ms
+ GET /fonts/GmarketSans.ttf 404 in 101ms
+ ✓ Compiled in 190ms (687 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 131ms
+ ✓ Compiled in 166ms (687 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 154ms
+ ✓ Compiled in 163ms (687 modules)
+ GET / 200 in 47ms
+ GET /fonts/GmarketSans.ttf 404 in 108ms
+ ✓ Compiled in 196ms (687 modules)
+ GET / 200 in 51ms
+ GET /fonts/GmarketSans.ttf 404 in 109ms
+ ✓ Compiled in 166ms (687 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 89ms
+ ✓ Compiled in 156ms (687 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 100ms
+ ✓ Compiled in 149ms (687 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 101ms
+ ✓ Compiled in 172ms (687 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 140ms
+ ✓ Compiled in 160ms (687 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 104ms
+ ✓ Compiled in 162ms (687 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 96ms
+ ✓ Compiled in 147ms (687 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 99ms
+ ✓ Compiled in 217ms (700 modules)
+ GET / 200 in 59ms
+ GET /fonts/GmarketSans.ttf 404 in 115ms
+ ✓ Compiled in 197ms (700 modules)
+ GET / 200 in 37ms
+ GET /fonts/GmarketSans.ttf 404 in 95ms
+ ✓ Compiled in 234ms (695 modules)
+ GET / 200 in 59ms
+ ✓ Compiled /_not-found in 89ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 199ms
+ ✓ Compiled in 160ms (700 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 109ms
+ ✓ Compiled in 311ms (682 modules)
+ GET / 200 in 59ms
+ ✓ Compiled /_not-found in 162ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 315ms
+ ✓ Compiled in 181ms (700 modules)
+ GET / 200 in 51ms
+ GET /fonts/GmarketSans.ttf 404 in 138ms
+ ✓ Compiled in 228ms (700 modules)
+ GET / 200 in 54ms
+ GET /fonts/GmarketSans.ttf 404 in 114ms
+ ✓ Compiled in 266ms (687 modules)
+ GET / 200 in 50ms
+ GET /fonts/GmarketSans.ttf 404 in 87ms
+ ✓ Compiled in 249ms (700 modules)
+ GET / 200 in 54ms
+ GET /fonts/GmarketSans.ttf 404 in 125ms
+ ✓ Compiled in 201ms (700 modules)
+ GET / 200 in 49ms
+ GET /fonts/GmarketSans.ttf 404 in 172ms
+ ✓ Compiled in 178ms (700 modules)
+ GET / 200 in 40ms
+ GET /fonts/GmarketSans.ttf 404 in 129ms
+ ✓ Compiled in 191ms (700 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 119ms
+ GET / 200 in 136ms
+ GET /fonts/GmarketSans.ttf 404 in 67ms
+ ✓ Compiled in 201ms (700 modules)
+ GET / 200 in 53ms
+ GET /fonts/GmarketSans.ttf 404 in 94ms
+ ✓ Compiled in 281ms (695 modules)
+ GET / 200 in 105ms
+ ✓ Compiled /_not-found in 106ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 226ms
+ GET / 200 in 118ms
+ GET /fonts/GmarketSans.ttf 404 in 59ms
+ GET / 200 in 79ms
+ GET /fonts/GmarketSans.ttf 404 in 62ms
+ ✓ Compiled in 158ms (700 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 88ms
+ GET / 200 in 88ms
+ GET /fonts/GmarketSans.ttf 404 in 66ms
+ GET / 200 in 61ms
+ GET /fonts/GmarketSans.ttf 404 in 49ms
+ ✓ Compiled in 477ms (700 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 109ms
+ ✓ Compiled in 218ms (700 modules)
+ GET / 200 in 57ms
+ GET /fonts/GmarketSans.ttf 404 in 99ms
+ GET / 200 in 82ms
+ GET /fonts/GmarketSans.ttf 404 in 58ms
+ GET / 200 in 108ms
+ GET /fonts/GmarketSans.ttf 404 in 92ms
+ ✓ Compiled in 306ms (700 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 101ms
+ ✓ Compiled in 179ms (700 modules)
+ GET / 200 in 39ms
+ GET /fonts/GmarketSans.ttf 404 in 89ms
+ GET / 200 in 67ms
+ GET /fonts/GmarketSans.ttf 404 in 129ms
+ GET / 200 in 131ms
+ GET /fonts/GmarketSans.ttf 404 in 67ms
+ ✓ Compiled in 291ms (695 modules)
+ GET / 200 in 95ms
+ ✓ Compiled /_not-found in 101ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 261ms
+ GET / 200 in 27ms
+ GET /fonts/GmarketSans.ttf 404 in 78ms
+ ✓ Compiled in 176ms (700 modules)
+ GET / 200 in 37ms
+ GET /fonts/GmarketSans.ttf 404 in 115ms
+ GET / 200 in 102ms
+ GET / 200 in 163ms
+ GET /fonts/GmarketSans.ttf 404 in 80ms
+ GET /fonts/GmarketSans.ttf 404 in 69ms
+ ✓ Compiled in 188ms (700 modules)
+ GET / 200 in 46ms
+ ✓ Compiled in 208ms (700 modules)
+ ✓ Compiled in 160ms (700 modules)
+ ✓ Compiled in 157ms (700 modules)
+ GET / 200 in 143ms
+ GET /fonts/GmarketSans.ttf 404 in 70ms
+ GET / 200 in 75ms
+ GET /fonts/GmarketSans.ttf 404 in 55ms
+ GET / 200 in 70ms
+ GET /fonts/GmarketSans.ttf 404 in 70ms
+ GET / 200 in 57ms
+ GET /fonts/GmarketSans.ttf 404 in 54ms
+ GET / 200 in 74ms
+ GET /fonts/GmarketSans.ttf 404 in 72ms
+ ✓ Compiled in 187ms (700 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 97ms
+ GET / 200 in 86ms
+ GET /fonts/GmarketSans.ttf 404 in 66ms
+ ✓ Compiled in 288ms (700 modules)
+ GET / 200 in 81ms
+ GET /fonts/GmarketSans.ttf 404 in 108ms
+ ✓ Compiled in 439ms (700 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 87ms
+ ✓ Compiled in 160ms (700 modules)
+ GET / 200 in 49ms
+ GET /fonts/GmarketSans.ttf 404 in 101ms
+ ✓ Compiled in 298ms (687 modules)
+ GET / 200 in 59ms
+ GET /fonts/GmarketSans.ttf 404 in 101ms
+ ✓ Compiled in 175ms (687 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 88ms
+ GET / 200 in 83ms
+ GET /fonts/GmarketSans.ttf 404 in 57ms
+ ✓ Compiled in 196ms (700 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 87ms
+ ✓ Compiled in 183ms (700 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 77ms
+ ✓ Compiled in 163ms (700 modules)
+ GET / 200 in 46ms
+ ✓ Compiled in 159ms (700 modules)
+ ✓ Compiled in 148ms (687 modules)
+ ✓ Compiled in 195ms (700 modules)
+ ✓ Compiled in 171ms (687 modules)
+ ✓ Compiled in 395ms (695 modules)
+ GET / 200 in 180ms
+ ✓ Compiled /_not-found in 115ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 279ms
+ ✓ Compiled in 219ms (700 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 87ms
+ ✓ Compiled in 251ms (700 modules)
+ GET / 200 in 56ms
+ GET /fonts/GmarketSans.ttf 404 in 119ms
+ ✓ Compiled in 186ms (700 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 117ms
+ ✓ Compiled in 226ms (700 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 102ms
+ ✓ Compiled in 187ms (700 modules)
+ GET / 200 in 39ms
+ GET /fonts/GmarketSans.ttf 404 in 100ms
+ ✓ Compiled in 286ms (700 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 84ms
+ ✓ Compiled in 258ms (700 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 77ms
+ ✓ Compiled in 189ms (700 modules)
+ GET / 200 in 78ms
+ GET /fonts/GmarketSans.ttf 404 in 103ms
+ ✓ Compiled in 349ms (695 modules)
+ GET / 200 in 64ms
+ ✓ Compiled /_not-found in 97ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 233ms
+ GET / 200 in 24ms
+ GET /fonts/GmarketSans.ttf 404 in 45ms
+ ✓ Compiled in 216ms (700 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 79ms
+ ✓ Compiled in 216ms (700 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 93ms
+ ✓ Compiled in 187ms (700 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 102ms
+ ✓ Compiled in 216ms (700 modules)
+ GET / 200 in 77ms
+ GET /fonts/GmarketSans.ttf 404 in 114ms
+ ✓ Compiled in 197ms (700 modules)
+ GET / 200 in 51ms
+ GET /fonts/GmarketSans.ttf 404 in 105ms
+ ✓ Compiled in 196ms (700 modules)
+ GET / 200 in 40ms
+ GET /fonts/GmarketSans.ttf 404 in 100ms
+ ✓ Compiled in 255ms (695 modules)
+ GET / 200 in 66ms
+ ✓ Compiled /_not-found in 116ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 276ms
+ GET / 200 in 188ms
+ GET /fonts/GmarketSans.ttf 404 in 51ms
+ ✓ Compiled in 184ms (700 modules)
+ GET / 200 in 52ms
+ GET /fonts/GmarketSans.ttf 404 in 117ms
+ ✓ Compiled in 219ms (695 modules)
+ GET / 200 in 70ms
+ ✓ Compiled /_not-found in 134ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 277ms
+ GET / 200 in 159ms
+ GET /fonts/GmarketSans.ttf 404 in 63ms
+ ✓ Compiled in 232ms (695 modules)
+ GET / 200 in 66ms
+ ✓ Compiled /_not-found in 105ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 235ms
+ GET / 200 in 139ms
+ GET /fonts/GmarketSans.ttf 404 in 74ms
+ ✓ Compiled in 138ms (700 modules)
+ GET / 200 in 39ms
+ GET /fonts/GmarketSans.ttf 404 in 106ms
+ ✓ Compiled in 127ms (700 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 120ms
+ GET / 200 in 100ms
+ GET /fonts/GmarketSans.ttf 404 in 77ms
+ ✓ Compiled in 220ms (695 modules)
+ GET / 200 in 84ms
+ ✓ Compiled /_not-found in 97ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 213ms
+ GET / 200 in 130ms
+ GET /fonts/GmarketSans.ttf 404 in 61ms
+ ✓ Compiled in 146ms (700 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 90ms
+ ✓ Compiled in 369ms (682 modules)
+ GET / 200 in 77ms
+ ✓ Compiled /_not-found in 114ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 263ms
+ GET / 200 in 24ms
+ GET /fonts/GmarketSans.ttf 404 in 59ms
+ ✓ Compiled in 263ms (687 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 102ms
+ ✓ Compiled in 227ms (687 modules)
+ GET / 200 in 50ms
+ GET /fonts/GmarketSans.ttf 404 in 104ms
+ ✓ Compiled in 266ms (687 modules)
+ GET / 200 in 47ms
+ GET /fonts/GmarketSans.ttf 404 in 92ms
+ ✓ Compiled in 304ms (687 modules)
+ GET / 200 in 73ms
+ GET /fonts/GmarketSans.ttf 404 in 90ms
+ ✓ Compiled in 237ms (687 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 105ms
+ GET / 200 in 95ms
+ GET /fonts/GmarketSans.ttf 404 in 66ms
+ ✓ Compiled in 254ms (687 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 113ms
+ ✓ Compiled in 480ms (687 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 104ms
+ ✓ Compiled in 268ms (695 modules)
+ GET / 200 in 104ms
+ ✓ Compiled /_not-found in 112ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 276ms
+ GET / 200 in 181ms
+ GET /fonts/GmarketSans.ttf 404 in 43ms
+ ✓ Compiled in 149ms (700 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 98ms
+ ✓ Compiled in 160ms (700 modules)
+ GET / 200 in 67ms
+ GET /fonts/GmarketSans.ttf 404 in 91ms
+ ✓ Compiled in 157ms (700 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 98ms
+ ✓ Compiled in 203ms (700 modules)
+ GET / 200 in 49ms
+ GET /fonts/GmarketSans.ttf 404 in 87ms
+ ✓ Compiled in 205ms (700 modules)
+ GET / 200 in 53ms
+ GET /fonts/GmarketSans.ttf 404 in 98ms
+ ✓ Compiled in 308ms (695 modules)
+ GET / 200 in 72ms
+ ✓ Compiled /_not-found in 111ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 228ms
+ GET / 200 in 132ms
+ GET /fonts/GmarketSans.ttf 404 in 71ms
+ GET / 200 in 133ms
+ GET /fonts/GmarketSans.ttf 404 in 76ms
+ ✓ Compiled in 292ms (695 modules)
+ GET / 200 in 70ms
+ ✓ Compiled /_not-found in 133ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 266ms
+ GET / 200 in 145ms
+ GET /fonts/GmarketSans.ttf 404 in 59ms
+ ✓ Compiled in 272ms (682 modules)
+ GET / 200 in 71ms
+ ✓ Compiled /_not-found in 103ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 213ms
+ ✓ Compiled in 192ms (700 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 105ms
+ ✓ Compiled in 152ms (700 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 99ms
+ ✓ Compiled in 164ms (700 modules)
+ GET / 200 in 40ms
+ GET /fonts/GmarketSans.ttf 404 in 121ms
+ ✓ Compiled in 198ms (700 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 102ms
+ ✓ Compiled in 162ms (700 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 109ms
+ ✓ Compiled in 194ms (700 modules)
+ GET / 200 in 73ms
+ GET /fonts/GmarketSans.ttf 404 in 88ms
+ GET / 200 in 13ms
+ GET / 200 in 14ms
+ GET / 200 in 8ms
+ GET / 200 in 9ms
+ GET / 200 in 11ms
+ ✓ Compiled in 262ms (695 modules)
+ GET / 200 in 43ms
+ ✓ Compiled /_not-found in 88ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 205ms
+ GET / 200 in 134ms
+ GET /fonts/GmarketSans.ttf 404 in 53ms
+ ✓ Compiled in 293ms (695 modules)
+ GET / 200 in 44ms
+ ✓ Compiled /_not-found in 137ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 300ms
+ GET / 200 in 174ms
+ GET /fonts/GmarketSans.ttf 404 in 66ms
+ ✓ Compiled in 317ms (682 modules)
+ GET / 200 in 82ms
+ ✓ Compiled /_not-found in 143ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 284ms
+ ✓ Compiled in 264ms (695 modules)
+ GET / 200 in 99ms
+ ✓ Compiled /_not-found in 114ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 296ms
+ GET / 200 in 29ms
+ GET /fonts/GmarketSans.ttf 404 in 75ms
+ ✓ Compiled in 362ms (700 modules)
+ GET / 200 in 51ms
+ GET /fonts/GmarketSans.ttf 404 in 140ms
+ ✓ Compiled in 169ms (700 modules)
+ GET / 200 in 55ms
+ GET /fonts/GmarketSans.ttf 404 in 133ms
+ ✓ Compiled in 295ms (687 modules)
+ GET / 200 in 180ms
+ GET /fonts/GmarketSans.ttf 404 in 154ms
+ ✓ Compiled in 323ms (700 modules)
+ GET / 200 in 39ms
+ GET /fonts/GmarketSans.ttf 404 in 114ms
+ ✓ Compiled in 350ms (700 modules)
+ GET / 200 in 76ms
+ GET /fonts/GmarketSans.ttf 404 in 102ms
+ ✓ Compiled in 299ms (700 modules)
+ GET / 200 in 47ms
+ GET /fonts/GmarketSans.ttf 404 in 90ms
+ GET / 200 in 121ms
+ GET / 200 in 72ms
+ GET /fonts/GmarketSans.ttf 404 in 85ms
+ GET / 200 in 101ms
+ GET /fonts/GmarketSans.ttf 404 in 84ms
+ ✓ Compiled in 250ms (695 modules)
+ GET / 200 in 74ms
+ ✓ Compiled /_not-found in 91ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 218ms
+ GET / 200 in 25ms
+ GET /fonts/GmarketSans.ttf 404 in 72ms
+ ✓ Compiled in 290ms (682 modules)
+ GET / 200 in 77ms
+ ✓ Compiled /_not-found in 86ms (673 modules)
+ GET /fonts/GmarketSans.ttf 404 in 214ms
+ ✓ Compiled in 152ms (687 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 124ms
+ ✓ Compiled in 267ms (700 modules)
+ GET / 200 in 76ms
+ GET /fonts/GmarketSans.ttf 404 in 93ms
+ ✓ Compiled in 167ms (700 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 102ms
+ ✓ Compiled in 143ms (700 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 99ms
+ ✓ Compiled in 168ms (700 modules)
+ GET / 200 in 60ms
+ GET /fonts/GmarketSans.ttf 404 in 102ms
+ ✓ Compiled in 160ms (700 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 111ms
+ ✓ Compiled in 197ms (700 modules)
+ GET / 200 in 63ms
+ GET /fonts/GmarketSans.ttf 404 in 109ms
+ ✓ Compiled in 175ms (700 modules)
+ GET / 200 in 58ms
+ GET /fonts/GmarketSans.ttf 404 in 101ms
+ ✓ Compiled in 289ms (700 modules)
+ GET / 200 in 53ms
+ GET /fonts/GmarketSans.ttf 404 in 97ms
+ ✓ Compiled in 156ms (700 modules)
+ GET / 200 in 50ms
+ GET /fonts/GmarketSans.ttf 404 in 80ms
+ ✓ Compiled in 169ms (700 modules)
+ GET / 200 in 39ms
+ GET /fonts/GmarketSans.ttf 404 in 85ms
+ ✓ Compiled in 150ms (700 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 104ms
+ ✓ Compiled in 199ms (700 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 95ms
+ ✓ Compiled in 212ms (700 modules)
+ GET / 200 in 62ms
+ GET /fonts/GmarketSans.ttf 404 in 85ms
+ ✓ Compiled in 196ms (700 modules)
+ GET / 200 in 84ms
+ GET /fonts/GmarketSans.ttf 404 in 91ms
+ ✓ Compiled in 190ms (700 modules)
+ GET / 200 in 40ms
+ GET /fonts/GmarketSans.ttf 404 in 93ms
+ ✓ Compiled in 229ms (700 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 81ms
+ ✓ Compiled in 220ms (700 modules)
+ GET / 200 in 51ms
+ GET /fonts/GmarketSans.ttf 404 in 80ms
+ ✓ Compiled in 148ms (700 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 85ms
+ ✓ Compiled in 162ms (700 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 89ms
+ ⨯ ./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+Expected expression.
+    ╷
+183 │     text-align: ;
+    │                 ^
+    ╵
+  src\styles\common.scss 183:17  root stylesheet
+
+Import trace for requested module:
+./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+./src/styles/common.scss
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 2.1s (1028 modules)
+ GET / 500 in 3247ms
+ GET / 200 in 130ms
+ GET / 200 in 15ms
+ GET / 200 in 12ms
+ GET / 200 in 187ms
+ GET /fonts/GmarketSans.ttf 404 in 91ms
+ ✓ Compiled in 286ms (1028 modules)
+ GET / 200 in 71ms
+ GET /fonts/GmarketSans.ttf 404 in 111ms
+ ✓ Compiled in 224ms (1028 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 81ms
+ ✓ Compiled in 178ms (1028 modules)
+ GET / 200 in 60ms
+ GET /fonts/GmarketSans.ttf 404 in 86ms
+ ✓ Compiled in 217ms (1028 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 84ms
+ ✓ Compiled in 174ms (941 modules)
+ GET / 200 in 122ms
+ GET /fonts/GmarketSans.ttf 404 in 134ms
+ ✓ Compiled in 217ms (941 modules)
+ GET / 200 in 71ms
+ GET /fonts/GmarketSans.ttf 404 in 106ms
+ ✓ Compiled in 172ms (941 modules)
+ GET / 200 in 61ms
+ GET /fonts/GmarketSans.ttf 404 in 80ms
+ ✓ Compiled in 215ms (941 modules)
+ GET / 200 in 47ms
+ GET /fonts/GmarketSans.ttf 404 in 87ms
+ ✓ Compiled in 289ms (936 modules)
+ GET / 200 in 68ms
+ ✓ Compiled /_not-found in 110ms (914 modules)
+ GET /fonts/GmarketSans.ttf 404 in 221ms
+ GET / 200 in 123ms
+ GET /fonts/GmarketSans.ttf 404 in 59ms
+ ✓ Compiled in 169ms (941 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 111ms
+ ✓ Compiled in 297ms (936 modules)
+ GET / 200 in 73ms
+ ✓ Compiled /_not-found in 106ms (914 modules)
+ GET /fonts/GmarketSans.ttf 404 in 231ms
+ GET / 200 in 152ms
+ GET /fonts/GmarketSans.ttf 404 in 69ms
+ ✓ Compiled in 156ms (941 modules)
+ GET / 200 in 50ms
+ GET /fonts/GmarketSans.ttf 404 in 98ms
+ ✓ Compiled in 419ms (936 modules)
+ GET / 200 in 47ms
+ ✓ Compiled in 165ms (936 modules)
+ GET / 200 in 37ms
+ ✓ Compiled in 163ms (936 modules)
+ GET / 200 in 36ms
+ ✓ Compiled in 293ms (936 modules)
+ GET / 200 in 75ms
+ ✓ Compiled in 309ms (923 modules)
+ GET / 200 in 65ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 535ms (914 modules)
+ GET /fonts/GmarketSans.ttf 404 in 694ms
+ GET / 200 in 172ms
+ GET /fonts/GmarketSans.ttf 404 in 61ms
+ ✓ Compiled in 204ms (928 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 113ms
+ ✓ Compiled in 320ms (923 modules)
+ GET / 200 in 70ms
+ ✓ Compiled /_not-found in 126ms (914 modules)
+ GET /fonts/GmarketSans.ttf 404 in 249ms
+ ✓ Compiled in 174ms (928 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 115ms
+ ✓ Compiled in 247ms (941 modules)
+ GET / 200 in 50ms
+ GET /fonts/GmarketSans.ttf 404 in 111ms
+ ✓ Compiled in 192ms (941 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 108ms
+ ✓ Compiled in 191ms (941 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 115ms
+ ✓ Compiled in 192ms (928 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 128ms
+ ✓ Compiled in 235ms (941 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 77ms
+ ✓ Compiled in 179ms (941 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 112ms
+ ✓ Compiled in 223ms (941 modules)
+ GET / 200 in 37ms
+ GET /fonts/GmarketSans.ttf 404 in 74ms
+ ✓ Compiled in 191ms (941 modules)
+ GET / 200 in 49ms
+ GET /fonts/GmarketSans.ttf 404 in 104ms
+ ✓ Compiled in 174ms (941 modules)
+ GET / 200 in 58ms
+ GET /fonts/GmarketSans.ttf 404 in 105ms
+ ✓ Compiled in 208ms (941 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 104ms
+ ✓ Compiled in 164ms (941 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 105ms
+ ✓ Compiled in 227ms (941 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 75ms
+ ✓ Compiled in 172ms (941 modules)
+ GET / 200 in 40ms
+ GET /fonts/GmarketSans.ttf 404 in 88ms
+ ✓ Compiled in 263ms (941 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 84ms
+ ✓ Compiled in 242ms (941 modules)
+ GET / 200 in 52ms
+ GET /fonts/GmarketSans.ttf 404 in 87ms
+ ✓ Compiled in 198ms (941 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 78ms
+ ✓ Compiled in 205ms (941 modules)
+ GET / 200 in 47ms
+ GET /fonts/GmarketSans.ttf 404 in 94ms
+ ✓ Compiled in 211ms (941 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 113ms
+ ✓ Compiled in 207ms (941 modules)
+ GET / 200 in 70ms
+ GET /fonts/GmarketSans.ttf 404 in 105ms
+ ✓ Compiled in 201ms (941 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 102ms
+ ✓ Compiled in 159ms (941 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 98ms
+ ✓ Compiled in 157ms (941 modules)
+ GET / 200 in 40ms
+ GET /fonts/GmarketSans.ttf 404 in 106ms
+ ✓ Compiled in 193ms (941 modules)
+ GET / 200 in 56ms
+ GET /fonts/GmarketSans.ttf 404 in 104ms
+ ✓ Compiled in 208ms (941 modules)
+ GET / 200 in 40ms
+ GET /fonts/GmarketSans.ttf 404 in 96ms
+ GET / 200 in 89ms
+ GET /fonts/GmarketSans.ttf 404 in 50ms
+ ✓ Compiled in 231ms (941 modules)
+ GET / 200 in 52ms
+ GET /fonts/GmarketSans.ttf 404 in 88ms
+ ✓ Compiled in 202ms (941 modules)
+ GET / 200 in 69ms
+ GET /fonts/GmarketSans.ttf 404 in 108ms
+ ✓ Compiled in 218ms (941 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 98ms
+ ✓ Compiled in 177ms (941 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 102ms
+ ✓ Compiled in 170ms (941 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 97ms
+ ✓ Compiled in 174ms (941 modules)
+ GET / 200 in 39ms
+ GET /fonts/GmarketSans.ttf 404 in 104ms
+ ✓ Compiled in 165ms (941 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 108ms
+ ✓ Compiled in 153ms (941 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 105ms
+ ✓ Compiled in 168ms (941 modules)
+ GET / 200 in 51ms
+ GET /fonts/GmarketSans.ttf 404 in 105ms
+ ✓ Compiled in 281ms (928 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 90ms
+ ✓ Compiled in 226ms (941 modules)
+ GET / 200 in 55ms
+ GET /fonts/GmarketSans.ttf 404 in 93ms
+ ✓ Compiled in 208ms (941 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 101ms
+ ⨯ ./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+Expected identifier.
+    ╷
+253 │ ..search_area {
+    │  ^
+    ╵
+  src\styles\common.scss 253:2  root stylesheet
+
+Import trace for requested module:
+./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+./src/styles/common.scss
+ ⨯ ./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+Expected identifier.
+    ╷
+253 │ ..search_area {
+    │  ^
+    ╵
+  src\styles\common.scss 253:2  root stylesheet
+
+Import trace for requested module:
+./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+./src/styles/common.scss
+ GET / 500 in 360ms
+ GET / 500 in 14ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 183ms (1023 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET / 200 in 313ms
+ ✓ Compiled /_not-found in 393ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 280ms
+ ✓ Compiled in 182ms (1028 modules)
+ GET / 200 in 40ms
+ GET /fonts/GmarketSans.ttf 404 in 100ms
+ ✓ Compiled in 165ms (1028 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 97ms
+ ✓ Compiled in 292ms (936 modules)
+ GET / 200 in 138ms
+ ✓ Compiled in 193ms (936 modules)
+ GET / 200 in 73ms
+ ✓ Compiled /_not-found in 144ms (914 modules)
+ GET /fonts/GmarketSans.ttf 404 in 332ms
+ GET / 200 in 25ms
+ GET /fonts/GmarketSans.ttf 404 in 72ms
+ ✓ Compiled in 169ms (941 modules)
+ GET / 200 in 40ms
+ GET /fonts/GmarketSans.ttf 404 in 111ms
+ ✓ Compiled in 221ms (941 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 83ms
+ ✓ Compiled in 405ms (923 modules)
+ GET / 200 in 74ms
+ ✓ Compiled /_not-found in 121ms (914 modules)
+ GET /fonts/GmarketSans.ttf 404 in 235ms
+ GET / 200 in 30ms
+ GET /fonts/GmarketSans.ttf 404 in 48ms
+ ⨯ ./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+expected "{".
+    ╷
+268 │     option
+    │           ^
+    ╵
+  src\styles\common.scss 268:11  root stylesheet
+
+Import trace for requested module:
+./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+./src/styles/common.scss
+ ⨯ ./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+expected "{".
+    ╷
+268 │     option
+    │           ^
+    ╵
+  src\styles\common.scss 268:11  root stylesheet
+
+Import trace for requested module:
+./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+./src/styles/common.scss
+ GET / 500 in 263ms
+ GET / 500 in 12ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 211ms (1023 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET / 200 in 336ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 529ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 329ms
+ ✓ Compiled in 174ms (1028 modules)
+ GET / 200 in 34ms
+ GET /fonts/GmarketSans.ttf 404 in 83ms
+ ✓ Compiled in 184ms (1028 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 94ms
+ ✓ Compiled in 177ms (1028 modules)
+ GET / 200 in 50ms
+ GET /fonts/GmarketSans.ttf 404 in 118ms
+ ✓ Compiled in 198ms (1028 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 95ms
+ ✓ Compiled in 176ms (1028 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 99ms
+ ✓ Compiled in 278ms (1028 modules)
+ GET / 200 in 49ms
+ GET /fonts/GmarketSans.ttf 404 in 97ms
+ ✓ Compiled in 179ms (1028 modules)
+ GET / 200 in 40ms
+ GET /fonts/GmarketSans.ttf 404 in 82ms
+ ✓ Compiled in 212ms (1028 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 115ms
+ ✓ Compiled in 207ms (1028 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 86ms
+ ✓ Compiled in 180ms (1028 modules)
+ GET / 200 in 53ms
+ GET /fonts/GmarketSans.ttf 404 in 128ms
+ ✓ Compiled in 192ms (1028 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 96ms
+ ✓ Compiled in 201ms (1028 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 102ms
+ ✓ Compiled in 178ms (1028 modules)
+ GET / 200 in 47ms
+ GET /fonts/GmarketSans.ttf 404 in 136ms
+ ✓ Compiled in 198ms (1028 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 95ms
+ ✓ Compiled in 167ms (1028 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 105ms
+ ✓ Compiled in 175ms (1028 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 110ms
+ ✓ Compiled in 173ms (1028 modules)
+ GET / 200 in 51ms
+ GET /fonts/GmarketSans.ttf 404 in 114ms
+ ✓ Compiled in 180ms (1028 modules)
+ GET / 200 in 49ms
+ GET /fonts/GmarketSans.ttf 404 in 119ms
+ ✓ Compiled in 201ms (1028 modules)
+ GET / 200 in 80ms
+ GET /fonts/GmarketSans.ttf 404 in 112ms
+ ✓ Compiled in 253ms (1028 modules)
+ GET / 200 in 47ms
+ GET /fonts/GmarketSans.ttf 404 in 91ms
+ ✓ Compiled in 180ms (1028 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 79ms
+ ✓ Compiled in 397ms (1023 modules)
+ GET / 200 in 83ms
+ ✓ Compiled /_not-found in 124ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 222ms
+ GET / 200 in 110ms
+ GET /fonts/GmarketSans.ttf 404 in 48ms
+ ✓ Compiled in 187ms (1028 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 98ms
+ ✓ Compiled in 169ms (1028 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 105ms
+ ✓ Compiled in 183ms (1028 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 107ms
+ ✓ Compiled in 194ms (1028 modules)
+ GET / 200 in 59ms
+ GET /fonts/GmarketSans.ttf 404 in 133ms
+ ✓ Compiled in 185ms (1028 modules)
+ GET / 200 in 50ms
+ GET /fonts/GmarketSans.ttf 404 in 107ms
+ ✓ Compiled in 187ms (1028 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 112ms
+ ✓ Compiled in 158ms (1028 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 97ms
+ ✓ Compiled in 236ms (1028 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 106ms
+ ✓ Compiled in 180ms (1028 modules)
+ GET / 200 in 40ms
+ GET /fonts/GmarketSans.ttf 404 in 108ms
+ ✓ Compiled in 193ms (1028 modules)
+ GET / 200 in 39ms
+ GET /fonts/GmarketSans.ttf 404 in 97ms
+ ✓ Compiled in 179ms (1028 modules)
+ GET / 200 in 39ms
+ GET /fonts/GmarketSans.ttf 404 in 101ms
+ ✓ Compiled in 202ms (1028 modules)
+ GET / 200 in 52ms
+ GET /fonts/GmarketSans.ttf 404 in 125ms
+ ✓ Compiled in 212ms (1028 modules)
+ GET / 200 in 52ms
+ GET /fonts/GmarketSans.ttf 404 in 113ms
+ ✓ Compiled in 179ms (1028 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 113ms
+ ✓ Compiled in 161ms (1028 modules)
+ GET / 200 in 68ms
+ GET /fonts/GmarketSans.ttf 404 in 102ms
+ ✓ Compiled in 181ms (1028 modules)
+ GET / 200 in 37ms
+ GET /fonts/GmarketSans.ttf 404 in 90ms
+ ✓ Compiled in 163ms (1028 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 105ms
+ ✓ Compiled in 160ms (1028 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 138ms
+ ✓ Compiled in 209ms (1028 modules)
+ GET / 200 in 47ms
+ GET /fonts/GmarketSans.ttf 404 in 112ms
+ ✓ Compiled in 296ms (1023 modules)
+ GET / 200 in 51ms
+ ✓ Compiled /_not-found in 111ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 239ms
+ GET / 200 in 139ms
+ GET /fonts/GmarketSans.ttf 404 in 65ms
+ ✓ Compiled in 165ms (1028 modules)
+ GET / 200 in 52ms
+ GET /fonts/GmarketSans.ttf 404 in 95ms
+ ✓ Compiled in 182ms (1028 modules)
+ GET / 200 in 38ms
+ GET /fonts/GmarketSans.ttf 404 in 104ms
+ ✓ Compiled in 276ms (1015 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 95ms
+ ✓ Compiled in 180ms (1028 modules)
+ GET / 200 in 36ms
+ GET /fonts/GmarketSans.ttf 404 in 104ms
+ ✓ Compiled in 164ms (1028 modules)
+ GET / 200 in 38ms
+ GET /fonts/GmarketSans.ttf 404 in 102ms
+ ✓ Compiled in 195ms (1015 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 109ms
+ ✓ Compiled in 206ms (1028 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 116ms
+ ✓ Compiled in 282ms (1015 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 145ms
+ ✓ Compiled in 310ms (1015 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 87ms
+ ✓ Compiled in 361ms (1023 modules)
+ GET / 200 in 66ms
+ ✓ Compiled /_not-found in 119ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 214ms
+ GET / 200 in 107ms
+ GET /fonts/GmarketSans.ttf 404 in 48ms
+ ✓ Compiled in 195ms (1028 modules)
+ GET / 200 in 38ms
+ GET /fonts/GmarketSans.ttf 404 in 102ms
+ ✓ Compiled in 191ms (1028 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 109ms
+ ✓ Compiled in 249ms (1015 modules)
+ GET / 200 in 38ms
+ GET /fonts/GmarketSans.ttf 404 in 97ms
+ ✓ Compiled in 196ms (1015 modules)
+ GET / 200 in 49ms
+ GET /fonts/GmarketSans.ttf 404 in 102ms
+ ✓ Compiled in 174ms (1028 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 96ms
+ ✓ Compiled in 195ms (1015 modules)
+ GET / 200 in 52ms
+ ✓ Compiled in 307ms (1028 modules)
+ GET /fonts/GmarketSans.ttf 404 in 417ms
+ GET / 200 in 130ms
+ GET /fonts/GmarketSans.ttf 404 in 63ms
+ ✓ Compiled in 187ms (1015 modules)
+ GET / 200 in 49ms
+ GET /fonts/GmarketSans.ttf 404 in 90ms
+ ✓ Compiled in 245ms (1028 modules)
+ GET / 200 in 57ms
+ GET /fonts/GmarketSans.ttf 404 in 84ms
+ ✓ Compiled in 198ms (1028 modules)
+ GET / 200 in 60ms
+ GET /fonts/GmarketSans.ttf 404 in 83ms
+ ✓ Compiled in 195ms (1028 modules)
+ GET / 200 in 56ms
+ GET /fonts/GmarketSans.ttf 404 in 90ms
+ ✓ Compiled in 216ms (1028 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 99ms
+ ✓ Compiled in 205ms (1028 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 106ms
+ ✓ Compiled in 230ms (1028 modules)
+ GET / 200 in 57ms
+ GET /fonts/GmarketSans.ttf 404 in 98ms
+ ✓ Compiled in 343ms (1023 modules)
+ GET / 200 in 115ms
+ ✓ Compiled /_not-found in 179ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 315ms
+ GET / 200 in 151ms
+ GET /fonts/GmarketSans.ttf 404 in 49ms
+ ✓ Compiled in 344ms (1023 modules)
+ GET / 200 in 47ms
+ ✓ Compiled /_not-found in 119ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 236ms
+ GET / 200 in 132ms
+ GET /fonts/GmarketSans.ttf 404 in 56ms
+ ✓ Compiled in 421ms (1023 modules)
+ GET / 200 in 78ms
+ ✓ Compiled /_not-found in 171ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 302ms
+ GET / 200 in 146ms
+ GET /fonts/GmarketSans.ttf 404 in 67ms
+ ✓ Compiled in 219ms (1028 modules)
+ GET / 200 in 52ms
+ GET /fonts/GmarketSans.ttf 404 in 110ms
+ ✓ Compiled in 232ms (1028 modules)
+ GET / 200 in 46ms
+ GET /fonts/GmarketSans.ttf 404 in 117ms
+ ✓ Compiled in 204ms (1028 modules)
+ GET / 200 in 68ms
+ GET /fonts/GmarketSans.ttf 404 in 137ms
+ ✓ Compiled in 253ms (1028 modules)
+ GET / 200 in 50ms
+ GET /fonts/GmarketSans.ttf 404 in 100ms
+ ✓ Compiled in 206ms (1028 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 90ms
+ ✓ Compiled in 224ms (1028 modules)
+ GET / 200 in 66ms
+ GET /fonts/GmarketSans.ttf 404 in 101ms
+ ✓ Compiled in 242ms (1028 modules)
+ GET / 200 in 72ms
+ GET /fonts/GmarketSans.ttf 404 in 110ms
+ ✓ Compiled in 214ms (1028 modules)
+ GET / 200 in 51ms
+ GET /fonts/GmarketSans.ttf 404 in 116ms
+ ✓ Compiled in 212ms (1028 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 140ms
+ ✓ Compiled in 196ms (1028 modules)
+ GET / 200 in 71ms
+ GET /fonts/GmarketSans.ttf 404 in 106ms
+ ✓ Compiled in 329ms (1023 modules)
+ GET / 200 in 52ms
+ ✓ Compiled /_not-found in 136ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 269ms
+ GET / 200 in 145ms
+ GET /fonts/GmarketSans.ttf 404 in 67ms
+ ✓ Compiled in 163ms (1028 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 127ms
+ ✓ Compiled in 170ms (1028 modules)
+ GET / 200 in 55ms
+ GET /fonts/GmarketSans.ttf 404 in 129ms
+ ✓ Compiled in 199ms (1028 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 112ms
+ ✓ Compiled in 169ms (1028 modules)
+ GET / 200 in 44ms
+ GET /fonts/GmarketSans.ttf 404 in 108ms
+ ✓ Compiled in 210ms (1028 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 106ms
+ ✓ Compiled in 248ms (1028 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 111ms
+ ✓ Compiled in 195ms (1028 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 80ms
+ ✓ Compiled in 236ms (1028 modules)
+ GET / 200 in 66ms
+ GET /fonts/GmarketSans.ttf 404 in 99ms
+ ✓ Compiled in 246ms (1028 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 105ms
+ ✓ Compiled in 197ms (1028 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 125ms
+ ✓ Compiled in 201ms (1028 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 110ms
+ ✓ Compiled in 195ms (1028 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 112ms
+ GET / 200 in 97ms
+ GET /fonts/GmarketSans.ttf 404 in 52ms
+ GET / 200 in 72ms
+ GET /fonts/GmarketSans.ttf 404 in 69ms
+ ✓ Compiled in 349ms (1028 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 122ms
+ GET / 200 in 105ms
+ GET /fonts/GmarketSans.ttf 404 in 77ms
+ ✓ Compiled in 203ms (1028 modules)
+ GET / 200 in 49ms
+ GET /fonts/GmarketSans.ttf 404 in 93ms
+ ✓ Compiled in 184ms (1028 modules)
+ GET / 200 in 42ms
+ GET /fonts/GmarketSans.ttf 404 in 85ms
+ ✓ Compiled in 182ms (1028 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 104ms
+ ✓ Compiled in 231ms (1028 modules)
+ GET / 200 in 61ms
+ GET /fonts/GmarketSans.ttf 404 in 96ms
+ ✓ Compiled in 324ms (1023 modules)
+ GET / 200 in 78ms
+ ✓ Compiled /_not-found in 127ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 235ms
+ GET / 200 in 122ms
+ GET /fonts/GmarketSans.ttf 404 in 51ms
+ ✓ Compiled in 215ms (1028 modules)
+ GET / 200 in 50ms
+ GET /fonts/GmarketSans.ttf 404 in 91ms
+ ✓ Compiled in 197ms (1028 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 95ms
+ ✓ Compiled in 341ms (1023 modules)
+ GET / 200 in 49ms
+ ✓ Compiled /_not-found in 114ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 241ms
+ GET / 200 in 125ms
+ GET /fonts/GmarketSans.ttf 404 in 72ms
+ ✓ Compiled in 178ms (1028 modules)
+ GET / 200 in 38ms
+ GET /fonts/GmarketSans.ttf 404 in 109ms
+ ⨯ ./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+Expected expression.
+    ╷
+380 │         width: ;
+    │                ^
+    ╵
+  src\styles\common.scss 380:16  root stylesheet
+
+Import trace for requested module:
+./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+./src/styles/common.scss
+ GET / 500 in 16ms
+ GET / 500 in 10ms
+ ⨯ ./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+expected "}".
+    ╷
+381 │     }
+    │      ^
+    ╵
+  src\styles\common.scss 381:6  root stylesheet
+
+Import trace for requested module:
+./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+./src/styles/common.scss
+ GET / 500 in 13ms
+ ⨯ ./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+expected "}".
+    ╷
+381 │     }
+    │      ^
+    ╵
+  src\styles\common.scss 381:6  root stylesheet
+
+Import trace for requested module:
+./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+./src/styles/common.scss
+ ⨯ ./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+expected "}".
+    ╷
+381 │     }
+    │      ^
+    ╵
+  src\styles\common.scss 381:6  root stylesheet
+
+Import trace for requested module:
+./src/styles/common.scss.webpack[javascript/auto]!=!./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[11].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[11].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[11].use[5]!./src/styles/common.scss
+./src/styles/common.scss
+ ✓ Compiled in 205ms (1028 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET / 200 in 275ms
+ GET /_next/static/webpack/ebf320edc9f60fc5.webpack.hot-update.json 404 in 277ms
+ GET / 200 in 77ms
+ GET /fonts/GmarketSans.ttf 404 in 65ms
+ ✓ Compiled in 236ms (1028 modules)
+ GET / 200 in 87ms
+ GET /fonts/GmarketSans.ttf 404 in 89ms
+ ✓ Compiled in 216ms (1028 modules)
+ GET / 200 in 62ms
+ GET /fonts/GmarketSans.ttf 404 in 95ms
+ ✓ Compiled in 188ms (1028 modules)
+ GET / 200 in 55ms
+ GET /fonts/GmarketSans.ttf 404 in 82ms
+ ✓ Compiled in 187ms (1028 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 90ms
+ ✓ Compiled in 178ms (1028 modules)
+ GET / 200 in 52ms
+ GET /fonts/GmarketSans.ttf 404 in 100ms
+ ✓ Compiled in 271ms (1028 modules)
+ GET / 200 in 53ms
+ GET /fonts/GmarketSans.ttf 404 in 94ms
+ ✓ Compiled in 267ms (1028 modules)
+ GET / 200 in 94ms
+ GET /fonts/GmarketSans.ttf 404 in 86ms
+ GET / 200 in 82ms
+ GET /fonts/GmarketSans.ttf 404 in 56ms
+ GET / 200 in 88ms
+ GET /fonts/GmarketSans.ttf 404 in 71ms
+ ✓ Compiled in 480ms (1023 modules)
+ GET / 200 in 50ms
+ ✓ Compiled /_not-found in 151ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 285ms
+ GET / 200 in 144ms
+ GET /fonts/GmarketSans.ttf 404 in 70ms
+ ✓ Compiled in 259ms (1028 modules)
+ GET / 200 in 40ms
+ GET /fonts/GmarketSans.ttf 404 in 116ms
+ ✓ Compiled in 502ms (1028 modules)
+ GET / 200 in 63ms
+ GET /fonts/GmarketSans.ttf 404 in 131ms
+ ✓ Compiled in 405ms (940 modules)
+ ⨯ ReferenceError: Layout is not defined
+    at Home (src\app\page.tsx:5:3)
+  3 | export default function Home() {
+  4 | 	return (
+> 5 | 		<Layout/>
+    | 		^
+  6 | 	);
+  7 | }
+  8 | {
+  digest: '101606526'
+}
+ GET / 200 in 118ms
+ ✓ Compiled in 637ms (1015 modules)
+ GET / 200 in 324ms
+ GET /fonts/GmarketSans.ttf 404 in 85ms
+ ✓ Compiled in 243ms (1015 modules)
+ GET / 200 in 57ms
+ GET /fonts/GmarketSans.ttf 404 in 124ms
+ ✓ Compiled in 458ms (1023 modules)
+ GET / 200 in 105ms
+ ✓ Compiled /_not-found in 143ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 274ms
+ GET / 200 in 22ms
+ GET /fonts/GmarketSans.ttf 404 in 66ms
+ ✓ Compiled in 234ms (1028 modules)
+ GET / 200 in 43ms
+ GET /fonts/GmarketSans.ttf 404 in 81ms
+ GET / 200 in 96ms
+ GET /fonts/GmarketSans.ttf 404 in 64ms
+ GET / 200 in 63ms
+ GET /fonts/GmarketSans.ttf 404 in 62ms
+ ✓ Compiled in 762ms (1015 modules)
+ GET / 200 in 90ms
+ GET /fonts/GmarketSans.ttf 404 in 130ms
+ ✓ Compiled in 236ms (1015 modules)
+ GET / 200 in 138ms
+ GET /fonts/GmarketSans.ttf 404 in 123ms
+ ✓ Compiled in 372ms (1010 modules)
+ GET / 200 in 64ms
+ ✓ Compiled /_not-found in 143ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 328ms
+ ✓ Compiled in 211ms (1015 modules)
+ GET / 200 in 39ms
+ GET /fonts/GmarketSans.ttf 404 in 136ms
+ ✓ Compiled in 420ms (1028 modules)
+ GET / 200 in 56ms
+ GET /fonts/GmarketSans.ttf 404 in 117ms
+ ✓ Compiled in 227ms (1015 modules)
+ GET / 200 in 48ms
+ GET /fonts/GmarketSans.ttf 404 in 140ms
+ GET / 200 in 105ms
+ GET / 200 in 72ms
+ GET / 200 in 74ms
+ GET / 200 in 69ms
+ GET /fonts/GmarketSans.ttf 404 in 61ms
+ ✓ Compiled in 411ms (1010 modules)
+ GET / 200 in 62ms
+ ✓ Compiled /_not-found in 157ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 296ms
+ ✓ Compiled in 192ms (1015 modules)
+ GET / 200 in 45ms
+ GET /fonts/GmarketSans.ttf 404 in 88ms
+ GET / 200 in 99ms
+ GET /fonts/GmarketSans.ttf 404 in 62ms
+ ✓ Compiled in 408ms (1010 modules)
+ GET / 200 in 92ms
+ ✓ Compiled /_not-found in 159ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 295ms
+ ✓ Compiled in 220ms (1015 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 152ms
+ GET / 200 in 111ms
+ GET / 200 in 83ms
+ GET / 200 in 75ms
+ GET /fonts/GmarketSans.ttf 404 in 68ms
+ ✓ Compiled in 394ms (1010 modules)
+ GET / 200 in 54ms
+ ✓ Compiled /_not-found in 309ms (1001 modules)
+ GET /fonts/GmarketSans.ttf 404 in 453ms
+ ✓ Compiled in 364ms (1015 modules)
+ GET / 200 in 54ms
+ GET /fonts/GmarketSans.ttf 404 in 137ms
+ ✓ Compiled in 223ms (1015 modules)
+ GET / 200 in 41ms
+ GET /fonts/GmarketSans.ttf 404 in 113ms
+^C^C
