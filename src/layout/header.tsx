@@ -8,6 +8,7 @@ const Header = () => {
     const headerWrapRef = useRef<HTMLDivElement | null>(null);
     const headerRef = useRef<HTMLElement | null>(null);
     const [isGnb2Open, setIsGnb2Open] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
     const closeGnb2TimeoutRef = useRef<number | null>(null);
     const isGnb2OpenRef = useRef<boolean>(false);
     const isMouseOverGnb2Ref = useRef<boolean>(false);
@@ -293,6 +294,11 @@ const Header = () => {
         submenu.classList.toggle('open', nowOpen);
         anchor.setAttribute('aria-expanded', nowOpen ? 'true' : 'false');
     };
+
+    // 클라이언트 마운트 상태 관리
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     // gnb2 열림 상태를 html 클래스에 반영하여 전역 스타일 제어
     useEffect(() => {
@@ -629,7 +635,7 @@ const Header = () => {
                 </div>
             </div>
         </header>
-        {typeof document !== 'undefined' && createPortal(gnb2Markup, document.body)}
+        {isMounted && createPortal(gnb2Markup, document.body)}
         </>
     );
 }
