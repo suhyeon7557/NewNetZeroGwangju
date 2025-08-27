@@ -601,7 +601,43 @@ const SubPage = () => {
                             </table>
                         </div>
                     </div>
-                </div>
+                    <nav className='pagination' aria-label='페이징 영역'>
+                        <ul className='pagination_list'>
+                            {/* 첫번째 페이지 버튼 */}
+                            <li className='pagination_item'>
+                                <a href='#' className='pagination_btn' aria-disabled='true' tabIndex={-1} aria-label='첫번째 페이지로 이동하기'>&laquo;</a>
+                            </li>
+                            {/* 이전 페이지 버튼 */}
+                            <li className='pagination_item'>
+                                <a href='#' className='pagination_btn' aria-disabled='true' tabIndex={-1} aria-label='이전 페이지로 이동하기'>&lt;</a>
+                            </li>
+                            {/* 페이지 번호 버튼 */}
+                            <li className='pagination_item'>
+                                <a href='#' className='pagination_btn' aria-current='page' aria-label='1번 페이지로 이동하기'>1</a>
+                            </li>
+                            <li className='pagination_item'>
+                                <a href='#' className='pagination_btn' aria-label='2번 페이지로 이동하기'>2</a>
+                            </li>
+                            <li className='pagination_item'>
+                                <a href='#' className='pagination_btn' aria-label='3번 페이지로 이동하기'>3</a>
+                            </li>
+                            <li className='pagination_item'>
+                                <a href='#' className='pagination_btn' aria-label='4번 페이지로 이동하기'>4</a>
+                            </li>
+                            <li className='pagination_item'>
+                                <a href='#' className='pagination_btn' aria-label='5번 페이지로 이동하기'>5</a>
+                            </li>
+                            {/* 다음 페이지 버튼 */}
+                            <li className='pagination_item'>
+                                <a href='#' className='pagination_btn' aria-label='다음 페이지로 이동하기'>&gt;</a>
+                            </li>
+                            {/* 마지막 페이지 버튼 */}
+                            <li className='pagination_item'>
+                                <a href='#' className='pagination_btn' aria-label='마지막 페이지로 이동하기'>&raquo;</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div> 
             </div>
         </div>
     );
