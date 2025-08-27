@@ -364,6 +364,8 @@ table tbody tr:last-of-type {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    width:100%;
+    position: relative;
 }
 .pagination_item {
     display: inline-block;
@@ -393,20 +395,22 @@ table tbody tr:last-of-type {
     color: #fff;
     cursor: pointer;
 }
-  .pagination_btn[aria-label*="첫번째"],
-  .pagination_btn[aria-label*="이전"],
-  .pagination_btn[aria-label*="다음"],
-  .pagination_btn[aria-label*="마지막"] {
+.pagination_btn[aria-label*="첫번째"],
+.pagination_btn[aria-label*="이전"],
+.pagination_btn[aria-label*="다음"],
+.pagination_btn[aria-label*="마지막"] {
     border: 1px solid #ddd;
     background-color: #fff;
     border-radius: 6px;
 }
-
 /* 비활성화 버튼 */
 .pagination_btn[aria-disabled="true"] {
     pointer-events: none;
     opacity: 0.5;
     cursor: not-allowed;
+}
+.pagination_list .status_wrap {
+    display: none;
 }
 
 
@@ -793,23 +797,6 @@ table tbody tr:last-of-type {
 
 
 
-
-
-
-
-
-
-
-
-@media (max-width: 768px) {
-    .topscroll { right: 16px; bottom: 16px;  }
-    .topscroll img { width: 24px; height: 24px; }
-    .notice-fab { right: 16px; bottom: 76px; }
-    .notice-fab img { width: 24px; height: 24px; }
-    .notice-panel { right: 16px; bottom: 85px; width: min(92vw, 360px); }
-  
-  }
-
 @media (max-width: 1550px) {
     .nav_content_wrap {
         padding: 0 20px;
@@ -851,6 +838,11 @@ table tbody tr:last-of-type {
 
 }
 @media (max-width: 768px) {
+    .topscroll { right: 16px; bottom: 16px;  }
+    .topscroll img { width: 24px; height: 24px; }
+    .notice-fab { right: 16px; bottom: 76px; }
+    .notice-fab img { width: 24px; height: 24px; }
+    .notice-panel { right: 16px; bottom: 85px; width: min(92vw, 360px); }
     .nav_content_wrap {
         padding: 0 20px;
     }
@@ -934,8 +926,50 @@ table tbody tr:last-of-type {
         border-radius: 50%;
         background-color: #B9E300;
     }
-
+    .pagination_item .pagination_btn {
+        min-width: 25px;
+        min-height: 25px;
+        line-height: 20px;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .pagination {
+        margin-top: 15px;
+    }
+    .pagination_list .status_wrap {
+        display: block;
+        font-size: 0.85rem;
+        width: 50px;
+        text-align: center;
+    }
+    .pagination_item {
+        display: none;
+    }
+    .pagination_item.first,
+    .pagination_item.prev,
+    .pagination_item.next,
+    .pagination_item.last {
+        display: block;
+        max-width: 20px;
+    }
+    .pagination_status .active {
+        color: #000;
+    }
+    .pagination_status .active::after {
+        content: '/';
+        margin: 0 3px;
+    }
+    .pagination_status:not(.active) {
+        color: #999;
+    }
+    .pagination_list {
+        gap: 5px;
+    }
 }
+
+
 @media (max-width: 450px){
     #cont_wrap .cont_inner h2 {
         font-size : 1.2rem;
