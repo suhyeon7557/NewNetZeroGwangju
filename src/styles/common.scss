@@ -168,7 +168,7 @@
 /* cont_wrap */
 #cont_wrap {
     position: relative;
-    padding: 80px 0 0 0;
+    padding: 45px 0 45px 0;
     max-width: 1550px;
     width: 100%;
     margin: 0 auto;
@@ -221,7 +221,7 @@
 .search_wrap {
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: space-between;
 }
 .search_wrap .info_wrap {
@@ -357,7 +357,6 @@ table tbody tr:last-of-type {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 50px;
 }
 .pagination_list {
     display: flex;
@@ -685,57 +684,6 @@ table tbody tr:last-of-type {
 .topscroll:active { transform: translateY(1px); }
   
 
-/* list_wrap */
-.list_wrap {
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-.list_wrap .table_wrap {
-    width: 100%;
-}
-.table_wrap table td:nth-child(2) {
-    color: #000;
-}
-.table_wrap table thead tr {
-    font-size: .90rem;
-}
-.table_wrap table thead th, td {
-    padding: 15px 20px;
-}
-.table_wrap table tbody td {
-    padding: 20px;
-}
-.table_wrap table tbody td.title {
-    text-align: left;
-}
-.table_wrap table tbody td.new{
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-}
-.table_wrap table tbody td.new::after {
-    content: 'N';
-    display: block;
-    width: 20px;
-    height: 20px;
-    color: #fff;
-    font-size: 0.70rem;
-    text-align: center;
-    line-height: 22px;
-    border-radius: 50%;
-    background-color: #B9E300;
-}
-.table_wrap table td.title {
-    font-size: 1rem;
-}
-.table_wrap table td.author, td.date, td.view_count {
-    font-size: 0.90rem;
-}
 .top_notice {
     position: relative;
 }
@@ -801,14 +749,11 @@ table tbody tr:last-of-type {
     .nav_content_wrap {
         padding: 0 20px;
     }
-    #cont_wrap {
-        padding: 80px 20px 0 20px;
-    }
 }
 
 @media (max-width: 1024px) {
     #cont_wrap {
-        padding: 30px 20px 0 20px;
+        padding: 30px 20px 30px 20px;
     }
     .nav_content_wrap h3 {
         font-size: 1.8rem;
@@ -828,11 +773,6 @@ table tbody tr:last-of-type {
     }
     table tbody tr:first-of-type {
         border-top: 1px solid #000;
-    }
-    .table_wrap table td:nth-child(1),
-    .table_wrap table td:nth-child(5),
-    .table_wrap table td:nth-child(6) {
-        display: none;
     }
 
 
@@ -859,7 +799,7 @@ table tbody tr:last-of-type {
         font-size: 1rem;
     }
     #cont_wrap {
-        padding: 20px 10px 0 10px;
+        padding: 20px 15px 20px 15px;
     }
     #cont_wrap .cont_inner  {
         gap: 10px;
@@ -896,36 +836,7 @@ table tbody tr:last-of-type {
         bottom: 136px;
         width: min(92vw, 360px);
     }
-    .table_wrap table tbody tr {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .table_wrap table tbody td:nth-child(2){
-        flex-basis: 100%;
-        padding: 15px 10px 0 10px;
-        font-size: 0.85rem;
-    }
-    .table_wrap table tbody th:nth-child(3),
-    .table_wrap table tbody th:nth-child(4) {
-        flex: 1;
-    }
-    .table_wrap table tbody td {
-        padding: 5px 10px 10px 10px;
-    }
-    .table_wrap table td.author, td.date, td.view_count {
-        font-size: 0.80rem;
-    }
-    .table_wrap table tbody td.new::after {
-        display: block;
-        width: 15px;
-        height: 15px;
-        color: #fff;
-        font-size: 0.55rem;
-        text-align: center;
-        line-height: 16px;
-        border-radius: 50%;
-        background-color: #B9E300;
-    }
+    
     .pagination_item .pagination_btn {
         min-width: 25px;
         min-height: 25px;
@@ -998,9 +909,6 @@ table tbody tr:last-of-type {
     .search_area .search_btn {
         width: 60px;
         padding: 10px 15px;
-    }
-    .table_wrap table tbody td.new::after {
-        display: none;
     }
 }
 

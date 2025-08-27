@@ -2,6 +2,8 @@
 import React from 'react';
 import Link from 'next/link';
 
+import "../subpage/subpage.scss";
+
 const SubPage = () => {
     React.useEffect(() => {
         const subNav = document.querySelector('.sub_nav');
@@ -623,16 +625,16 @@ const SubPage = () => {
                                 <a href='#' className='pagination_btn' aria-current='page' aria-label='1번 페이지로 이동하기'>1</a>
                             </li>
                             <li className='pagination_item'>
-                                <a href='#' className='pagination_btn' aria-current='page' aria-label='2번 페이지로 이동하기'>2</a>
+                                <a href='#' className='pagination_btn' aria-label='2번 페이지로 이동하기'>2</a>
                             </li>
                             <li className='pagination_item'>
-                                <a href='#' className='pagination_btn' aria-current='page' aria-label='3번 페이지로 이동하기'>3</a>
+                                <a href='#' className='pagination_btn' aria-label='3번 페이지로 이동하기'>3</a>
                             </li>
                             <li className='pagination_item'>
-                                <a href='#' className='pagination_btn' aria-current='page' aria-label='4번 페이지로 이동하기'>4</a>
+                                <a href='#' className='pagination_btn' aria-label='4번 페이지로 이동하기'>4</a>
                             </li>
                             <li className='pagination_item'>
-                                <a href='#' className='pagination_btn' aria-current='page' aria-label='5번 페이지로 이동하기'>5</a>
+                                <a href='#' className='pagination_btn' aria-label='5번 페이지로 이동하기'>5</a>
                             </li>
                             {/* 다음 페이지 버튼 */}
                             <li className='pagination_item next'>
