@@ -859,6 +859,9 @@ table tbody tr:last-of-type {
     flex: 1 0;
     flex-basis: 0;
 }
+.file_list li a:hover span.file_name {
+    text-decoration: underline;
+}
 .file_list li a span.file_info {
     color: #999;
     font-size: .85rem;
@@ -886,6 +889,10 @@ table tbody tr:last-of-type {
 .post_navi_wrap .post_navi {
     position: relative;
     width: 100%;
+}
+.post_navi_wrap .post_navi:hover {
+    background-color: #f8f8f8;
+    background: linear-gradient(to bottom,#ffffff 0%, rgba(242, 243, 238, 0.5) 50%, #ffffff 100%);
 }
 .post_navi_wrap {
     border-top: 1px solid #DBDBDB;
@@ -937,6 +944,9 @@ table tbody tr:last-of-type {
 
 
 @media (max-width: 1550px) {
+    #cont_wrap {
+        padding: 40px 30px;
+    }
     .nav_content_wrap {
         padding: 0 20px;
     }

@@ -446,10 +446,7 @@ const Detail = () => {
                     </div>
 
                     <div className='detail_content_wrap'>
-                        <p>
-                            국가사업설명회입니다. 내용입니다. 내용입니다.
-                        </p>
-                        <img src='/subimage02.svg' alt='중소 중견기업 탄소중립 이행 국가지원사업 설명회 개최' className='img'></img>    
+                        <img src='/image_details_test.svg' alt='공지사항 상세 이미지' className='detail_img'></img>
                     </div>
 
                     <div className='post_navi_wrap'>
