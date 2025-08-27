@@ -744,6 +744,197 @@ table tbody tr:last-of-type {
 
 
 
+/* detail */
+.detail_title_wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 15px 0 15px;
+    border-top: 2px solid #000;
+}
+.detail_title_wrap .detail_title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.detail_title_wrap .detail_info {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.detail_title_wrap .detail_info p {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.detail_title_wrap .detail_info p::before {
+    content: '';
+    font-size: 0.85rem;
+    color: #999;
+}
+.detail_title_wrap .detail_info p.writer::before {
+    content: '작성자';
+}
+.detail_title_wrap .detail_info p.date::before {
+    content: '작성일';
+}
+.detail_title_wrap .detail_info p.view_count::before {
+    content: '조회수';
+}
+
+.detail_title_wrap .detail_info p:not(:last-of-type)::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 10px;
+    background-color: #DBDBDB;
+}
+
+.download_btn {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+}
+.download_btn::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 15px;
+    background-image: url('/ic_download.svg');
+    background-size: 10px;
+    background-repeat: no-repeat;
+}
+
+.file_wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+}
+.file_wrap .file_title {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #F2F2F2;
+}
+.file_wrap .file_title h3 {
+    color: #666;
+}
+
+.file_list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+}
+.file_list li {
+    position: relative;
+    width: 100%;
+}
+.file_list li a {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+.file_list li a span.file_name {
+    flex: 1 0;
+    flex-basis: 0;
+}
+.file_list li a span.file_info {
+    color: #999;
+    font-size: .85rem;
+}
+
+.detail_content_wrap {
+    padding: 0 15px 0 15px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.file_wrap.no_file {
+    display: none;
+}
+.file_wrap.no_file ~ .detail_content_wrap {
+    border-top: 1px solid #DBDBDB;
+    padding: 15px 15px 0 15px;
+}
+
+
+.post_navi_wrap,
+.post_navi_wrap .post_navi {
+    position: relative;
+    width: 100%;
+}
+.post_navi_wrap {
+    border-top: 1px solid #DBDBDB;
+}
+
+.post_navi_wrap .post_navi a {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-bottom: 1px solid #DBDBDB;
+}
+.post_navi_wrap .post_navi a .navi_icon {
+    width: 15px;
+    height: 7px;
+}
+.post_navi_wrap .post_navi.prev a .navi_icon {
+    background: url('/ic_post_prev.svg') no-repeat center center;
+    background-size: 15px;
+}
+.post_navi_wrap .post_navi.next a .navi_icon {
+    background: url('/ic_post_next.svg') no-repeat center center;
+    background-size: 15px;
+}
+.post_navi_wrap .post_navi a .navi_text {
+    color: #999;
+}
+.post_navi_wrap .post_navi a .navi_title {
+    flex: 1 0;
+    flex-basis: 0;
+}
+
+.post_btn_wrap {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.post_btn_wrap .btn_list {
+    padding: 15px 30px;
+    border-radius: 5px;
+    background-color: #B9E300;
+    font-weight: 700;
+}
+
 
 @media (max-width: 1550px) {
     .nav_content_wrap {
@@ -802,7 +993,7 @@ table tbody tr:last-of-type {
         padding: 20px 15px 20px 15px;
     }
     #cont_wrap .cont_inner  {
-        gap: 10px;
+        gap: 15px;
     }
     #cont_wrap .cont_inner h2 {
         font-size: 1.5rem;
@@ -877,6 +1068,10 @@ table tbody tr:last-of-type {
     }
     .pagination_list {
         gap: 5px;
+    }
+
+    .file_list li a span.file_info {
+        display: none;
     }
 }
 

@@ -1,8 +1,8 @@
-import SubPage from "../pages/subpage/subpage";
+import Detail from "../pages/subpage/detail";
 
 export default function Home() {
 	return (
-		<SubPage/>
+		<Detail/>
 	);
 }
 
