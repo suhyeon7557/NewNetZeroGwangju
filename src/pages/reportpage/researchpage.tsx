@@ -2,9 +2,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import "../subpage/subpage.scss";
+import "../reportpage/researchpage.scss";
 
-const SubPage = () => {
+const ResearchPage = () => {
     React.useEffect(() => {
         const subNav = document.querySelector('.sub_nav');
         const subNavGnb = document.getElementById('sub_nav_gnb');
@@ -173,7 +173,7 @@ const SubPage = () => {
     }, []);
 
     return (
-        <div aria-label='탄소중립 페이지 영역' className='nav_page'>
+        <div aria-label='연구보고서 페이지 영역' className='nav_page'>
             <div className='nav_wrap'>
                 <img src='/subimage01.svg' alt='탄소중립 소통하기 비주얼 이미지' className='nav_bg_img'></img>
                 <div className='nav_inner'>
@@ -374,9 +374,14 @@ const SubPage = () => {
                         </li>
                         <li className='lnb_area b_r'>
                             <a href='#' title='공지사항 메뉴로 이동하기'>
-                                공지사항
+                                연구보고서
                             </a>
                             <ul className='lnb_list'>
+                                <li>
+                                    <a href='#' title='공지사항 메뉴로 이동하기'>
+                                        공지사항
+                                    </a>
+                                </li>
                                 <li>
                                     <a href='#' title='연구보고서 메뉴로 이동하기'>
                                         연구보고서
@@ -399,8 +404,8 @@ const SubPage = () => {
             </nav>
             <div id='cont_wrap' aria-label='컨텐츠 영역'>
                 <div className='cont_inner'>
-                    <h2 className='page_title'>공지사항</h2>
-                    {/* <div className='tab_menu' aria-label='탭 메뉴 영역'>
+                    <h2 className='page_title'>연구보고서</h2>
+                    <div className='tab_menu' aria-label='탭 메뉴 영역'>
                         <a href='#' className='tab_item active' aria-label='전체 탭 메뉴로 이동하기'>
                             전체
                         </a>
@@ -410,7 +415,7 @@ const SubPage = () => {
                         <a href='#' className='tab_item' aria-label='정책과제 탭 메뉴로 이동하기'>
                             정책과제
                         </a>
-                    </div> */}
+                    </div>
                     <div className='search_wrap' aria-label='검색 영역'>
                         <div className='info_wrap'>
                             <div className='info_text01'>
@@ -433,174 +438,205 @@ const SubPage = () => {
                             <button className='search_btn btn_lime_bg bd_radius'>검색</button>
                         </div>
                     </div>
-                    <div className='list_wrap' aria-label='공지사항 목록 영역'>
-                        <div className='table_wrap'>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>번호</th>
-                                        <th>제목</th>
-                                        <th>작성자</th>
-                                        <th>등록일</th>
-                                        <th>첨부파일</th>
-                                        <th>조회수</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td className='top_notice'>
-                                            <span>1</span>
-                                        </td>
-                                        <td className='title' aria-label='제목'>
-                                            <a href='#'>
-                                            공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.
-                                            </a>
-                                        </td>
-                                        <td className='author'>탄소중립지원센터</td>
-                                        <td className='date'>2025-07-02</td>
-                                        <td className='file pdf'>
-                                            <a href='#' download='파일명입니다.pdf'>
-                                                <span className='file_icon'></span>
-                                            </a>
-                                        </td>
-                                        <td className='view_count'>511</td>
-                                    </tr>
-                                    <tr>
-                                        <td className='top_notice'>
-                                            <span>2</span>
-                                        </td>
-                                        <td className='title new'>
-                                            <a href='#'>
-                                                공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.
-                                            </a>
-                                        </td>
-                                        <td className='author'>기후에너지연구실</td>
-                                        <td className='date'>2025-07-11</td>
-                                        <td className='file jpg'>
-                                            <a href='#' download='파일명입니다.jpg'>
-                                                <span className='file_icon'></span>
-                                            </a>
-                                        </td>
-                                        <td className='view_count'>511</td>
-                                    </tr>
-                                    <tr>
-                                        <td className='notice_num'>
-                                            <span>3</span>
-                                        </td>
-                                        <td className='title new'>
-                                            <a href='#'>
-                                                공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.
-                                            </a>
-                                        </td>
-                                        <td className='author'>탄소중립지원센터</td>
-                                        <td className='date'>2025-07-12</td>
-                                        <td className='file hwp'>
-                                            <a href='#' download='파일명입니다.hwp'>
-                                                <span className='file_icon'></span>
-                                            </a>
-                                        </td>
-                                        <td className='view_count'>511</td>
-                                    </tr>
-                                    <tr>
-                                        <td className='notice_num'>
-                                            <span>4</span>
-                                        </td>
-                                        <td className='title'>공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.</td>
-                                        <td className='author'>사업진흥실</td>
-                                        <td className='date'>2025-07-20</td>
-                                        <td className='file xls'>
-                                            <a href='#' download='파일명입니다.xlsx'>
-                                                <span className='file_icon'></span>
-                                            </a>
-                                        </td>
-                                        <td className='view_count'>511</td>
-                                    </tr>
-                                    <tr>
-                                        <td className='notice_num'>
-                                            <span>5</span>
-                                        </td>
-                                        <td className='title'>공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.</td>
-                                        <td className='author'>사업진흥실</td>
-                                        <td className='date'>2025-07-20</td>
-                                        <td className='file jpg'>
-                                            <a href='#' download='파일명입니다.jpg'>
-                                                <span className='file_icon'></span>
-                                            </a>
-                                        </td>
-                                        <td className='view_count'>511</td>
-                                    </tr>
-                                    <tr>
-                                        <td className='notice_num'>
-                                            <span>6</span>
-                                        </td>
-                                        <td className='title'>공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.</td>
-                                        <td className='author'>사업진흥실</td>
-                                        <td className='date'>2025-07-20</td>
-                                        <td className='file non'>
-                                            <a href='#'>
-                                                <span className='file_icon'></span>
-                                            </a>
-                                        </td>
-                                        <td className='view_count'>511</td>
-                                    </tr>
-                                    <tr>
-                                        <td className='notice_num'>
-                                            <span>7</span>
-                                        </td>
-                                        <td className='title'>공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.</td>
-                                        <td className='author'>사업진흥실</td>
-                                        <td className='date'>2025-07-20</td>
-                                        <td className='file pdf'>
-                                            <a href='#' download='파일명입니다.pdf'>
-                                                <span className='file_icon'></span>
-                                            </a>
-                                        </td>
-                                        <td className='view_count'>511</td>
-                                    </tr>
-                                    <tr>
-                                        <td className='notice_num'>
-                                            <span>8</span>
-                                        </td>
-                                        <td className='title'>공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.</td>
-                                        <td className='author'>사업진흥실</td>
-                                        <td className='date'>2025-07-20</td>
-                                        <td className='file pdf'>
-                                            <a href='#' download='파일명입니다.pdf'>
-                                                <span className='file_icon'></span>
-                                            </a>
-                                        </td>
-                                        <td className='view_count'>511</td>
-                                    </tr>
-                                    <tr>
-                                        <td className='notice_num'>
-                                            <span>9</span>
-                                        </td>
-                                        <td className='title'>공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.</td>
-                                        <td className='author'>사업진흥실</td>
-                                        <td className='date'>2025-07-20</td>
-                                        <td className='file doc'>
-                                            <a href='#' download='파일명입니다.pdf'>
-                                                <span className='file_icon'></span>
-                                            </a>
-                                        </td>
-                                        <td className='view_count'>511</td>
-                                    </tr>
-                                    <tr>
-                                        <td className='notice_num'>
-                                            <span>10</span>
-                                        </td>
-                                        <td className='title'>공지사항 제목입니다. 공지사항 제목입니다. 공지사항 제목입니다.</td>
-                                        <td className='author'>사업진흥실</td>
-                                        <td className='date'>2025-07-20</td>
-                                        <td className='file non'>
-                                            <a href='#' download='파일명입니다.pdf'>
-                                                <span className='file_icon'></span>
-                                            </a>
-                                        </td>
-                                        <td className='view_count'>511</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div className='list_wrap' aria-label='연구보고서 목록 영역'>
+                        <div className='research_list'>
+                            <ul className='research_list_wrap'>
+                                <li>
+                                    <div className='e-bookimg'>
+                                        <img src='/image_report01.svg' alt='연구보고서 이미지' />
+                                    </div>
+                                    <div className='info_wrap'>
+                                        <div className='info_status'>
+                                            <span className='status'>수탁</span>
+                                            <p className='title'>
+                                                <a href='#' aria-label='연구보고서 제목 링크로 이동하기'>
+                                                    [2025]년 광주광역시 북구 제1차 탄소중립 녹색성장 기본계획(2025 ~ 2030)
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div className='info_text'>
+                                            <ul>
+                                                <li>
+                                                    <span>연구책임</span>
+                                                    <p>김태호 연구위원, 광주기후에너지진흥원</p>
+                                                </li>
+                                                <li>
+                                                    <span>연구진</span>
+                                                    <p>김태호, 강상현, 광주기후에너지진흥원</p>
+                                                </li>
+                                                <li>
+                                                    <span>발행연도</span>
+                                                    <p>2024</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div className='research_btn_wrap'>
+                                            <button type='button' className='btn_view btn_gray_line no_bd_radius'>
+                                                원본보기
+                                            </button>
+                                            <button type='button' className='btn_download btn_gray_line no_bd_radius'>
+                                                다운로드
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className='e-bookimg'>
+                                        <img src='/image_report02.svg' alt='연구보고서 이미지' />
+                                    </div>
+                                    <div className='info_wrap'>
+                                        <div className='info_status'>
+                                            <span className='status'>수탁</span>
+                                            <p className='title'>
+                                                <a href='#' aria-label='연구보고서 제목 링크로 이동하기'>
+                                                    [2024년] 광주광역시 제2차 빛공해 환경영향평가 결과
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div className='info_text'>
+                                            <ul>
+                                                <li>
+                                                    <span>연구책임</span>
+                                                    <p>김태호 연구위원, 광주기후에너지진흥원</p>
+                                                </li>
+                                                <li>
+                                                    <span>연구진</span>
+                                                    <p>김태호, 강상현, 광주기후에너지진흥원</p>
+                                                </li>
+                                                <li>
+                                                    <span>발행연도</span>
+                                                    <p>2024</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div className='research_btn_wrap'>
+                                            <button type='button' className='btn_view btn_gray_line no_bd_radius'>
+                                                원본보기
+                                            </button>
+                                            <button type='button' className='btn_download btn_gray_line no_bd_radius'>
+                                                다운로드
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className='e-bookimg'>
+                                        <img src='/image_report03.svg' alt='연구보고서 이미지' />
+                                    </div>
+                                    <div className='info_wrap'>
+                                        <div className='info_status'>
+                                            <span className='status'>정책</span>
+                                            <p className='title'>
+                                                <a href='#' aria-label='연구보고서 제목 링크로 이동하기'>
+                                                    [2024년] 광주광역시 제3차 빛공해 방지계획 (2025~2029) 수립
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div className='info_text'>
+                                            <ul>
+                                                <li>
+                                                    <span>연구책임</span>
+                                                    <p>김태호 연구위원, 광주기후에너지진흥원</p>
+                                                </li>
+                                                <li>
+                                                    <span>연구진</span>
+                                                    <p>김태호, 강상현, 광주기후에너지진흥원</p>
+                                                </li>
+                                                <li>
+                                                    <span>발행연도</span>
+                                                    <p>2024</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div className='research_btn_wrap'>
+                                            <button type='button' className='btn_view btn_gray_line no_bd_radius'>
+                                                원본보기
+                                            </button>
+                                            <button type='button' className='btn_download btn_gray_line no_bd_radius'>
+                                                다운로드
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className='e-bookimg'>
+                                        <img src='/image_report04.svg' alt='연구보고서 이미지' />
+                                    </div>
+                                    <div className='info_wrap'>
+                                        <div className='info_status'>
+                                            <span className='status'>정책</span>
+                                            <p className='title'>
+                                                <a href='#' aria-label='연구보고서 제목 링크로 이동하기'>
+                                                     [2025년] 광주광역시 북구 제1차 탄소중립 녹색성장 기본계획(2025 ~ 2034)
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div className='info_text'>
+                                            <ul>
+                                                <li>
+                                                    <span>연구책임</span>
+                                                    <p>김태호 연구위원, 광주기후에너지진흥원</p>
+                                                </li>
+                                                <li>
+                                                    <span>연구진</span>
+                                                    <p>김태호, 강상현, 광주기후에너지진흥원</p>
+                                                </li>
+                                                <li>
+                                                    <span>발행연도</span>
+                                                    <p>2024</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div className='research_btn_wrap'>
+                                            <button type='button' className='btn_view btn_gray_line no_bd_radius'>
+                                                원본보기
+                                            </button>
+                                            <button type='button' className='btn_download btn_gray_line no_bd_radius'>
+                                                다운로드
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className='e-bookimg'>
+                                        <img src='/image_report05.svg' alt='연구보고서 이미지' />
+                                    </div>
+                                    <div className='info_wrap'>
+                                        <div className='info_status'>
+                                            <span className='status'>정책</span>
+                                            <p className='title'>
+                                                <a href='#' aria-label='연구보고서 제목 링크로 이동하기'>
+                                                    [2025년] 광주광역시 광산구 제1차 탄소중립 녹색성장 기본계획(2025 ~ 2034)
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div className='info_text'>
+                                            <ul>
+                                                <li>
+                                                    <span>연구책임</span>
+                                                    <p>김태호 연구위원, 광주기후에너지진흥원</p>
+                                                </li>
+                                                <li>
+                                                    <span>연구진</span>
+                                                    <p>김태호, 강상현, 광주기후에너지진흥원</p>
+                                                </li>
+                                                <li>
+                                                    <span>발행연도</span>
+                                                    <p>2024</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div className='research_btn_wrap'>
+                                            <button type='button' className='btn_view btn_gray_line no_bd_radius'>
+                                                원본보기
+                                            </button>
+                                            <button type='button' className='btn_download btn_gray_line no_bd_radius'>
+                                                다운로드
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <nav className='pagination' aria-label='페이징 영역'>
@@ -652,4 +688,4 @@ const SubPage = () => {
     );
 }
 
-export default SubPage;
+export default ResearchPage;

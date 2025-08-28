@@ -25,6 +25,9 @@
 .table_wrap table tbody td.title {
     text-align: left;
 }
+.table_wrap table tbody td.title { /* 셀 레벨에서 오버플로우 차단 */
+    overflow: hidden;
+}
 .table_wrap table tbody td.new{
     position: relative;
     display: flex;
@@ -51,7 +54,11 @@
     font-size: 0.90rem;
 }
 
-
+@media screen and (max-width: 1550px) {
+    #cont_wrap {
+        padding: 40px 30px;
+    }
+}
 @media (max-width: 1024px) {
     
     .table_wrap table td:nth-child(1),

@@ -1,0 +1,240 @@
+//연구보고서 페이지
+/* research_list */
+.research_list {
+    position: relative;
+    width: 100%;
+}
+.research_list .research_list_wrap {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+.research_list .research_list_wrap > li:first-of-type {
+    border-top: 2px solid #000;
+}
+.research_list .research_list_wrap > li {
+    border-bottom: 1px solid #dbdbdb;
+    display: flex;
+    padding: 20px 0;
+    flex-direction: column;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.e-bookimg {
+    width: 180px;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #dbdbdb;
+}
+.e-bookimg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.info_wrap {
+    display: flex;
+    width: 100%;
+    flex: 1;
+    flex-direction: column;
+    gap: 20px;
+}
+.info_wrap .info_status .title {
+    font-size: 1.2rem;
+}
+.info_wrap .info_status .title a {
+    margin-top: 5px;
+    display: inline-block;
+}
+
+/* 링크 호버: 은은한 밑줄 애니메이션 */
+.info_wrap .info_status .title a {
+    position: relative;
+    color: #151329;
+    text-decoration: none;
+}
+.info_wrap .info_status .title:not(.txt_cut2) a:not(.txt_cut2)::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #B9E300;
+    transition: width .25s ease;
+}
+.info_wrap .info_status .title:not(.txt_cut2) a:not(.txt_cut2):hover::after,
+.info_wrap .info_status .title:not(.txt_cut2) a:not(.txt_cut2):focus-visible::after {
+    width: 100%;
+}
+.info_wrap .info_status .title a:hover {
+    color: #151329;
+}
+.info_wrap .info_status .title a:focus-visible {
+    outline: none;
+}
+
+/* txt_cut2(멀티라인 클램프) 적용 시: 배경 그라디언트로 밑줄 처리 (overflow 영향 없음) */
+.info_wrap .info_status .title a.txt_cut2 {
+    background-image: linear-gradient(#B9E300, #B9E300);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 2px;
+    transition: background-size .25s ease;
+}
+.info_wrap .info_status .title a.txt_cut2:hover,
+.info_wrap .info_status .title a.txt_cut2:focus-visible {
+    background-size: 100% 2px;
+}
+
+/* 부모가 txt_cut2인 경우도 동일 처리 */
+.info_wrap .info_status .title.txt_cut2 a {
+    background-image: linear-gradient(#B9E300, #B9E300);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 2px;
+    transition: background-size .25s ease;
+}
+.info_wrap .info_status .title.txt_cut2 a:hover,
+.info_wrap .info_status .title.txt_cut2 a:focus-visible {
+    background-size: 100% 2px;
+}
+.info_text {
+    width: 100%;
+    position: relative;
+}
+.info_text > ul {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}   
+.info_text > ul > li {
+    display: flex;
+    align-items: center;
+}
+.info_text > ul > li span {
+    color: #999;
+    font-size: 0.85rem;
+    width: 80px;
+}
+.info_text > ul > li p {
+    width: calc(100% - 80px);
+}
+.research_btn_wrap {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+.research_btn_wrap button {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    padding: 10px 20px;
+    justify-content: center;
+    gap: 7px;
+    position: relative;
+    overflow: hidden;
+}
+.research_btn_wrap button.btn_view::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        url(/ic_search_white.svg),
+        linear-gradient(rgba(0,0,0,.50), rgba(0,0,0,.45));
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, center;
+    background-size: 22px 22px, 100% 100%;
+    opacity: 0;
+    transition: opacity .22s ease, background-size .22s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+.research_btn_wrap button.btn_download:hover {
+    text-decoration: underline;
+}
+.research_btn_wrap button.btn_view:hover::before,
+.research_btn_wrap button.btn_view:focus-visible::before {
+    opacity: 1;
+    transition: all .2s ease-in;
+    background-size: 25px 25px, 100% 100%; /* 아이콘만 확대, 배경은 고정 */
+}
+.research_btn_wrap .btn_view::after {
+    content: '';
+    display: block;
+    width: 15px;
+    height: 20px;
+    background: url('/ic_search.svg') no-repeat center center / contain;
+    position: relative;
+    z-index: 0; /* 오버레이보다 아래 */
+}
+.research_btn_wrap .btn_download::after {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 20px;
+    background: url('/ic_download.svg') no-repeat center center / contain;
+    position: relative;
+    z-index: 0; /* 오버레이보다 아래 */
+}
+
+@media screen and (max-width: 1024px) {
+    .info_wrap {
+        gap: 30px;
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    .e-bookimg {
+        display: none;
+    }
+    .research_list .research_list_wrap > li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .research_btn_wrap{
+        flex-direction: row;
+    }
+    .info_wrap .info_status .title a {
+        font-size: 1rem;
+    }
+    .info_wrap {
+        gap: 20px;
+    }
+    .research_btn_wrap button {
+        padding: 5px 10px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .research_list .research_list_wrap > li {
+        padding: 15px 0;
+    }
+    .info_text > ul > li {
+        gap: 5px;
+        align-items: flex-start;
+    }
+    .info_wrap {
+        gap: 10px;
+    }
+    .research_list .research_list_wrap > li {
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .info_text > ul > li span {
+        width: 50px;
+    }
+    .info_text > ul > li p {
+        width: calc(100% - 50px);
+    }
+}

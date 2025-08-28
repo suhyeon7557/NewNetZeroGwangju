@@ -298,6 +298,18 @@ select {
     border-radius: 0;
 }
 
+/* 상태값 스타일 */
+span.status {
+    display: inline-block;
+    padding: 3px 13px;
+    border-radius: 5px;
+    background-color: #1F3241;
+    color: #fff;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+
 /* 텍스트 색상 */
 .text_lime {
     color : #B9E300;
@@ -323,6 +335,9 @@ table thead {
 }
 table tbody tr {
     border-top: 1px solid #dbdbdb;
+}
+table tr, td {
+    text-align: center;
 }
 tbody tr {
     cursor: pointer;
@@ -393,14 +408,6 @@ table tbody tr:last-of-type {
     border: 1px solid #151329;
     color: #fff;
     cursor: pointer;
-}
-.pagination_btn[aria-label*="첫번째"],
-.pagination_btn[aria-label*="이전"],
-.pagination_btn[aria-label*="다음"],
-.pagination_btn[aria-label*="마지막"] {
-    border: 1px solid #ddd;
-    background-color: #fff;
-    border-radius: 6px;
 }
 /* 비활성화 버튼 */
 .pagination_btn[aria-disabled="true"] {
@@ -945,8 +952,9 @@ table tbody tr:last-of-type {
 
 @media (max-width: 1550px) {
     #cont_wrap {
-        padding: 40px 30px;
+        padding: 50px 40px;
     }
+
     .nav_content_wrap {
         padding: 0 20px;
     }
@@ -957,7 +965,7 @@ table tbody tr:last-of-type {
         padding: 30px 20px 30px 20px;
     }
     .nav_content_wrap h3 {
-        font-size: 1.8rem;
+        font-size: 1.85rem;
     }
     .tab_menu a {
         padding: 10px 30px;
@@ -1094,7 +1102,7 @@ table tbody tr:last-of-type {
         font-size : .85rem;
     }
     .search_area {
-        font-size: .75rem;
+        font-size: .85rem;
     }
     .search_area .search_criteria {
         width: 65px;
