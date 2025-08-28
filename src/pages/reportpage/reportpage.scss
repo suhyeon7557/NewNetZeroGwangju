@@ -1,19 +1,19 @@
 //연구보고서 페이지
 /* research_list */
-.research_list {
+.report_list {
     position: relative;
     width: 100%;
 }
-.research_list .research_list_wrap {
+.report_list .report_list_wrap {
     position: relative;
     display: flex;
     width: 100%;
     flex-direction: column;
 }
-.research_list .research_list_wrap > li:first-of-type {
+.report_list .report_list_wrap > li:first-of-type {
     border-top: 2px solid #000;
 }
-.research_list .research_list_wrap > li {
+.report_list .report_list_wrap > li {
     border-bottom: 1px solid #dbdbdb;
     display: flex;
     padding: 20px 0;
@@ -124,12 +124,12 @@
 .info_text > ul > li p {
     width: calc(100% - 80px);
 }
-.research_btn_wrap {
+.report_btn_wrap {
     margin-left: auto;
     display: flex;
     gap: 10px;
 }
-.research_btn_wrap button {
+.report_btn_wrap button {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
@@ -139,7 +139,7 @@
     position: relative;
     overflow: hidden;
 }
-.research_btn_wrap button.btn_view::before {
+.report_btn_wrap button.btn_view::before {
     content: '';
     position: absolute;
     left: 0;
@@ -157,16 +157,16 @@
     z-index: 2;
     pointer-events: none;
 }
-.research_btn_wrap button.btn_download:hover {
+.report_btn_wrap button.btn_download:hover {
     text-decoration: underline;
 }
-.research_btn_wrap button.btn_view:hover::before,
-.research_btn_wrap button.btn_view:focus-visible::before {
+.report_btn_wrap button.btn_view:hover::before,
+.report_btn_wrap button.btn_view:focus-visible::before {
     opacity: 1;
     transition: all .2s ease-in;
     background-size: 25px 25px, 100% 100%; /* 아이콘만 확대, 배경은 고정 */
 }
-.research_btn_wrap .btn_view::after {
+.report_btn_wrap .btn_view::after {
     content: '';
     display: block;
     width: 15px;
@@ -175,7 +175,7 @@
     position: relative;
     z-index: 0; /* 오버레이보다 아래 */
 }
-.research_btn_wrap .btn_download::after {
+.report_btn_wrap .btn_download::after {
     content: '';
     display: block;
     width: 12px;
@@ -190,11 +190,11 @@
     .e-bookimg {
         display: none;
     }
-    .research_list .research_list_wrap > li {
+    .report_list .report_list_wrap > li {
         flex-direction: column;
         align-items: flex-start;
     }
-    .research_btn_wrap{
+    .report_btn_wrap{
         flex-direction: row;
     }
     .info_wrap .info_status .title a {
@@ -208,7 +208,7 @@
     }
 }
 @media screen and (max-width: 768px) {
-    .research_list .research_list_wrap > li {
+    .report_list .report_list_wrap > li {
         padding: 15px 0;
     }
     .info_text > ul > li {
@@ -218,7 +218,7 @@
     .info_wrap {
         gap: 10px;
     }
-    .research_list .research_list_wrap > li {
+    .report_list .report_list_wrap > li {
         gap: 15px;
     }
 }

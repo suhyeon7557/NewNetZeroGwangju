@@ -2,9 +2,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import "../reportpage/researchpage.scss";
+import "../reportpage/reportpage.scss";
 
-const ResearchPage = () => {
+const ReportPage = () => {
     React.useEffect(() => {
         const subNav = document.querySelector('.sub_nav');
         const subNavGnb = document.getElementById('sub_nav_gnb');
@@ -439,8 +439,8 @@ const ResearchPage = () => {
                         </div>
                     </div>
                     <div className='list_wrap' aria-label='연구보고서 목록 영역'>
-                        <div className='research_list'>
-                            <ul className='research_list_wrap'>
+                        <div className='report_list'>
+                            <ul className='report_list_wrap'>
                                 <li>
                                     <div className='e-bookimg'>
                                         <img src='/image_report01.svg' alt='연구보고서 이미지' />
@@ -470,7 +470,7 @@ const ResearchPage = () => {
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div className='research_btn_wrap'>
+                                        <div className='report_btn_wrap'>
                                             <button type='button' className='btn_view btn_gray_line no_bd_radius'>
                                                 원본보기
                                             </button>
@@ -509,7 +509,7 @@ const ResearchPage = () => {
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div className='research_btn_wrap'>
+                                        <div className='report_btn_wrap'>
                                             <button type='button' className='btn_view btn_gray_line no_bd_radius'>
                                                 원본보기
                                             </button>
@@ -548,7 +548,7 @@ const ResearchPage = () => {
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div className='research_btn_wrap'>
+                                        <div className='report_btn_wrap'>
                                             <button type='button' className='btn_view btn_gray_line no_bd_radius'>
                                                 원본보기
                                             </button>
@@ -587,7 +587,7 @@ const ResearchPage = () => {
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div className='research_btn_wrap'>
+                                        <div className='report_btn_wrap'>
                                             <button type='button' className='btn_view btn_gray_line no_bd_radius'>
                                                 원본보기
                                             </button>
@@ -626,7 +626,7 @@ const ResearchPage = () => {
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div className='research_btn_wrap'>
+                                        <div className='report_btn_wrap'>
                                             <button type='button' className='btn_view btn_gray_line no_bd_radius'>
                                                 원본보기
                                             </button>
@@ -688,4 +688,4 @@ const ResearchPage = () => {
     );
 }
 
-export default ResearchPage;
+export default ReportPage;
