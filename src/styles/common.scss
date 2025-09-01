@@ -296,17 +296,6 @@ select {
 .no_bd_radius {
     border-radius: 0;
 }
-.btn_download::after {
-    content:'';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 10px;
-    width: 15px;
-    height: 15px;
-    background: url('/ic_download.svg') no-repeat center center;
-}
-
 
 /* 버튼 호버 */
 .btn_lime_bg:hover,

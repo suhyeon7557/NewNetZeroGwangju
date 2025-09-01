@@ -57,11 +57,20 @@
     align-items: center;
 }
 .report_btn_wrap .btn_wrap button {
-    display: inline-block;
+    display: flex;
+    gap: 5px;
     position: relative;
     align-items: center;
-    padding: 10px 35px 10px 20px;
+    padding: 10px 20px;
 }
+.report_btn_wrap .btn_download::after {
+    content:'';
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: url('/ic_download.svg') no-repeat center center;
+}
+
 .report_btn_wrap .report_two_btn .btn_one::before {
     content: '';
     display: block;
@@ -115,7 +124,7 @@
         background-size: 10px;
     }
     .report_btn_wrap .btn_wrap button {
-        padding : 5px 25px 5px 10px;
+        padding : 5px 10px;
     }
     .report_btn_wrap .report_two_btn .btn_one::before,
     .report_btn_wrap .report_two_btn .btn_two::before {
