@@ -407,9 +407,14 @@ const ReportPageDetail = () => {
                     <h2 className='page_title'>연구보고서</h2>
                     <div className='report_detail_wrap'>
                         <p className='report_title'>[2024년] 광주광역시 제3차 빛공해 방지계획(2025~2029) 수립</p>
-                        <div className='report_two_btn'>
-                            <button type="button" aria-label='연구보고서 한개로 보기 버튼' className='btn_one'></button>
-                            <button type="button" aria-label='연구보고서 두개로 보기 버튼' className='btn_two'></button>
+                        <div className='report_btn_wrap'>
+                            <div className='btn_wrap'>
+                                <button type="button" className='btn_download btn_gray_line'>PDF 다운로드</button>
+                            </div>
+                            <div className='report_two_btn'>
+                                <button type="button" aria-label='연구보고서 한개로 보기 버튼' className='btn_one'></button>
+                                <button type="button" aria-label='연구보고서 두개로 보기 버튼' className='btn_two'></button>
+                            </div>
                         </div>
                         <div className='report_book'>
                             <div className='report_book_bg'>
