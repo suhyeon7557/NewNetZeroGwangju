@@ -1,0 +1,14 @@
+
+Configuration:
+- ENV_FILE: C:\Users\User\dev\netzero_main\.env (source: default)
+- FIGMA_API_KEY: ****0qP8 (source: cli)
+- Authentication Method: Personal Access Token (X-Figma-Token)
+- PORT: 3055 (source: cli)
+- OUTPUT_FORMAT: yaml (source: default)
+- SKIP_IMAGE_DOWNLOADS: false (source: default)
+
+Initializing Figma MCP Server in HTTP mode on port 3055...
+[INFO] HTTP server listening on port 3055
+[INFO] SSE endpoint available at http://localhost:3055/sse
+[INFO] Message endpoint available at http://localhost:3055/messages
+[INFO] StreamableHTTP endpoint available at http://localhost:3055/mcp

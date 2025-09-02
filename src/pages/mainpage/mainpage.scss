@@ -1,0 +1,204 @@
+
+// main_visual
+
+.main_visual {
+  position: relative;
+  overflow: hidden;
+}
+
+.main_visual_silde {
+  position: relative;
+  width: 100%;
+  height: 800px;
+  /* 기본 배경을 깔아 초기 로드 시 흰색 플래시 방지 */
+  background-image: url('/main_visual01.svg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.main_visual_silde::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.main_visual_silde .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: fadeSlide 16s infinite ease-in-out;
+  will-change: opacity;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.main_visual_silde .bg1 {
+  background-image: url('/main_visual01.svg');
+  /* 즉시 시작 제거: 약간 늦게 시작 */
+  animation-delay: 4s;
+}
+
+.main_visual_silde .bg2 {
+  background-image: url('/main_visual02.svg');
+  /* 반주기(8s) + 동일한 지연(4s) → 서로 겹치며 서서히 교차 */
+  animation-delay: 12s;
+}
+
+@keyframes fadeSlide {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  45% { opacity: 1; }
+  55% { opacity: 0; }
+  100% { opacity: 0; }
+}
+.main_visual_layer {
+    position: absolute;
+    top: 130px;
+    left: 175px;
+    z-index: 11;
+}
+.main_top_wrap {
+    position: relative;
+    width: 1550px;
+    margin: 0 auto;
+    z-index: 10; /* 오버레이 위로 확실히 */
+}
+.main_visual .main_content {
+    height: 100%;
+}
+.main_visual .emission_wrap {
+    position: absolute;
+    width: 100%;
+    top: 210px;
+    z-index: 11;
+    gap: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.map_wrap {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+.map_canvas {
+    position: relative;
+    width: 540px;
+    height: 362px;
+    cursor: pointer;
+}
+.map_canvas img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.map_canvas img.base_map {
+    opacity: 0.6;
+    z-index: 1;
+}
+.map_canvas img.overlay {
+    opacity: 0;
+    transition: opacity .25s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+.map_canvas img.overlay.on {
+    opacity: 1;
+}
+
+.map_canvas .gu_label {
+    position: absolute;
+    color:#fff;
+    padding: 4px 10px;
+    border-radius: 12px;
+    z-index: 3;
+    cursor: pointer;
+    /* 클릭 영역 확장 */
+    display: inline-block;
+    min-width: 64px;
+    line-height: 28px;
+    text-align: center;
+}
+/* 좌표는 Figma 맵 프레임(599x402) 기준으로 배치 */
+.map_canvas .gu_GS { left: 120px; top: 160px; }
+.map_canvas .gu_BK { right: 130px; top: 90px; }
+.map_canvas .gu_SE { right: 210px; top: 198px; }
+.map_canvas .gu_DO { right: 65px; top: 240px; }
+.map_canvas .gu_NM { left: 280px; top: 275px; }
+.main_title {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 11;
+}
+.main_title h2 {
+    color: #fff;
+    font-size: 2.8rem;
+    line-height: 3.6rem;
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+
+
+
+// emission_graph
+.emission_graph {
+    position: relative;
+    width: 550px;
+    background:#f9fbfd;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    color: #667085;
+}
+.graph_header {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.graph_header h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color:#151329;
+}
+.graph_tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+}
+.graph_tabs a {
+    display:inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 30px;
+    background:#F0F0F0;
+    color: #444;
+    transition: all .25s ease;
+    text-decoration: none;
+    font-size: 14px;
+}
+.graph_tabs a.on {
+    background:#151329;
+    color:#fff;
+}
+.graph_placeholder {
+    color: #667085;
+    border:1px dashed #cfd6dd;
+}
