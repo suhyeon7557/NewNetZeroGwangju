@@ -1,19 +1,15 @@
 
 // main_visual
 
-.main_visual {
-  position: relative;
-  overflow: hidden;
-}
 
 .main_visual_silde {
   position: relative;
   width: 100%;
-  height: 800px;
   /* 기본 배경을 깔아 초기 로드 시 흰색 플래시 방지 */
   background-image: url('/main_visual01.svg');
   background-position: center center;
   background-size: cover;
+  padding-top: 130px;
   background-repeat: no-repeat;
 }
 .main_visual_silde::after {
@@ -26,9 +22,6 @@
 }
 
 .main_visual_silde .bg {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   background-position: center center;
@@ -60,35 +53,22 @@
   55% { opacity: 0; }
   100% { opacity: 0; }
 }
-.main_visual_layer {
-    position: absolute;
-    top: 130px;
-    left: 175px;
-    z-index: 11;
-}
 .main_top_wrap {
     position: relative;
     width: 1550px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
     margin: 0 auto;
     z-index: 10; /* 오버레이 위로 확실히 */
 }
-.main_visual .main_content {
-    height: 100%;
-}
-.main_visual .emission_wrap {
-    position: absolute;
+.emission_wrap {
     width: 100%;
-    top: 210px;
     z-index: 11;
     gap: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.map_wrap {
-    display: flex;
-    gap: 24px;
-    align-items: flex-start;
 }
 .map_canvas {
     position: relative;
@@ -136,16 +116,10 @@
 .map_canvas .gu_SE { right: 210px; top: 198px; }
 .map_canvas .gu_DO { right: 65px; top: 240px; }
 .map_canvas .gu_NM { left: 280px; top: 275px; }
-.main_title {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 11;
-}
 .main_title h2 {
     color: #fff;
-    font-size: 2.8rem;
-    line-height: 3.6rem;
+    font-size: 2.5rem;
+    line-height: 3rem;
     font-weight: 700;
     text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
@@ -201,4 +175,72 @@
 .graph_placeholder {
     color: #667085;
     border:1px dashed #cfd6dd;
+}
+
+// main_notice
+.main_notice {
+  position: relative;
+  width: 100%;
+}
+.notice_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.notice_badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.notice_controls {
+  display: inline-flex;
+  gap: 8px;
+}
+.notice_controls button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #dbdbdb;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.notice_controls button img {
+  width: 14px;
+  height: 14px;
+}
+.notice_controls .notice_play.on img {
+  content: url('/ic_play_black.svg');
+}
+.notice_slider {
+  overflow: hidden;
+}
+.notice_list {
+  display: flex;
+  gap: 24px;
+  transition: transform .35s ease;
+  will-change: transform;
+}
+.notice_list li {
+  flex: 0 0 auto;
+  width: 520px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.notice_list li a {
+  color: #151329;
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.notice_list li .date {
+  color: #999;
+  font-size: 14px;
 }

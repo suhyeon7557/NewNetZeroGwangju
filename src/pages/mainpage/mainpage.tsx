@@ -233,11 +233,10 @@ const MainPage = () => {
     return (
         <div aria-label='탄소중립 메인 페이지 영역' className='main_page'>
             <main className='main_wrap' aria-label='메인 콘텐츠 영역'>
-                <section className='main_visual'>
+                <section>
                     <div className='main_visual_silde' aria-label='메인 비주얼 슬라이드 영역'>
                         <div className='bg bg1' aria-hidden='true'></div>
                         <div className='bg bg2' aria-hidden='true'></div>
-                    </div>
                     <div className='main_visual_layer' aria-label='메인 비주얼 레이어 영역'>
                         <div className='main_top_wrap'>
                             <div className='main_title'>
@@ -261,10 +260,10 @@ const MainPage = () => {
                                         <a href='#' className='gu_label gu_NM' data-code='NMgu'>남구</a>
                                     </div>
                                 </div>
-                                <div className='emission_graph'>
+                                <div className='emission_graph' aria-label='그래프 영역'>
                                     <div className='graph_header'>
                                         <h3 id='graphGuTitle'>북구 온실가스 배출량</h3>
-                                        <ul className='graph_tabs' aria-label='분류 탭'>
+                                        <ul className='graph_tabs' aria-label='분류 탭 영역'>
                                             <li><a href='#' data-tab='ALL' className='on'>전체</a></li>
                                             <li><a href='#' data-tab='TRANS'>전환</a></li>
                                             <li><a href='#' data-tab='BUILD'>건물</a></li>
@@ -278,10 +277,40 @@ const MainPage = () => {
                                     <div className='graph_placeholder' aria-label='그래프 영역'></div>
                                 </div>
                             </div>
-                            <div className='main_notice'>
-
+                            <div className='main_notice' aria-label='공지사항 슬라이드 영역'>
+                                <div className='notice_wrap'>
+                                    <div className='notice_badge'>공지사항입니다.</div>                   
+                                    <div className='notice_slider'>
+                                        <ul className='notice_list'>
+                                            <li className='on'>
+                                                <a href='#'>중소·중견기업 탄소중립 이행 국가지원사업 설명회 개최</a>
+                                                <span className='date'>2025-07-01</span>
+                                            </li>
+                                            <li>
+                                                <a href='#'>광주시 탄소중립 시민실천 캠페인 안내</a>
+                                                <span className='date'>2025-06-22</span>
+                                            </li>
+                                            <li>
+                                                <a href='#'>탄소발자국 계산기 업데이트 공지</a>
+                                                <span className='date'>2025-06-10</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className='notice_controls'>
+                                        <button type='button' className='notice_prev' aria-label='이전'>
+                                            <img src='/ic_prev_line_black.svg' alt='' />
+                                        </button>
+                                        <button type='button' className='notice_play on' data-state='playing' aria-label='정지'>
+                                            <img src='/ic_stop_black.svg' alt='' />
+                                        </button>
+                                        <button type='button' className='notice_next' aria-label='다음'>
+                                            <img src='/ic_next_line_black.svg' alt='' />
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    </div>
                     </div>
                     <div className='main_content'>
 
