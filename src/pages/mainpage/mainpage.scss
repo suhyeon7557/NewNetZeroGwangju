@@ -185,62 +185,85 @@
 .notice_wrap {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .notice_badge {
-  display: inline-flex;
+  padding: 10px 0;
+  color: #fff;
+  background-color: #151329;
+  width: 200px;
+}
+.notice_badge p {
+  text-align: center;
+  width: 100%;
+  font-weight: 300;
+  display: flex;
+  gap: 8px;
   align-items: center;
   justify-content: center;
-  color: #fff;
+}
+.notice_badge p:before {
+  content:'';
+  display: block;
+  width: 15px;
+  height: 23px;
+  background: url('/ic_microphone.svg') no-repeat center center;
+  background-size: contain;
+
 }
 .notice_controls {
   display: inline-flex;
-  gap: 8px;
 }
 .notice_controls button {
-  width: 32px;
-  height: 32px;
-  border: 1px solid #dbdbdb;
-  border-radius: 50%;
-  background: #fff;
+  width: 25px;
+  height: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .notice_controls button img {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
+}
+.notice_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1 1 auto;
+  width: calc(100% - 250px);
 }
 .notice_controls .notice_play.on img {
-  content: url('/ic_play_black.svg');
+  content: url('/ic_play_white.svg');
 }
 .notice_slider {
   overflow: hidden;
+  padding: 0 20px;
 }
 .notice_list {
   display: flex;
-  gap: 24px;
   transition: transform .35s ease;
   will-change: transform;
 }
 .notice_list li {
   flex: 0 0 auto;
-  width: 520px;
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 .notice_list li a {
-  color: #151329;
+  color: #fff;
   text-decoration: none;
-  font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0; /* flex 컨테이너에서 줄임표 작동 보장 */
 }
 .notice_list li .date {
-  color: #999;
-  font-size: 14px;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 300;
+  flex: 0 0 auto; /* 날짜 영역은 고정 너비/내용크기 유지 */
 }

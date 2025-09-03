@@ -1,6 +1,8 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
+import Swiper from 'swiper';
+import { Autoplay } from 'swiper/modules';
 
 import "./mainpage.scss";
 
@@ -222,6 +224,91 @@ const MainPage = () => {
         };
     }, []);
 
+    // notice 슬라이더 - Swiper 수직(아래 방향) 자동재생
+    React.useEffect(() => {
+        const container = document.querySelector('.notice_slider') as HTMLElement | null;
+        const wrapper = container?.querySelector('.notice_list') as HTMLElement | null;
+        if (!container || !wrapper) return;
+
+        // li들을 슬라이드로 마킹 (JSP 변환 시에도 간단히 유지)
+        const items = Array.from(wrapper.querySelectorAll(':scope > li')) as HTMLElement[];
+        items.forEach((li) => li.classList.add('swiper-slide'));
+        wrapper.classList.add('swiper-wrapper');
+
+        // 초기 on 클래스 제거 (한 개만 보이도록 Swiper가 관리)
+        items.forEach((li) => li.classList.remove('on'));
+
+        // 컨테이너 높이를 1개 슬라이드 높이로 고정
+        const resize = () => {
+            const first = items[0];
+            if (!first) return;
+            const h = Math.ceil(first.getBoundingClientRect().height);
+            container.style.height = (h || 40) + 'px';
+        };
+        resize();
+        window.addEventListener('resize', resize);
+
+        // Swiper 초기화 (수직 아래 방향, 자동재생)
+        const swiper = new Swiper(container as any, {
+            modules: [Autoplay],
+            direction: 'vertical',
+            slidesPerView: 1,
+            loop: true,
+            allowTouchMove: false,
+            speed: 400,
+            autoplay: { delay: 3000, disableOnInteraction: false, reverseDirection: true },
+        });
+
+        // 컨트롤 버튼 바인딩
+        const prevBtn = document.querySelector('.notice_prev') as HTMLButtonElement | null;
+        const nextBtn = document.querySelector('.notice_next') as HTMLButtonElement | null;
+        const playBtn = document.querySelector('.notice_play') as HTMLButtonElement | null;
+
+        const syncPlayStateVisual = (playing: boolean) => {
+            if (!playBtn) return;
+            playBtn.dataset.state = playing ? 'playing' : 'paused';
+            // playing=true → 정지 아이콘, playing=false → 재생 아이콘
+            if (playing) {
+                playBtn.classList.remove('on');
+                playBtn.setAttribute('aria-label', '정지');
+            } else {
+                playBtn.classList.add('on');
+                playBtn.setAttribute('aria-label', '재생');
+            }
+        };
+
+        // 초기 상태 정돈
+        const isPlaying = playBtn?.dataset.state !== 'paused';
+        syncPlayStateVisual(!!isPlaying);
+        if (isPlaying) swiper.autoplay.start(); else swiper.autoplay.stop();
+
+        const onPrev = (e: Event) => { e.preventDefault(); swiper.slidePrev(); };
+        const onNext = (e: Event) => { e.preventDefault(); swiper.slideNext(); };
+        const onPlayToggle = (e: Event) => {
+            e.preventDefault();
+            const nowPlaying = playBtn?.dataset.state === 'playing';
+            if (nowPlaying) {
+                swiper.autoplay.stop();
+                syncPlayStateVisual(false);
+            } else {
+                swiper.autoplay.start();
+                syncPlayStateVisual(true);
+            }
+        };
+
+        prevBtn?.addEventListener('click', onPrev);
+        nextBtn?.addEventListener('click', onNext);
+        playBtn?.addEventListener('click', onPlayToggle);
+
+        return () => {
+            prevBtn?.removeEventListener('click', onPrev);
+            nextBtn?.removeEventListener('click', onNext);
+            playBtn?.removeEventListener('click', onPlayToggle);
+            window.removeEventListener('resize', resize);
+            try { swiper.destroy(true, false); } catch {}
+        };
+    }, []);
+
     const [activeGu, setActiveGu] = React.useState<null | 'GSgu' | 'BKgu' | 'SEgu' | 'DOgu' | 'NMgu'>(null);
     const guItems: { code: 'GSgu' | 'BKgu' | 'SEgu' | 'DOgu' | 'NMgu'; label: string }[] = [
         { code: 'GSgu', label: '광산구' },
@@ -279,33 +366,42 @@ const MainPage = () => {
                             </div>
                             <div className='main_notice' aria-label='공지사항 슬라이드 영역'>
                                 <div className='notice_wrap'>
-                                    <div className='notice_badge'>공지사항입니다.</div>                   
-                                    <div className='notice_slider'>
-                                        <ul className='notice_list'>
-                                            <li className='on'>
-                                                <a href='#'>중소·중견기업 탄소중립 이행 국가지원사업 설명회 개최</a>
-                                                <span className='date'>2025-07-01</span>
-                                            </li>
-                                            <li>
-                                                <a href='#'>광주시 탄소중립 시민실천 캠페인 안내</a>
-                                                <span className='date'>2025-06-22</span>
-                                            </li>
-                                            <li>
-                                                <a href='#'>탄소발자국 계산기 업데이트 공지</a>
-                                                <span className='date'>2025-06-10</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className='notice_controls'>
-                                        <button type='button' className='notice_prev' aria-label='이전'>
-                                            <img src='/ic_prev_line_black.svg' alt='' />
-                                        </button>
-                                        <button type='button' className='notice_play on' data-state='playing' aria-label='정지'>
-                                            <img src='/ic_stop_black.svg' alt='' />
-                                        </button>
-                                        <button type='button' className='notice_next' aria-label='다음'>
-                                            <img src='/ic_next_line_black.svg' alt='' />
-                                        </button>
+                                    <div className='notice_badge'>
+                                        <p>공지사항입니다.</p>
+                                    </div>                   
+                                    <div className='notice_row'>
+                                        <div className='notice_slider'>
+                                            <ul className='notice_list'>
+                                                <li className='on'>
+                                                    <span className='date'>2025-07-01</span>
+                                                    <a className='txt_cut1' href='#'>중소·중견기업 탄소중립 이행 국가지원사업 설명회 개최</a>
+                                                </li>
+                                                <li>
+                                                    <span className='date'>2025-06-22</span>
+                                                    <a className='txt_cut1' href='#'>광주시 탄소중립 시민실천 캠페인 안내</a>
+                                                </li>
+                                                <li>
+                                                    <span className='date'>2025-06-10</span>
+                                                    <a className='txt_cut1' href='#'>탄소발자국 계산기 업데이트 공지</a>
+                                                </li>
+                                                <li>
+                                                    <span className='date'>2025-05-28</span>
+                                                    <a className='txt_cut1' href='#'>넷제로광주 홈페이지 개설 안내 안녕하세요 넷제로 광주 홈페이지를 새로 오픈하였습니다.
+                                                        새롭게 오픈된 홈페이지에서 광주광역시 탄소중립 사업 및 시민실천 활동을 확인해 보세요. </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div className='notice_controls'>
+                                            <button type='button' className='notice_prev' aria-label='이전'>
+                                                <img src='/ic_prev_white.svg' alt='' />
+                                            </button>
+                                            <button type='button' className='notice_play on' data-state='playing' aria-label='정지'>
+                                                <img src='/ic_stop_white.svg' alt='' />
+                                            </button>
+                                            <button type='button' className='notice_next' aria-label='다음'>
+                                                <img src='/ic_next_white.svg' alt='' />
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
