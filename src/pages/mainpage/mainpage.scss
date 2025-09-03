@@ -1,7 +1,6 @@
 
+
 // main_visual
-
-
 .main_visual_silde {
   position: relative;
   width: 100%;
@@ -62,6 +61,14 @@
     margin: 0 auto;
     z-index: 10; /* 오버레이 위로 확실히 */
 }
+.main_visual_silde:before {
+  content: '';
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  height: 45px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 .emission_wrap {
     width: 100%;
     z-index: 11;
@@ -70,52 +77,60 @@
     align-items: center;
     justify-content: center;
 }
-.map_canvas {
-    position: relative;
-    width: 540px;
-    height: 362px;
-    cursor: pointer;
+
+//map_canvas
+
+.map_canvas .overlay {
+  fill: white;
+  fill-opacity: 0.25;
+  stroke:  #F3EFEF;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition-duration: .3s;
+  cursor: pointer;
+  pointer-events: all;
 }
-.map_canvas img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-.map_canvas img.base_map {
-    opacity: 0.6;
-    z-index: 1;
-}
-.map_canvas img.overlay {
-    opacity: 0;
-    transition: opacity .25s ease;
-    pointer-events: none;
-    z-index: 2;
-}
-.map_canvas img.overlay.on {
-    opacity: 1;
+.map_canvas .overlay.on,
+.map_canvas .overlay:hover {
+  fill: #151329;
+  fill-opacity: 1;
 }
 
 .map_canvas .gu_label {
-    position: absolute;
-    color:#fff;
-    padding: 4px 10px;
-    border-radius: 12px;
-    z-index: 3;
-    cursor: pointer;
-    /* 클릭 영역 확장 */
-    display: inline-block;
-    min-width: 64px;
-    line-height: 28px;
-    text-align: center;
+  fill: white;
 }
-/* 좌표는 Figma 맵 프레임(599x402) 기준으로 배치 */
-.map_canvas .gu_GS { left: 120px; top: 160px; }
-.map_canvas .gu_BK { right: 130px; top: 90px; }
-.map_canvas .gu_SE { right: 210px; top: 198px; }
-.map_canvas .gu_DO { right: 65px; top: 240px; }
-.map_canvas .gu_NM { left: 280px; top: 275px; }
+
+/* 광산구 */
+.map_canvas .overlay.ov_GS.on ~ .gu_label.gu_GS,
+.map_canvas .overlay.ov_GS:hover ~ .gu_label.gu_GS {
+  font-weight: 700;
+}
+
+/* 북구 */
+.map_canvas .overlay.ov_BK.on ~ .gu_label.gu_BK,
+.map_canvas .overlay.ov_BK:hover ~ .gu_label.gu_BK {
+  font-weight: 700;
+}
+
+/* 서구 */
+.map_canvas .overlay.ov_SE.on ~ .gu_label.gu_SE,
+.map_canvas .overlay.ov_SE:hover ~ .gu_label.gu_SE {
+  font-weight: 700;
+}
+
+/* 동구 */
+.map_canvas .overlay.ov_DO.on ~ .gu_label.gu_DO,
+.map_canvas .overlay.ov_DO:hover ~ .gu_label.gu_DO {
+  font-weight: 700;
+}
+
+/* 남구 */
+.map_canvas .overlay.ov_NM.on ~ .gu_label.gu_NM,
+.map_canvas .overlay.ov_NM:hover ~ .gu_label.gu_NM {
+  font-weight: 700;
+}
+
 .main_title h2 {
     color: #fff;
     font-size: 2.5rem;
@@ -123,8 +138,6 @@
     font-weight: 700;
     text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
-
-
 
 
 // emission_graph
@@ -185,7 +198,6 @@
 .notice_wrap {
   display: flex;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
 }
 .notice_badge {
   padding: 10px 0;
@@ -266,4 +278,200 @@
   font-size: 0.85rem;
   font-weight: 300;
   flex: 0 0 auto; /* 날짜 영역은 고정 너비/내용크기 유지 */
+}
+
+//main_content
+.main_content {
+  width: 100%;
+  position: relative;
+  padding: 50px 0;
+}
+.main_content .main_content_inner {
+  width: 1550px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.main_content_inner .txt_wrap h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.main_content_inner .txt_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.txt_wrap button.btn_more {
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.txt_wrap button.btn_more::after {
+  content: '';
+  display: block;
+  width: 13px;
+  height: 13px;
+  background: url('/ic_plus_btn.svg') no-repeat center center;
+  background-size: 13px;
+  transition: transform .2s ease;
+  transform-origin: 50% 50%;
+}
+.txt_wrap button.btn_more:hover::after,
+.txt_wrap button.btn_more:focus-visible::after {
+  transform: rotate(90deg);
+}
+
+
+//carbon_ft_wrap
+.carbon_ft_wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.carbon_ft_content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// carbon_ft_tab
+.carbon_ft_tab ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.carbon_ft_tab a {
+  display: inline-block;
+  padding: 2px 20px;
+  color: #444;
+  text-decoration: none;
+  transition: all .2s ease;
+  border-bottom: 1px solid #DBDBDB;
+}
+// panels
+.carbon_ft_panels {
+  position: relative;
+  overflow: visible;
+}
+.carbon_ft_panels:before {
+  content: '';
+  position: absolute;
+  z-index: 10;
+  top: -25px;
+  left: -25px;
+  width: 70px;
+  height: 75px;
+  background: no-repeat center center;
+  background-size: contain;
+  pointer-events: none;
+}
+
+/* 탭별 아이콘 스위칭 */
+.carbon_ft_panels[data-active='electricity']:before {
+  background-image: url('/image_electricity.svg');
+}
+.carbon_ft_panels[data-active='gas']:before {
+  background-image: url('/image_gas.svg');
+}
+.carbon_ft_panels[data-active='water']:before {
+  background-image: url('/image_water.svg');
+}
+.carbon_ft_panels .panel {
+  display: none;
+  border: 1px solid #e6e8eb;
+  border-radius: 20px;
+  padding: 40px 40px 40px 60px;
+  background-color: #8F7D65;
+}
+.carbon_ft_panels .panel.on {
+  display: block;
+}
+.carbon_ft_panels .panel .panel_inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.carbon_ft_panels .panel .thumb {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carbon_ft_panels .panel .desc h2 {
+  display: block;
+  color: #fff;
+  font-weight: 700;
+}
+.carbon_ft_panels .panel .desc p {
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: 300;
+  font-size: 0.85rem;
+}
+.carbon_ft_panels .panel .desc .btn_calc {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #151329;
+  color: #fff;
+}
+.carbon_ft_input {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 30px 20px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+.input_group {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+.input_group label {
+  font-size: 0.85rem;
+}
+.input_group input {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 0.85rem;
+  color: #000;
+}
+.input_group span {
+  font-size: 0.85rem;
+}
+.analysis_form {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+.analysis_form button {
+  font-weight: 700;
+} 
+
+
+@media (max-width: 1550px) {
+  .main_top_wrap {
+    width: 100%;
+  }
+  .main_content .main_content_inner {
+    width: 100%;
+    padding: 0 30px;
+  }
+  .main_title , .emission_wrap {
+    padding: 0 30px;
+  }
+  .notice_wrap {
+    padding: 0 20px 0 0;
+  }
 }
