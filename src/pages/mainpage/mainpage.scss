@@ -354,6 +354,17 @@
   transition: all .2s ease;
   border-bottom: 1px solid #DBDBDB;
 }
+.carbon_ft_tab a:hover,
+.carbon_ft_tab a:focus-visible {
+  color: #151329;
+  border-bottom-color: #151329;
+  font-weight: 700;
+}
+.carbon_ft_tab a.on {
+  color: #000;
+  border-bottom-color: #000;
+  font-weight: 700;
+}
 // panels
 .carbon_ft_panels {
   position: relative;
@@ -384,10 +395,20 @@
 }
 .carbon_ft_panels .panel {
   display: none;
+  border-radius: 20px;
+  padding: 40px 0 40px 60px;
+}
+.carbon_ft_panels .panel::before {
+  content: '';
+  width: calc(100% - 100px);
+  height: 100%;
+  background-color: #8F7D65;
   border: 1px solid #e6e8eb;
   border-radius: 20px;
-  padding: 40px 40px 40px 60px;
-  background-color: #8F7D65;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 .carbon_ft_panels .panel.on {
   display: block;
@@ -445,6 +466,31 @@
   padding: 10px 15px;
   font-size: 0.85rem;
   color: #000;
+}
+.segmented_input {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.segmented_input input {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  width: 36px;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #000;
+}
+.segmented_input .decimal_box {
+  width: 16px;
+  padding: 0;
+  background: transparent;
+  color: #000;
+  font-weight: 700;
+}
+.segmented_input input:focus {
+  outline: 2px solid #151329;
+  outline-offset: 0;
 }
 .input_group span {
   font-size: 0.85rem;

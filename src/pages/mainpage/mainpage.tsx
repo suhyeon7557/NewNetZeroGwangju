@@ -174,6 +174,74 @@ const MainPage = () => {
         };
     }, []);
 
+    // 탄소발자국 입력 → CO2 자동 계산 (JSP 호환 간단 스크립트)
+    React.useEffect(() => {
+        const panels = Array.from(document.querySelectorAll('.carbon_ft_panels .panel')) as HTMLElement[];
+        if (!panels.length) return;
+
+        type Binding = { el: HTMLInputElement; type: keyof HTMLElementEventMap; handler: (e: any) => void };
+        const bindings: Binding[] = [];
+
+        const getFactor = (key?: string) => {
+            if (key === 'electricity') return 0.478;
+            if (key === 'gas') return 2.176;
+            if (key === 'water') return 0.237;
+            return 0;
+        };
+
+        panels.forEach((panel) => {
+            const key = panel.dataset.tab || '';
+            const factor = getFactor(key);
+            const form = panel.querySelector('.analysis_form') as HTMLFormElement | null;
+            if (!form) return;
+
+            const usageInput = form.querySelector('input[data-role="usageInput"]') as HTMLInputElement | null;
+            const segmented = form.querySelector('.segmented_input') as HTMLElement | null;
+            const digitInputs = segmented ? (Array.from(segmented.querySelectorAll('input[data-role="digit"]')) as HTMLInputElement[]) : [];
+            if (!usageInput || !segmented || !digitInputs.length) return;
+
+            const displayCO2ToDigits = (co2: number) => {
+                const s = (Number.isFinite(co2) ? co2 : 0).toFixed(1).replace(/\./g, '');
+                const total = digitInputs.length;
+                // 채우기: 뒤에서부터 숫자 채우고, 남은 앞부분은 공백
+                for (let i = 0; i < total; i += 1) {
+                    digitInputs[i].value = '';
+                }
+                let j = s.length - 1;
+                for (let i = total - 1; i >= 0; i -= 1) {
+                    if (j >= 0) {
+                        digitInputs[i].value = s[j];
+                        j -= 1;
+                    } else {
+                        digitInputs[i].value = '';
+                    }
+                }
+            };
+
+            const onUsageInput = () => {
+                const raw = (usageInput.value || '').replace(/,/g, '');
+                const val = parseFloat(raw);
+                if (isNaN(val)) {
+                    // 비움
+                    digitInputs.forEach((inp) => (inp.value = ''));
+                } else {
+                    const co2 = val * factor;
+                    displayCO2ToDigits(co2);
+                }
+            };
+
+            usageInput.addEventListener('input', onUsageInput);
+            bindings.push({ el: usageInput, type: 'input', handler: onUsageInput });
+
+            // 초기 1회 계산
+            onUsageInput();
+        });
+
+        return () => {
+            bindings.forEach(({ el, type, handler }) => el.removeEventListener(type, handler));
+        };
+    }, []);
+
     // 탄소발자국 탭 전환 (간단 DOM 스크립트)
     React.useEffect(() => {
         const tabs = Array.from(document.querySelectorAll('.carbon_ft_tab a')) as HTMLAnchorElement[];
@@ -511,13 +579,21 @@ const MainPage = () => {
                                         <div className='carbon_ft_input'>
                                             <form action="#" method="post" className='analysis_form'>
                                                 <div className='input_group'>
-                                                    <label htmlFor='elecUsage'>월 사용량</label>
-                                                    <input id='elecUsage' type='number' inputMode='numeric' placeholder='예: 350' />
+                                                    <label htmlFor=''>월 사용량</label>
+                                                    <input data-role='usageInput' type='number' inputMode='numeric' placeholder='예: 350' />
                                                     <span>&#40;Kwh&#41;</span>
                                                 </div>
                                                 <div className='input_group'>
-                                                    <label htmlFor='elecUsage'>CO₂ 발생량</label>
-                                                    <input id='elecUsage' type='number' inputMode='numeric' placeholder='예: 350' />
+                                                    <label htmlFor=''>CO₂ 발생량</label>
+                                                    <div className='segmented_input' data-digits='7'>
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-1' readOnly />
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-2' readOnly />
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-3' readOnly />
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-4' readOnly />
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-5' readOnly />
+                                                        <input className='decimal_box' type='text' value='.' readOnly tabIndex={-1} aria-hidden='true' />
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-6' readOnly />
+                                                    </div>
                                                     <span>kg/월</span>
                                                 </div>
                                                 <button type='button' className='btn_lime_bg bd_radius'>상세분석</button>
@@ -534,13 +610,21 @@ const MainPage = () => {
                                         <div className='carbon_ft_input'>
                                             <form action="#" method="post" className='analysis_form'>
                                                 <div className='input_group'>
-                                                    <label htmlFor='elecUsage'>월 사용량</label>
-                                                    <input id='elecUsage' type='number' inputMode='numeric' placeholder='예: 350' />
+                                                    <label htmlFor=''>월 사용량</label>
+                                                    <input data-role='usageInput' type='number' inputMode='numeric' placeholder='예: 350' />
                                                     <span>&#40;Kwh&#41;</span>
                                                 </div>
                                                 <div className='input_group'>
-                                                    <label htmlFor='elecUsage'>CO₂ 발생량</label>
-                                                    <input id='elecUsage' type='number' inputMode='numeric' placeholder='예: 350' />
+                                                    <label htmlFor=''>CO₂ 발생량</label>
+                                                    <div className='segmented_input' data-digits='7'>
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-1' readOnly />
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-2' readOnly />
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-3' readOnly />
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-4' readOnly />
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-5' readOnly />
+                                                        <input className='decimal_box' type='text' value='.' readOnly tabIndex={-1} aria-hidden='true' />
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-6' readOnly />
+                                                    </div>
                                                     <span>kg/월</span>
                                                 </div>
                                                 <button type='button' className='btn_lime_bg bd_radius'>상세분석</button>
@@ -557,13 +641,21 @@ const MainPage = () => {
                                         <div className='carbon_ft_input'>
                                             <form action="#" method="post" className='analysis_form'>
                                                 <div className='input_group'>
-                                                    <label htmlFor='elecUsage'>월 사용량</label>
-                                                    <input id='elecUsage' type='number' inputMode='numeric' placeholder='예: 350' />
+                                                    <label htmlFor=''>월 사용량</label>
+                                                    <input data-role='usageInput' type='number' inputMode='numeric' placeholder='예: 350' />
                                                     <span>&#40;Kwh&#41;</span>
                                                 </div>
                                                 <div className='input_group'>
-                                                    <label htmlFor='elecUsage'>CO₂ 발생량</label>
-                                                    <input id='elecUsage' type='number' inputMode='numeric' placeholder='예: 350' />
+                                                    <label htmlFor=''>CO₂ 발생량</label>
+                                                    <div className='segmented_input' data-digits='7'>
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-1' readOnly />
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-2' readOnly />
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-3' readOnly />
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-4' readOnly />
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-5' readOnly />
+                                                        <input className='decimal_box' type='text' value='.' readOnly tabIndex={-1} aria-hidden='true' />
+                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-6' readOnly />
+                                                    </div>
                                                     <span>kg/월</span>
                                                 </div>
                                                 <button type='button' className='btn_lime_bg bd_radius'>상세분석</button>
