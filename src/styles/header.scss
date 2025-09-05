@@ -22,6 +22,13 @@
         gap: 15px;
         margin: 0 auto;
 
+    .clock_inner .time {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+    }
+
 		.earth3d {
             width: 28px;
         }   
@@ -47,6 +54,9 @@
                 background-color: #F2082F;
                 color: #fff;
                 border-radius: 3px;
+            }
+            .hour {
+                width: 150px;
             }
             .year_num, .day_num, .hour_num {
                 font-size: 1.65rem;

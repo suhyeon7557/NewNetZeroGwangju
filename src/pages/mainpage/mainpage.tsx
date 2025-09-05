@@ -452,6 +452,277 @@ const MainPage = () => {
             };
         }, []);
 
+        // horizontal_tab 전환 (정책과제/수탁과제)
+        React.useEffect(() => {
+            const tabs = Array.from(document.querySelectorAll('.horizontal_tab a')) as HTMLAnchorElement[];
+            const panels = Array.from(document.querySelectorAll('.report_panels .panel')) as HTMLElement[];
+            if (!tabs.length || !panels.length) return;
+
+            const activate = (key: string) => {
+                tabs.forEach((a) => a.classList.toggle('on', (a.dataset.tab || '') === key));
+                panels.forEach((p) => p.classList.toggle('on', (p.dataset.tab || '') === key));
+            };
+
+            const onClick = (e: Event) => {
+                e.preventDefault();
+                const a = e.currentTarget as HTMLAnchorElement;
+                const key = a?.dataset?.tab || '';
+                if (!key) return;
+                activate(key);
+            };
+
+            tabs.forEach((a) => a.addEventListener('click', onClick));
+
+            const initial = tabs.find((a) => a.classList.contains('on'))?.dataset.tab || tabs[0]?.dataset.tab || '';
+            if (initial) activate(initial);
+
+            return () => {
+                tabs.forEach((a) => a.removeEventListener('click', onClick));
+            };
+        }, []);
+
+        // 보고서 슬라이더 (JSP 친화형 - 순수 DOM 조작, 부드러운 전환)
+        React.useEffect(() => {
+            const panels = Array.from(document.querySelectorAll('.report_panels .panel')) as HTMLElement[];
+            if (!panels.length) return;
+
+            panels.forEach((panel) => {
+                const nextBtn = panel.querySelector('.btn_next') as HTMLButtonElement | null;
+                const prevBtn = panel.querySelector('.btn_prev') as HTMLButtonElement | null;
+                const bigImg = panel.querySelector('.big_report_box img') as HTMLImageElement | null;
+                const bigTitle = panel.querySelector('.big_report_txt h3') as HTMLElement | null;
+                const bigInfo = panel.querySelector('.big_report_txt .report_info') as HTMLElement | null;
+                const smallUl = panel.querySelector('.small_report_list > ul') as HTMLUListElement | null;
+                if (!nextBtn || !prevBtn || !bigImg || !bigTitle || !bigInfo || !smallUl) return;
+
+                const readBig = () => {
+                    const items = Array.from(bigInfo.querySelectorAll('ul > li')) as HTMLLIElement[];
+                    const chief = items[0]?.querySelector('p')?.textContent?.trim() || '';
+                    const team = items[1]?.querySelector('p')?.textContent?.trim() || '';
+                    const year = items[2]?.querySelector('p')?.textContent?.trim() || '';
+                    return {
+                        src: bigImg.getAttribute('src') || '',
+                        title: (bigTitle.textContent || '').trim(),
+                        chief, team, year,
+                    };
+                };
+
+                const applyBig = (data: { src: string; title: string; chief: string; team: string; year: string }) => {
+                    bigImg.setAttribute('src', data.src || '/noimg_list.svg');
+                    bigTitle.textContent = data.title || '';
+                    const items = Array.from(bigInfo.querySelectorAll('ul > li')) as HTMLLIElement[];
+                    const map = [data.chief, data.team, data.year];
+                    items.forEach((li, idx) => {
+                        const p = li.querySelector('p');
+                        if (p) p.textContent = map[idx] || '';
+                    });
+                };
+
+                const readSmallLi = (li: HTMLLIElement) => {
+                    const a = li.querySelector('a') as HTMLElement | null;
+                    const img = li.querySelector('img') as HTMLImageElement | null;
+                    return {
+                        src: img?.getAttribute('src') || '',
+                        title: (a?.getAttribute('data-title') || '').trim(),
+                        chief: (a?.getAttribute('data-chief') || '').trim(),
+                        team: (a?.getAttribute('data-team') || '').trim(),
+                        year: (a?.getAttribute('data-year') || '').trim(),
+                    };
+                };
+
+                const buildSmallLi = (data: { src: string; title: string; chief: string; team: string; year: string }) => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.setAttribute('href', '#');
+                    a.setAttribute('data-title', data.title || '');
+                    a.setAttribute('data-chief', data.chief || '');
+                    a.setAttribute('data-team', data.team || '');
+                    a.setAttribute('data-year', data.year || '');
+                    const img = document.createElement('img');
+                    img.setAttribute('src', data.src || '/noimg_list.svg');
+                    a.appendChild(img);
+                    li.appendChild(a);
+                    return li;
+                };
+
+                const getSlideDistance = () => {
+                    const first = smallUl.querySelector(':scope > li') as HTMLLIElement | null;
+                    if (!first) return 0;
+                    const rect = first.getBoundingClientRect();
+                    let gap = 0;
+                    try { gap = parseFloat((getComputedStyle(smallUl) as any).gap || '0'); } catch {}
+                    return Math.round(rect.width + (isNaN(gap) ? 0 : gap));
+                };
+
+                const isHidden = (el: HTMLElement) => {
+                    if (!el) return true;
+                    const style = window.getComputedStyle(el);
+                    return style.display === 'none' || style.visibility === 'hidden' || el.offsetParent === null;
+                };
+
+                const onNext = (e: Event) => {
+                    e.preventDefault();
+                    const first = smallUl.querySelector(':scope > li') as HTMLLIElement | null;
+                    if (!first) return;
+                    const incoming = readSmallLi(first);
+                    const current = readBig();
+
+                    // big 페이드 아웃
+                    const big = panel.querySelector('.big_report') as HTMLElement | null;
+                    if (big) big.classList.add('fading');
+
+                    // 썸네일 좌→우 슬라이드
+                    const dist = getSlideDistance();
+                    // 숨김 상태이거나 dist=0이면 즉시 재배치 (노애니메이션)
+                    if (isHidden(smallUl as any) || !dist || dist <= 0) {
+                        applyBig(incoming);
+                        smallUl.removeChild(first);
+                        smallUl.appendChild(buildSmallLi(current));
+                        const big2 = panel.querySelector('.big_report') as HTMLElement | null;
+                        if (big2) big2.classList.remove('fading');
+                        return;
+                    }
+                    smallUl.style.transition = 'transform .3s ease';
+                    smallUl.style.transform = `translateX(-${dist}px)`;
+
+                    const handle = () => {
+                        smallUl.removeEventListener('transitionend', handle);
+                        // 순서 재배치 + 트랜지션 잠깐 비활성화
+                        smallUl.style.transition = 'none';
+                        smallUl.appendChild(first);
+                        smallUl.style.transform = 'translateX(0)';
+                        // big 내용 교체 후 페이드 인
+                        applyBig(incoming);
+                        const big2 = panel.querySelector('.big_report') as HTMLElement | null;
+                        // 강제 리플로우 후 트랜지션 초기화
+                        void smallUl.offsetHeight;
+                        smallUl.style.transition = '';
+                        if (big2) big2.classList.remove('fading');
+                    };
+                    smallUl.addEventListener('transitionend', handle);
+                };
+
+                const onPrev = (e: Event) => {
+                    e.preventDefault();
+                    const items = smallUl.querySelectorAll(':scope > li');
+                    const last = items[items.length - 1] as HTMLLIElement | undefined;
+                    if (!last) return;
+                    const incoming = readSmallLi(last);
+                    const current = readBig();
+
+                    // big 페이드 아웃
+                    const big = panel.querySelector('.big_report') as HTMLElement | null;
+                    if (big) big.classList.add('fading');
+
+                    const dist = getSlideDistance();
+                    if (isHidden(smallUl as any) || !dist || dist <= 0) {
+                        applyBig(incoming);
+                        smallUl.removeChild(last);
+                        smallUl.insertBefore(buildSmallLi(current), smallUl.firstChild);
+                        const big2 = panel.querySelector('.big_report') as HTMLElement | null;
+                        if (big2) big2.classList.remove('fading');
+                        return;
+                    }
+                    // 먼저 마지막을 앞으로 이동한 상태에서 -dist로 시작 후 0으로 애니메이션
+                    smallUl.style.transition = 'none';
+                    smallUl.insertBefore(last, smallUl.firstChild);
+                    smallUl.style.transform = `translateX(-${dist}px)`;
+                    void smallUl.offsetHeight; // 리플로우
+                    smallUl.style.transition = 'transform .3s ease';
+                    smallUl.style.transform = 'translateX(0)';
+
+                    const handle = () => {
+                        smallUl.removeEventListener('transitionend', handle);
+                        // big 내용 교체 후 페이드 인
+                        applyBig(incoming);
+                        smallUl.style.transition = '';
+                        smallUl.style.transform = '';
+                        const big2 = panel.querySelector('.big_report') as HTMLElement | null;
+                        if (big2) big2.classList.remove('fading');
+                    };
+                    smallUl.addEventListener('transitionend', handle);
+                };
+
+                // 썸네일 클릭 시 해당 항목으로 슬라이드 이동
+                const onThumbClick = (e: Event) => {
+                    const target = e.target as HTMLElement;
+                    const a = target.closest('a');
+                    if (!a || !smallUl.contains(a)) return;
+                    e.preventDefault();
+                    const li = a.closest('li') as HTMLLIElement | null;
+                    if (!li) return;
+                    const lis = Array.from(smallUl.querySelectorAll(':scope > li')) as HTMLLIElement[];
+                    const idx = lis.indexOf(li);
+                    if (idx < 0) return;
+                    if (idx === 0) { onNext(e); return; }
+
+                    const incoming = readSmallLi(li);
+                    const current = readBig();
+
+                    const big = panel.querySelector('.big_report') as HTMLElement | null;
+                    if (big) big.classList.add('fading');
+
+                    const dist = getSlideDistance();
+                    const move = Math.max(0, idx) * dist;
+                    if (isHidden(smallUl as any) || !dist || dist <= 0) {
+                        // 즉시 회전
+                        for (let i = 0; i < idx; i += 1) {
+                            const first = smallUl.querySelector(':scope > li') as HTMLLIElement | null;
+                            if (first) smallUl.appendChild(first);
+                        }
+                        const firstAfter = smallUl.querySelector(':scope > li') as HTMLLIElement | null;
+                        if (firstAfter) smallUl.removeChild(firstAfter);
+                        smallUl.appendChild(buildSmallLi(current));
+                        applyBig(incoming);
+                        const big2 = panel.querySelector('.big_report') as HTMLElement | null;
+                        if (big2) big2.classList.remove('fading');
+                        return;
+                    }
+                    smallUl.style.transition = 'transform .3s ease';
+                    smallUl.style.transform = `translateX(-${move}px)`;
+
+                    const handle = () => {
+                        smallUl.removeEventListener('transitionend', handle);
+                        // 회전 적용: 앞에서 idx개를 뒤로 보냄
+                        smallUl.style.transition = 'none';
+                        for (let i = 0; i < idx; i += 1) {
+                            const first = smallUl.querySelector(':scope > li') as HTMLLIElement | null;
+                            if (first) smallUl.appendChild(first);
+                        }
+                        // 이제 클릭했던 항목이 맨 앞. 그 항목 제거하고, 기존 big을 썸네일 끝에 추가
+                        const firstAfter = smallUl.querySelector(':scope > li') as HTMLLIElement | null;
+                        if (firstAfter) smallUl.removeChild(firstAfter);
+                        smallUl.appendChild(buildSmallLi(current));
+
+                        smallUl.style.transform = 'translateX(0)';
+                        void smallUl.offsetHeight;
+                        smallUl.style.transition = '';
+
+                        applyBig(incoming);
+                        const big2 = panel.querySelector('.big_report') as HTMLElement | null;
+                        if (big2) big2.classList.remove('fading');
+                    };
+                    smallUl.addEventListener('transitionend', handle);
+                };
+
+                nextBtn.addEventListener('click', onNext);
+                prevBtn.addEventListener('click', onPrev);
+                smallUl.addEventListener('click', onThumbClick);
+
+                (panel as any).__cleanup_report_slider = () => {
+                    nextBtn.removeEventListener('click', onNext);
+                    prevBtn.removeEventListener('click', onPrev);
+                    smallUl.removeEventListener('click', onThumbClick);
+                };
+            });
+
+            return () => {
+                panels.forEach((panel) => {
+                    const c = (panel as any).__cleanup_report_slider; if (c) c();
+                });
+            };
+        }, []);
+
         const [activeGu, setActiveGu] = React.useState<null | 'GSgu' | 'BKgu' | 'SEgu' | 'DOgu' | 'NMgu'>(null);
         const guItems: { code: 'GSgu' | 'BKgu' | 'SEgu' | 'DOgu' | 'NMgu'; label: string }[] = [
             { code: 'GSgu', label: '광산구' },
@@ -578,23 +849,25 @@ const MainPage = () => {
                                         </div>
                                         <div className='carbon_ft_input'>
                                             <form action="#" method="post" className='analysis_form'>
-                                                <div className='input_group'>
-                                                    <label htmlFor=''>월 사용량</label>
-                                                    <input data-role='usageInput' type='number' inputMode='numeric' placeholder='예: 350' />
-                                                    <span>&#40;Kwh&#41;</span>
-                                                </div>
-                                                <div className='input_group'>
-                                                    <label htmlFor=''>CO₂ 발생량</label>
-                                                    <div className='segmented_input' data-digits='7'>
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-1' readOnly />
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-2' readOnly />
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-3' readOnly />
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-4' readOnly />
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-5' readOnly />
-                                                        <input className='decimal_box' type='text' value='.' readOnly tabIndex={-1} aria-hidden='true' />
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-6' readOnly />
+                                                <div className='input_groups'>
+                                                    <div className='input_group'>
+                                                        <label htmlFor=''>월 사용량</label>
+                                                        <input data-role='usageInput' type='number' inputMode='numeric' placeholder='예: 350' />
+                                                        <span>&#40;Kwh&#41;</span>
                                                     </div>
-                                                    <span>kg/월</span>
+                                                    <div className='input_group'>
+                                                        <label htmlFor=''>CO₂ 발생량</label>
+                                                        <div className='segmented_input' data-digits='7'>
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-1' readOnly />
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-2' readOnly />
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-3' readOnly />
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-4' readOnly />
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-5' readOnly />
+                                                            <input className='decimal_box' type='text' value='.' readOnly tabIndex={-1} aria-hidden='true' />
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-6' readOnly />
+                                                        </div>
+                                                        <span>kg/월</span>
+                                                    </div>
                                                 </div>
                                                 <button type='button' className='btn_lime_bg bd_radius'>상세분석</button>
                                             </form>
@@ -609,23 +882,25 @@ const MainPage = () => {
                                         </div>
                                         <div className='carbon_ft_input'>
                                             <form action="#" method="post" className='analysis_form'>
-                                                <div className='input_group'>
-                                                    <label htmlFor=''>월 사용량</label>
-                                                    <input data-role='usageInput' type='number' inputMode='numeric' placeholder='예: 350' />
-                                                    <span>&#40;Kwh&#41;</span>
-                                                </div>
-                                                <div className='input_group'>
-                                                    <label htmlFor=''>CO₂ 발생량</label>
-                                                    <div className='segmented_input' data-digits='7'>
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-1' readOnly />
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-2' readOnly />
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-3' readOnly />
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-4' readOnly />
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-5' readOnly />
-                                                        <input className='decimal_box' type='text' value='.' readOnly tabIndex={-1} aria-hidden='true' />
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-6' readOnly />
+                                                <div className='input_groups'>
+                                                    <div className='input_group'>
+                                                        <label htmlFor=''>월 사용량</label>
+                                                        <input data-role='usageInput' type='number' inputMode='numeric' placeholder='예: 350' />
+                                                        <span>&#40;Kwh&#41;</span>
                                                     </div>
-                                                    <span>kg/월</span>
+                                                    <div className='input_group'>
+                                                        <label htmlFor=''>CO₂ 발생량</label>
+                                                        <div className='segmented_input' data-digits='7'>
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-1' readOnly />
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-2' readOnly />
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-3' readOnly />
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-4' readOnly />
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-5' readOnly />
+                                                            <input className='decimal_box' type='text' value='.' readOnly tabIndex={-1} aria-hidden='true' />
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-6' readOnly />
+                                                        </div>
+                                                        <span>kg/월</span>
+                                                    </div>
                                                 </div>
                                                 <button type='button' className='btn_lime_bg bd_radius'>상세분석</button>
                                             </form>
@@ -640,23 +915,25 @@ const MainPage = () => {
                                         </div>
                                         <div className='carbon_ft_input'>
                                             <form action="#" method="post" className='analysis_form'>
-                                                <div className='input_group'>
-                                                    <label htmlFor=''>월 사용량</label>
-                                                    <input data-role='usageInput' type='number' inputMode='numeric' placeholder='예: 350' />
-                                                    <span>&#40;Kwh&#41;</span>
-                                                </div>
-                                                <div className='input_group'>
-                                                    <label htmlFor=''>CO₂ 발생량</label>
-                                                    <div className='segmented_input' data-digits='7'>
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-1' readOnly />
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-2' readOnly />
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-3' readOnly />
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-4' readOnly />
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-5' readOnly />
-                                                        <input className='decimal_box' type='text' value='.' readOnly tabIndex={-1} aria-hidden='true' />
-                                                        <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-6' readOnly />
+                                                <div className='input_groups'>
+                                                    <div className='input_group'>
+                                                        <label htmlFor=''>월 사용량</label>
+                                                        <input data-role='usageInput' type='number' inputMode='numeric' placeholder='예: 350' />
+                                                        <span>&#40;Kwh&#41;</span>
                                                     </div>
-                                                    <span>kg/월</span>
+                                                    <div className='input_group'>
+                                                        <label htmlFor=''>CO₂ 발생량</label>
+                                                        <div className='segmented_input' data-digits='7'>
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-1' readOnly />
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-2' readOnly />
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-3' readOnly />
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-4' readOnly />
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-5' readOnly />
+                                                            <input className='decimal_box' type='text' value='.' readOnly tabIndex={-1} aria-hidden='true' />
+                                                            <input data-role='digit' type='text' inputMode='numeric' maxLength={1} aria-label='co2-digit-6' readOnly />
+                                                        </div>
+                                                        <span>kg/월</span>
+                                                    </div>
                                                 </div>
                                                 <button type='button' className='btn_lime_bg bd_radius'>상세분석</button>
                                             </form>
@@ -669,12 +946,192 @@ const MainPage = () => {
                     <div className='report_wrap'>
                         <div className='txt_wrap' aria-label='연구보고서 영역'>
                             <h3>연구보고서</h3>
+                            <div className='horizontal_tab'>
+                                <ul>
+                                    <li><a href='#' data-tab='policy' className='on'>정책과제</a></li>
+                                    <li><a href='#' data-tab='consign'>수탁과제</a></li>
+                                </ul>
+                            </div>
                             <button className='btn_more'>더보기</button>
+                        </div>
+                        <div className='report_panels'>
+                            <div className='panel on' data-tab='policy' aria-label='정책과제 연구보고서 영역'>
+                                <div className='panel_inner'>
+                                    <div className='big_report'>
+                                        <div className='big_report_box'>
+                                            <a href='#'>
+                                                <img src='/image_report01.svg'></img>
+                                            </a>
+                                        </div>
+                                        <div className='big_report_txt'>
+                                            <h3 className='txt_cut1'>[2024년] 광주광역시 제3차 빛공해 방지계획 (2025~2029) 수립</h3>
+                                            <div className='report_info'>
+                                                <ul>
+                                                    <li>
+                                                        <span className='text_gray'>연구책임</span>
+                                                        <p className='txt_cut1'>안창효 연구위원, 광주기후에너지진흥원</p>
+                                                    </li>
+                                                    <li>
+                                                        <span className='text_gray'>연구진</span>
+                                                        <p className='txt_cut1'>김태호,강성현,광주기후에너지진흥원</p>
+                                                    </li>
+                                                    <li>
+                                                        <span className='text_gray'>발행연도</span>
+                                                        <p>2024</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='small_report_list'>
+                                        <ul>
+                                            <li>
+                                                <a href='#' data-title='[2023년] 광주광역시 기후적응 실행계획 수립' data-chief='홍길동 연구위원' data-team='이몽룡, 성춘향, 기후에너지진흥원' data-year='2023'>
+                                                    <img src='/image_report02.svg'></img>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href='#' data-title='[2022년] 탄소중립 도시전략 기본연구' data-chief='김연구 박사' data-team='박가온, 최지우, 연구지원팀' data-year='2022'>
+                                                    <img src='/image_report03.svg'></img>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href='#' data-title='[2021년] 녹색교통 활성화 종합계획' data-chief='이교통 선임' data-team='정환경, 문도시, 지속가능센터' data-year='2021'>
+                                                    <img src='/image_report04.svg'></img>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href='#' data-title='[2020년] 신재생에너지 보급 로드맵' data-chief='박태양 수석' data-team='김바람, 이물결, 에너지정책팀' data-year='2020'>
+                                                    <img src='/image_report05.svg'></img>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href='#' data-title='[2019년] 자원순환도시 실천전략' data-chief='최자원 연구위원' data-team='이나라, 강도시, 환경정책실' data-year='2019'>
+                                                    <img src='/image_report06.svg'></img>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <button className='btn_next'>
+                                    <img src='/ic_next_line_black.svg' alt='다음' />
+                                </button>
+                                <button className='btn_prev'>
+                                    <img src='/ic_prev_line_black.svg' alt='이전' />
+                                </button>
+                            </div>
+                            <div className='panel' data-tab='consign' aria-label='수탁과제 연구보고서 영역'>
+                                <div className='panel_inner'>
+                                    <div className='big_report'>
+                                        <div className='big_report_box'>
+                                            <a href='#'>
+                                                <img src='/image_report01.svg'></img>
+                                            </a>
+                                        </div>
+                                        <div className='big_report_txt'>
+                                            <h3 className='txt_cut1'>[2024년] 광주광역시 제3차 빛공해 방지계획 (2025~2029) 수립</h3>
+                                            <div className='report_info'>
+                                                <ul>
+                                                    <li>
+                                                        <span className='text_gray'>연구책임</span>
+                                                        <p className='txt_cut1'>안창효 연구위원, 광주기후에너지진흥원</p>
+                                                    </li>
+                                                    <li>
+                                                        <span className='text_gray'>연구진</span>
+                                                        <p className='txt_cut1'>김태호,강성현,광주기후에너지진흥원</p>
+                                                    </li>
+                                                    <li>
+                                                        <span className='text_gray'>발행연도</span>
+                                                        <p>2024</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='small_report_list'>
+                                    <ul>
+                                        <li>
+                                            <a href='#' data-title='[2023년] 광주광역시 기후적응 실행계획 수립' data-chief='홍길동 연구위원' data-team='이몽룡, 성춘향, 기후에너지진흥원' data-year='2023'>
+                                                <img src='/image_report02.svg'></img>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href='#' data-title='[2022년] 탄소중립 도시전략 기본연구' data-chief='김연구 박사' data-team='박가온, 최지우, 연구지원팀' data-year='2022'>
+                                                <img src='/image_report03.svg'></img>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href='#' data-title='[2021년] 녹색교통 활성화 종합계획' data-chief='이교통 선임' data-team='정환경, 문도시, 지속가능센터' data-year='2021'>
+                                                <img src='/image_report04.svg'></img>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href='#' data-title='[2020년] 신재생에너지 보급 로드맵' data-chief='박태양 수석' data-team='김바람, 이물결, 에너지정책팀' data-year='2020'>
+                                                <img src='/image_report05.svg'></img>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href='#' data-title='[2019년] 자원순환도시 실천전략' data-chief='최자원 연구위원' data-team='이나라, 강도시, 환경정책실' data-year='2019'>
+                                                <img src='/image_report06.svg'></img>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button className='btn_next'>
+                                    <img src='/ic_next_line_black.svg' alt='다음' />
+                                </button>
+                                <button className='btn_prev'>
+                                    <img src='/ic_prev_line_black.svg' alt='이전' />
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div className='carbon_about_wrap'>
                         <div className='txt_wrap' aria-label='탄소중립 알아보기 영역'>
                             <h3>탄소중립 알아보기</h3>
+                        </div>
+                        <div className='card_wrap'>
+                            <div className='one_card'>
+                                <a href='#'>
+                                    <div className='card img01'>
+                                        <div className='default_cont'>
+                                            <img src='/ic_plan.svg'></img>
+                                            <h2>관련 조례 및 계획</h2>
+                                        </div>
+                                        <div className='hover_cont'>
+                                            <h2>관련 조례 및 계획</h2>
+                                            <p>광주의 탄소중립 실현을 위한 정책과 조례를 한눈에 볼 수 있습니다.</p>
+                                        </div>
+                                    </div>  
+                                </a>
+                            </div>
+                            <div className='two_card'>
+                                <a href='#'>
+                                    <div className='card img02'>
+                                        <div className='default_cont'>
+                                            <img src='/ic_indicator.svg'></img>
+                                            <h2>부문별 정책지표</h2>
+                                        </div>
+                                        <div className='hover_cont'>
+                                            <h2>부문별 정책지표</h2>
+                                            <p>각 부문별 정책 추진 현황과 주요 지표를 한눈에 볼 수 있습니다.</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href='#'>    
+                                    <div className='card img03'>
+                                        <div className='default_cont'>
+                                            <img src='/ic_practice.svg'></img>
+                                            <h2>생활실천안내</h2>
+                                        </div>
+                                        <div className='hover_cont'>
+                                            <h2>생활실천안내</h2>
+                                            <p>생활 속 작은 실천으로 탄소중립을 실현할 수 있는 방법을 소개합니다.</p>
+                                        </div>  
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

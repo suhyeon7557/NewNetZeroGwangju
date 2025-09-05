@@ -453,19 +453,19 @@ const Header = () => {
                     <img className='earth3d' src='/ic_3Dearth.svg' alt='지구아이콘'></img>
                     <p className='climateclock_text'>지구의 평균 온도가 <span className='highlight'>1.5°C</span> 상승하기까지 남은 시간</p>
                     <div className='clock_inner'>
-                        <div className='year'>
+                        <div className='year time'>
                             <span className='year_num'>04</span>
                             <span className='year_text'>년</span>
                         </div>
-                        <div className='month'>
+                        <div className='month time'>
                             <span className='day_num'>19</span>
                             <span className='day_text'>일</span>
                         </div>
-                        <div className='hour'>
+                        <div className='hour time'>
                             <span className='hour_num'>10:26:40</span>
                             <span className='hour_text'>시</span>
                         </div>
-                        <div className='temperature'>
+                        <div className='temperature time'>
                             <img src='/ic_thermometer.svg' alt='온도아이콘'></img>
                             <span className='temperature_num'>+ 1.2°C</span>
                             <p className='txt_black'>현재 기온 상승</p>

@@ -300,7 +300,6 @@
 .main_content_inner .txt_wrap {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 .txt_wrap button.btn_more {
   font-size: 0.85rem;
@@ -308,6 +307,7 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
+  margin-left: auto;
 }
 .txt_wrap button.btn_more::after {
   content: '';
@@ -336,21 +336,30 @@
 .carbon_ft_content {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  gap: 150px;
   align-items: center;
 }
 
 // carbon_ft_tab
+.carbon_ft_tab {
+  flex: 1 0;
+  flex-basis: 0;
+}
 .carbon_ft_tab ul {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+.carbon_ft_tab ul li {
+  width: 100%;
+}
 .carbon_ft_tab a {
+  width: 100%;
   display: inline-block;
-  padding: 2px 20px;
+  padding: 5px 20px;
   color: #444;
-  text-decoration: none;
+  text-align: right;
   transition: all .2s ease;
   border-bottom: 1px solid #DBDBDB;
 }
@@ -451,6 +460,10 @@
   padding: 30px 20px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
+.input_groups {
+  display: flex;
+  flex-direction: row;
+}
 .input_group {
   display: flex;
   flex-direction: row;
@@ -501,12 +514,285 @@
   align-items: center;
   justify-content: center;
 }
+.input_groups {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
 .analysis_form button {
   font-weight: 700;
 } 
 
+//report_wrap 
+.report_wrap {
+  display: flex;
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+  gap: 20px;
+} 
+.horizontal_tab ul {
+  display: flex;
+  flex-direction: row;
+  margin-left: 50px;
+  gap: 10px;
+  align-items: center;
+}
+.horizontal_tab ul li {
+  position: relative;
+  color: #666;
+}
+.horizontal_tab a {
+  display: inline-block;
+  padding: 6px 12px;
+  color: #666;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+.horizontal_tab a:hover,
+.horizontal_tab a:focus-visible {
+  color: #000;
+}
+.horizontal_tab a.on {
+  color: #000;
+  font-weight: 700;
+}
+.horizontal_tab ul li:first-of-type::before {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 40%;
+  transform: translateY(-40%);
+  width: 1px;
+  height: 50%;
+  align-items: center;
+  background-color: #dbdbdb;
 
-@media (max-width: 1550px) {
+}
+.report_panels {
+  position: relative;
+}
+.report_panels .panel {
+  display: none;
+}
+.report_panels .panel.on {
+  display: block;
+}
+
+.report_panels .panel_inner {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.big_report {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  transition: opacity .25s ease;
+}
+.big_report.fading {
+  opacity: 0.15;
+}
+.big_report .big_report_box {
+  position: relative;
+  width: 200px;
+  height: 100%;
+  border-radius: 10px;
+  border: 1px solid #dbdbdb;
+  overflow: hidden;
+}
+.big_report .big_report_box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.big_report_txt {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+.big_report_txt h3 {
+  font-weight: 700;
+}
+.big_report_txt .report_info > ul > li {
+  display: flex;
+  gap: 10px;
+}
+.big_report_txt .report_info > ul > li span {
+  width: 70px;
+  font-size: 0.85rem;
+}
+.big_report_txt .report_info > ul > li p {
+  font-size: 0.85rem;
+}
+
+.small_report_list {
+  position: relative;
+}
+.small_report_list > ul {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  will-change: transform;
+}
+.small_report_list > ul > li {
+  width: 150px;
+  height: 100%;
+  border-radius: 10px;
+  border: 1px solid #dbdbdb;
+  overflow: hidden;
+}
+.small_report_list > ul > li { flex: 0 0 auto; }
+.small_report_list > ul { max-width: calc(150px * 3 + 20px * 2); }
+.small_report_list > ul > li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.report_panels button {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  border: 1px solid #dbdbdb;
+}
+.report_panels button img {
+  width: 12px;
+}
+.report_panels button.btn_next {
+  position: absolute;
+  right: -65px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.report_panels button.btn_prev {
+  position: absolute;
+  left: -65px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+//carbon_about_wrap
+.carbon_about_wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.carbon_about_wrap .card_wrap {
+  width: 100%;
+  max-width: 1550px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  box-sizing: border-box;
+  padding: 0 0;
+}
+.card_wrap {
+  width: 100%;
+  position: relative;
+}
+.card_wrap .one_card { flex: 0 0 calc(50% - 15px); transition: flex-basis .35s ease-in-out; }
+.card_wrap .two_card { flex: 0 0 calc(50% - 15px); display: flex; flex-direction: row; gap: 20px; transition: flex-basis .35s ease-in-out; }
+.card_wrap .two_card a { flex: 1 1 0; min-width: 0; transition: flex-basis .35s ease-in-out; display: block; }
+/* 전체 래퍼 hover: 좌 25% / 우 75% */
+.card_wrap:hover .one_card { flex-basis: calc(25% - 15px); }
+.card_wrap:hover .two_card { flex-basis: calc(75% - 15px); }
+/* 좌측 카드 hover: 좌/우 50%/50% */
+.card_wrap .one_card:hover { flex-basis: 50%; }
+.card_wrap .one_card:hover ~ .two_card { flex-basis: 50%; }
+/* 우측 묶음 hover 시 내부 비율: hover된 카드 66.666%, 나머지 33.333% */
+.card_wrap .two_card:hover a { flex-basis: 33.333%; }
+.card_wrap .two_card:hover a:hover,
+.card_wrap .two_card a:focus-visible { flex-basis: 66.666%; }
+.card_wrap .card {
+  height: 200px;
+  padding: 30px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.card_wrap .card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  pointer-events: none;
+}
+.card_wrap .card {
+  height: 200px;
+  padding: 30px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.card_wrap .card h2 {
+  font-weight: 700;
+  color: #fff;
+}
+.card_wrap .card p {
+  color: #fff;
+}
+.card_wrap .twd_card {
+  display: flex;
+  width: 100%;
+
+}
+.card.img01 {
+  background: url('/image_forest.jpg') no-repeat center center;
+  background-size: cover;
+}
+.card.img02 {
+  background: url('/image_solarenergy.jpg') no-repeat center center;
+  background-size: cover;
+}
+.card.img03 {
+  background: url('/image_sprout.jpg') no-repeat center center;
+  background-size: cover;
+}
+.card .default_cont img {
+  margin-bottom: 10px;
+}
+.card .default_cont,
+.card .hover_cont {
+  position: absolute;
+  inset: 0;
+  padding: 30px;
+  z-index: 2;
+  transition: opacity .25s ease-in-out;
+}
+.card .hover_cont { display: flex; flex-direction: column; gap: 5px; justify-content: flex-start; align-items: flex-start; }
+.card .default_cont { opacity: 1; pointer-events: auto; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; }
+.card .hover_cont { opacity: 0; pointer-events: none; }
+.card:hover .default_cont { opacity: 0; pointer-events: none; }
+.card:hover .hover_cont { opacity: 1; pointer-events: auto; }
+/* 첫 번째 카드는 기본적으로 hover_cont 표시 */
+.one_card .card .default_cont { opacity: 0; pointer-events: none; }
+.one_card .card .hover_cont { opacity: 1; pointer-events: auto; }
+/* 다른 요소가 hover된 동안에는 첫 카드가 default로 전환되되,
+   첫 카드 자신을 hover하면 다시 hover_cont 표시 */
+.card_wrap:hover .one_card .card .default_cont { opacity: 1; pointer-events: auto; }
+.card_wrap:hover .one_card .card .hover_cont { opacity: 0; pointer-events: none; }
+.card_wrap .one_card .card:hover .default_cont { opacity: 0; pointer-events: none; }
+.card_wrap .one_card .card:hover .hover_cont { opacity: 1; pointer-events: auto; }
+.card .hover_cont p {
+  font-weight: 300;
+}
+
+
+
+@media screen and (max-width: 1550px) {
   .main_top_wrap {
     width: 100%;
   }
@@ -520,4 +806,189 @@
   .notice_wrap {
     padding: 0 20px 0 0;
   }
+  .carbon_ft_content {
+    flex-direction: column;
+  }
+  .carbon_ft_panels .panel::before {
+    width: 100%;
+  }
+  .carbon_ft_tab {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .carbon_ft_tab ul {
+    flex-direction: row;
+  }
+  .carbon_ft_panels:before {
+    display: none;
+  }
+  .carbon_ft_panels {
+    width: 100%;
+  }
+  .carbon_ft_panels .panel {
+    padding: 20px;
+  }
+  .carbon_ft_input {
+    padding: 20px;
+    width: 100%;
+  }
+  .analysis_form {
+    justify-content: start;
+  }
+  .small_report_list > ul {
+    max-width: 320px;
+  }
+  .big_report .big_report_box {
+    width: 150px;
+  }
+  .big_report {
+    gap: 20px;
+  }
+  .report_panels .panel_inner {
+    padding: 0 70px 0 70px;
+  }
+  .report_panels button.btn_next {
+    right: 0;
+  }
+  .report_panels button.btn_prev {
+    left: 0;
+  }
 }
+
+@media screen and (max-width: 1200px) {
+  .desc p {
+    display: none;
+  }
+  .carbon_ft_panels .panel .panel_inner {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .carbon_ft_wrap {
+    gap: 20px;
+  }
+  .report_panels button {
+    width: 30px;
+    height: 30px;
+  }
+  .report_panels button img {
+    width: 8px;
+  }
+  .report_panels .panel_inner {
+    padding: 0 50px 0 50px;
+  }
+  .carbon_ft_panels .panel .panel_inner {
+    gap: 10px;
+  }
+  .carbon_about_wrap .card_wrap {
+    flex-direction: column;
+  }
+  .report_wrap {
+    gap: 15px;
+  }
+  .small_report_list > ul {
+    max-width: 100px;
+  }
+  .input_group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .analysis_form {
+    gap: 15px;
+    width: 100%;
+    flex-direction: column;
+  }
+  .big_report_txt{
+    max-width: 350px;
+  }
+  .big_report .big_report_box {
+    width: 120px;
+  }
+  .input_groups {
+    gap: 15px;
+  }
+  .input_group input {
+    width: 100%;
+  }
+  .big_report_txt {
+    gap: 10px;
+  }
+  .big_report_txt h3 {
+    white-space: wrap;
+  }
+  .small_report_list > ul > li {
+    width: 100px;
+  }
+  .analysis_form button {
+    width: 100%;
+  }
+  
+}
+
+
+@media screen and (max-width: 768px) {
+  .big_report .big_report_box {
+    display: none;
+  }
+  .big_report_txt{
+    max-width: 100%;
+  }
+  .report_panels .panel_inner {
+    padding: 0 30px 0 40px;
+    display: block;
+  }
+  .small_report_list {
+    display: none;
+  }
+  .card_wrap .card {
+    height: 150px;
+  }
+  .carbon_ft_tab > ul > li {
+    width: 100%;
+  }
+  .carbon_ft_tab a {
+    width: 100%;
+    text-align: center;
+  }
+  .analysis_form {
+    flex-direction: column;
+  }
+  .input_groups {
+    flex-direction: column;
+  }
+  .input_group input {
+    width: 100%;
+  }
+  .input_group span {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+  .report_panels .panel_inner {
+    width: 100%;
+  }
+  .card_wrap .two_card {
+    flex-direction: column;
+  }
+  .card_wrap .card,
+  .card .default_cont {
+    padding: 20px;
+  }
+  .carbon_about_wrap .card_wrap,
+  .card_wrap .two_card {
+    gap: 10px;
+  }
+  .horizontal_tab ul {
+    margin-left: 15px;
+  }
+  .horizontal_tab a {
+    padding: 3px 6px;
+  }
+  .input_group input {
+    width: 100%;
+  }
+}
+  
