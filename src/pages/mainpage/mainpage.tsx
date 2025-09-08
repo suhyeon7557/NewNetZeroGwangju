@@ -31,6 +31,66 @@ const MainPage = () => {
         return () => { btn.removeEventListener('click', onClick); };
     }, []);
 
+    // 반응형 지도: 모바일용 캔버스 동적 생성 및 viewBox 조정
+    React.useEffect(() => {
+        const wrap = document.querySelector('.map_wrap') as HTMLElement | null;
+        if (!wrap) return;
+
+        const ensureMobileCanvas = () => {
+            let desktop = wrap.querySelector('.map_canvas--desktop') as HTMLElement | null;
+            let mobile = wrap.querySelector('.map_canvas--mobile') as HTMLElement | null;
+            // 기존 단일 map_canvas를 데스크탑 클래스로 승격
+            if (!desktop) {
+                const first = wrap.querySelector('.map_canvas') as HTMLElement | null;
+                if (first && !first.classList.contains('map_canvas--mobile')) {
+                    first.classList.add('map_canvas--desktop');
+                    desktop = first;
+                }
+            }
+            // 모바일 캔버스 없으면 생성
+            if (!mobile) {
+                mobile = document.createElement('div');
+                mobile.className = 'map_canvas map_canvas--mobile';
+                mobile.setAttribute('aria-hidden', 'true');
+                wrap.appendChild(mobile);
+            }
+            return { desktop, mobile } as { desktop: HTMLElement | null; mobile: HTMLElement | null };
+        };
+
+        const cloneToMobile = () => {
+            const { desktop, mobile } = ensureMobileCanvas();
+            if (!desktop || !mobile) return;
+            const svg = desktop.querySelector('svg') as SVGSVGElement | null;
+            if (!svg) return;
+            // 클론 생성 및 viewBox 조정
+            const cloned = svg.cloneNode(true) as SVGSVGElement;
+            // 원본 viewBox 유지, CSS로 축소
+            cloned.setAttribute('viewBox', '0 0 600 405');
+            (cloned as any).style.width = '100%';
+            (cloned as any).style.height = 'auto';
+            mobile.innerHTML = '';
+            mobile.appendChild(cloned);
+            // 표시 토글
+            const w = window.innerWidth;
+            if (w <= 1024) {
+                desktop.setAttribute('aria-hidden', 'true');
+                (desktop as HTMLElement).style.display = 'none';
+                mobile.removeAttribute('aria-hidden');
+                (mobile as HTMLElement).style.display = '';
+            } else {
+                desktop.removeAttribute('aria-hidden');
+                (desktop as HTMLElement).style.display = '';
+                mobile.setAttribute('aria-hidden', 'true');
+                (mobile as HTMLElement).style.display = 'none';
+            }
+        };
+
+        cloneToMobile();
+        const onResize = () => cloneToMobile();
+        window.addEventListener('resize', onResize);
+        return () => window.removeEventListener('resize', onResize);
+    }, []);
+
     React.useEffect(() => {
         const sheet = document.querySelector('.floating_sheet') as HTMLElement | null;
         const inner = document.querySelector('.floating_sheet_inner') as HTMLElement | null;
