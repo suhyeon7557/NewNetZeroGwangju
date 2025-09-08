@@ -27,21 +27,22 @@
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0;
-  animation: fadeSlide 16s infinite ease-in-out;
+  animation: fadeSlide 24s infinite ease-in-out;
+  animation-fill-mode: both;
   will-change: opacity;
   pointer-events: none;
   z-index: 1;
+  position: absolute;
+  inset: 0;
 }
 
 .main_visual_silde .bg1 {
-  background-image: url('/main_visual01.jpg');
-  /* 즉시 시작 제거: 약간 늦게 시작 */
-  animation-delay: 4s;
+  background-image: url('/main_visual01.svg');
+  animation-delay: 0s;
 }
 
 .main_visual_silde .bg2 {
-  background-image: url('/main_visual02.jpg');
-  /* 반주기(8s) + 동일한 지연(4s) → 서로 겹치며 서서히 교차 */
+  background-image: url('/main_visual02.svg');
   animation-delay: 12s;
 }
 
