@@ -305,7 +305,19 @@ select {
     transition: all 0.2s;
 }
 
-
+/* 증가/감소 세모 박스 */
+.triangle_up {
+    display: inline-block;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 9px solid #EC0647; /* 원하는 색상 */
+  }
+  .triangle_down {
+    display: inline-block;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 9px solid #0015FF; /* 원하는 색상 */
+  }
 
 /* 상태값 스타일 */
 span.status {
@@ -329,6 +341,13 @@ span.status {
 .text_navy {
     color :#151329;
 }
+.text_red {
+    color :#EC0647;
+}
+.text_blue {
+    color :#0015FF;
+}
+
 
 /* 텍스트 굵기 */
 .text_bold {

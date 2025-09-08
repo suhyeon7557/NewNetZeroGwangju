@@ -8,6 +8,61 @@ import "./mainpage.scss";
 
 const MainPage = () => {
     React.useEffect(() => {
+        const btn = document.querySelector('.floating_bar_button') as HTMLElement | null;
+        const sheet = document.querySelector('.floating_sheet') as HTMLElement | null;
+        if (!btn || !sheet) return;
+
+        const onClick = (e: Event) => {
+            e.preventDefault();
+            try {
+                const y = sheet.getBoundingClientRect().top + window.pageYOffset - 20;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            } catch (_) {
+                const y = sheet.getBoundingClientRect().top + window.pageYOffset - 20;
+                window.scrollTo(0, y);
+            }
+            sheet.setAttribute('aria-hidden', 'false');
+            sheet.classList.add('on');
+            const bar = document.querySelector('.floating_bar') as HTMLElement | null;
+            if (bar) bar.classList.add('covered');
+        };
+
+        btn.addEventListener('click', onClick);
+        return () => { btn.removeEventListener('click', onClick); };
+    }, []);
+
+    React.useEffect(() => {
+        const sheet = document.querySelector('.floating_sheet') as HTMLElement | null;
+        const inner = document.querySelector('.floating_sheet_inner') as HTMLElement | null;
+        if (!sheet || !inner) return;
+
+        const close = () => {
+            sheet.classList.remove('on');
+            const onDone = () => {
+                sheet.setAttribute('aria-hidden', 'true');
+                const bar = document.querySelector('.floating_bar') as HTMLElement | null;
+                if (bar) bar.classList.remove('covered');
+                inner.removeEventListener('transitionend', onDone as any);
+            };
+            inner.addEventListener('transitionend', onDone as any, { once: true } as any);
+        };
+
+        const onDocClick = (e: Event) => {
+            const t = e.target as HTMLElement | null;
+            if (!t) return;
+            if (t.closest('.floating_sheet_close')) { e.preventDefault(); close(); }
+        };
+        const onKeydown = (e: KeyboardEvent) => { if (e.key === 'Escape') close(); };
+
+        document.addEventListener('click', onDocClick);
+        document.addEventListener('keydown', onKeydown);
+        return () => {
+            document.removeEventListener('click', onDocClick);
+            document.removeEventListener('keydown', onKeydown);
+        };
+    }, []);
+
+    React.useEffect(() => {
         const subNav = document.querySelector('.sub_nav');
         const subNavGnb = document.getElementById('sub_nav_gnb');
         if (!subNav || !subNavGnb) return;
@@ -1029,7 +1084,7 @@ const MainPage = () => {
                                             </a>
                                         </div>
                                         <div className='big_report_txt'>
-                                            <h3 className='txt_cut1'>[2024년] 광주광역시 제3차 빛공해 방지계획 (2025~2029) 수립</h3>
+                                            <h3 className='txt_cut1'>[2024년] 광주광역시 제3차 빛공해 방지계획 (2025~2029) 수립 수탁과제입니다. </h3>
                                             <div className='report_info'>
                                                 <ul>
                                                     <li>
@@ -1048,8 +1103,7 @@ const MainPage = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className='small_report_list'>
+                                    <div className='small_report_list'>
                                     <ul>
                                         <li>
                                             <a href='#' data-title='[2023년] 광주광역시 기후적응 실행계획 수립' data-chief='홍길동 연구위원' data-team='이몽룡, 성춘향, 기후에너지진흥원' data-year='2023'>
@@ -1077,6 +1131,7 @@ const MainPage = () => {
                                             </a>
                                         </li>
                                     </ul>
+                                    </div>
                                 </div>
                                 <button className='btn_next'>
                                     <img src='/ic_next_line_black.svg' alt='다음' />
@@ -1134,6 +1189,58 @@ const MainPage = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            {/* 하단 슬라이드 레이어 (공지 스타일) */}
+            <div className='floating_sheet' aria-hidden='true' role='region'>
+                <div className='floating_sheet_inner'>
+                    <i className='floating_smoke smoke1' aria-hidden='true'></i>
+                    <i className='floating_smoke smoke2' aria-hidden='true'></i>
+                        <button type='button' className='floating_sheet_close' aria-label='닫기'>
+                            <img src='/ic_close_black.svg' alt='' />
+                        </button>
+                    <div className='floating_sheet_header' aria-label='온실가스 배출량 제목 영역'>
+                        <h2 className='floating_sheet_title'>광주광역시 <strong>온실가스 배출량</strong></h2>
+                    </div>
+                    <div className='floating_sheet_body' aria-label='온실가스 배출량 차트 영역'>
+                        <div className='chart_box pie'>
+                            <h2>총 배출량</h2>
+                            <div className='chart_pie'>
+                            {/* 임시이미지입니다. 차트 들어갈 공간입니다. */}
+                                <img src='/image_pie.svg' style={{width: '150px'}}></img>
+                            </div>
+                            <div className='chart_txt'>
+                                <h3>
+                                    487,973kg
+                                    <span className='txt_gray'>tCO₂</span>
+                                </h3>
+                                <p className='txt_compare'>지난달보다
+                                    <span className='triangle_up'></span>
+                                    <span className='text_red'>3,200(2.5%)</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div className='chart_box person'>
+                            <div className='chart_person'>
+                            {/* 임시이미지입니다. 차트 들어갈 공간입니다. */}   
+                                <img src='/floating_person.svg' style={{width: '100px'}}></img>
+                            </div>
+                            <div className='chart_txt'>
+                                <p className='txt_compare'>전국평균대비
+                                    <span className='triangle_down'></span>
+                                    <span className='text_blue'>11(-23.7%)</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className='floating_bar' aria-label='플로팅 바 영역'>
+                <div className='floating_bar_inner'>
+                    <button type='button' className='floating_bar_button' aria-label='탄소중립 안내 열기'>
+                        <span className='floating_txt'>광주,<br/> 얼마나<br/>배출할까?</span>
+                        <img src='/ic_earth.svg' alt='' />
+                    </button>
                 </div>
             </div>
         </div>
