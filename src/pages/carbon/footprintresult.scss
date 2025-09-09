@@ -1,0 +1,147 @@
+span.bold {
+    font-weight: 700;
+}
+span.bold.red {
+    color: #F2082F;
+}
+span.bold.orange {
+    color: #FF6B3D;
+}
+span.bold.greenBox {
+    background-color: #059669;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+span.gray {
+    font-size: .85rem;
+    color: #666;
+}
+
+
+.footprint_title {
+    width: 100%;
+    text-align: center;
+    font-size: 1.15rem;
+}
+
+.footprint_btn {
+    width: 30%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 20px;
+    font-weight: 700;
+}
+
+.footprint_result_wrap {
+    position: relative;
+    width: 100%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.footprint_result_wrap .footprint_result_header,
+.footprint_result_wrap .footprint_result_content {
+    position: relative;
+    width: 100%;
+}
+.footprint_result_wrap .footprint_result_header {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.footprint_result_wrap .footprint_result_header h3 {
+    font-size: 1.15rem;
+}
+
+
+
+/* item_wrap */
+.footprint_result_wrap.item_wrap {
+    background-color: #F0FDF4;
+}
+.footprint_result_wrap.item_wrap .footprint_result_header h3 {
+    text-align: center;
+}
+.footprint_result_wrap.item_wrap .footprint_result_header p {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #059669;
+}
+.footprint_result_wrap.item_wrap .footprint_result_header span {
+    text-align: center;
+}
+
+.footprint_result_wrap.item_wrap .footprint_result_content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+.footprint_result_wrap.item_wrap .footprint_result_content .footprint_result_item {
+    position: relative;
+    width: calc(100% / 4 - 12px);
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 1px solid #DBDBDB;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+.footprint_result_wrap.item_wrap .footprint_result_content .footprint_result_item p {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #059669;
+}
+
+.footprint_result_wrap.item_wrap .footprint_result_content .footprint_result_item.grade p {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #059669;
+}
+.footprint_result_wrap.item_wrap .footprint_result_content .footprint_result_item.grade p::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+.footprint_result_wrap.item_wrap .footprint_result_content .footprint_result_item.grade.a p::before {
+    content: 'A';
+}
+.footprint_result_wrap.item_wrap .footprint_result_content .footprint_result_item.grade.b p::before {
+    content: 'B';
+}
+.footprint_result_wrap.item_wrap .footprint_result_content .footprint_result_item.grade.c p::before {
+    content: 'C';
+}
+.footprint_result_wrap.item_wrap .footprint_result_content .footprint_result_item.grade.d p::before {
+    content: 'D';
+}
+
+.footprint_result_wrap.item_wrap .footprint_result_content .footprint_result_item.grade span {
+    position: relative;
+}
+.footprint_result_wrap.item_wrap .footprint_result_content .footprint_result_item.grade.a span::before {
+    content: '우수';
+}
+.footprint_result_wrap.item_wrap .footprint_result_content .footprint_result_item.grade.b span::before {
+    content: '양호';
+}
+.footprint_result_wrap.item_wrap .footprint_result_content .footprint_result_item.grade.c span::before {
+    content: '보통';
+}
+.footprint_result_wrap.item_wrap .footprint_result_content .footprint_result_item.grade.d span::before {
+    content: '미흡';
+}
