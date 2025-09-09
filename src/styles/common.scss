@@ -1,3 +1,58 @@
+/* ===============================
+   Z-INDEX SCALE (레이어 규칙)
+   0~99      : Base UI (메뉴, GNB, 네비 배경 등)
+   100~199   : Header, Scroll button
+   200~299   : Footer / Footer 배너
+   500~599   : Floating sheet
+   1000~1099 : FAB, Notice
+   2000+     : Modal, Overlay
+=============================== */
+
+/* ===============================
+   Base UI (0~99)
+=============================== */
+#menu_inner                           { z-index: 10; }
+#gnb1                                 { z-index: 20; }
+#gnb2                                 { z-index: 25; }
+#gnb2-layer                           { z-index: 30; }
+#sub_nav_gnb .lnb_area .lnb_list      { z-index: 35; }
+.nav_wrap .nav_bg_img                  { z-index: 50; } /* 배경 이미지 */
+
+/* ===============================
+   Header & Fixed Button (100~199)
+=============================== */
+#header                               { z-index: 100; }
+#topscroll-btn                         { z-index: 110; }
+
+/* ===============================
+   Footer / Footer Banner (200~299)
+=============================== */
+.footer_banner #banner_f_slider::after           { z-index: 200; }
+.footer_banner #banner_f_slider .swiper-controls { z-index: 210; }
+
+/* ===============================
+   Floating Sheet (500~599)
+=============================== */
+.floating_sheet                         { z-index: 500; }
+.floating_sheet_inner                   { z-index: 510; }
+
+/* ===============================
+   FAB & Notice (1000~1099)
+=============================== */
+.notice-fab                             { z-index: 1000; }
+.notice-panel                           { z-index: 1010; }
+
+/* ===============================
+   Modal / Overlay (2000+)
+=============================== */
+.modal-backdrop                          { z-index: 2000; }
+.modal-content                           { z-index: 2010; }
+
+
+
+
+
+
 /*nav_page*/
 .nav_wrap {
     position: relative;
@@ -311,13 +366,13 @@ select {
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     border-top: 9px solid #EC0647; /* 원하는 색상 */
-  }
+}
   .triangle_down {
     display: inline-block;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     border-bottom: 9px solid #0015FF; /* 원하는 색상 */
-  }
+}
 
 /* 상태값 스타일 */
 span.status {

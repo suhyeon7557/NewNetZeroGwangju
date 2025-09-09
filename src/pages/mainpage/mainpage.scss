@@ -4,6 +4,7 @@
 .main_visual_silde {
   position: relative;
   width: 100%;
+  height: 100%;
   /* 기본 배경을 깔아 초기 로드 시 흰색 플래시 방지 */
   background-image: url('/main_visual01.svg');
   background-position: center center;
