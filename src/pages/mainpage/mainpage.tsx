@@ -567,6 +567,41 @@ const MainPage = () => {
             };
         }, []);
 
+        // 지도 클릭 위임 핸들러 (모바일 클론 SVG 포함해서 동작)
+        React.useEffect(() => {
+            const container = document.querySelector('.map_wrap') as HTMLElement | null;
+            if (!container) return;
+
+            const codeToName: Record<string, string> = {
+                GS: '광산구',
+                BK: '북구',
+                SE: '서구',
+                DO: '동구',
+                NM: '남구',
+            };
+
+            const onClick = (e: Event) => {
+                const t = e.target as Element | null;
+                const path = t && (t as HTMLElement).closest?.('.overlay');
+                if (!path || !container.contains(path as Node)) return;
+
+                // 모든 path에서 on 제거 후, 클릭된 path에 on 추가
+                document.querySelectorAll('.map_canvas .overlay').forEach((p) => p.classList.remove('on'));
+                (path as Element).classList.add('on');
+
+                // 코드 추출 및 타이틀 업데이트
+                const m = (((path as Element).getAttribute('class') || '').match(/ov_([A-Z]{2})/));
+                const code = (m && m[1]) || '';
+                const title = document.getElementById('graphGuTitle');
+                if (title && code) title.textContent = `${codeToName[code] || ''} 온실가스 배출량`;
+            };
+
+            container.addEventListener('click', onClick);
+            return () => {
+                container.removeEventListener('click', onClick);
+            };
+        }, []);
+
         // horizontal_tab 전환 (정책과제/수탁과제)
         React.useEffect(() => {
             const tabs = Array.from(document.querySelectorAll('.horizontal_tab a')) as HTMLAnchorElement[];
