@@ -10,6 +10,7 @@ import Header from "../layout/header";
 import Footer from "../layout/footer";
 import TopScroll from "../layout/topscroll";
 import Notice from "../layout/notice";
+import TabMenuEnhancer from "../layout/tabmenu_enhancer";
 
 export const metadata: Metadata = {
 	title: "광주넷제로",
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <Footer />  
                     <Notice />
                     <TopScroll />
+                    <TabMenuEnhancer />
                 </div>
 			</body>
 		</html>

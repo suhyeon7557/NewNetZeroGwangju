@@ -270,6 +270,34 @@
     font-weight: 550;
 }
 
+/* 모바일/과다 탭 전용 드롭다운 UI */
+.tab_menu_enhanced {
+    width: 100%;
+    display: none; /* 기본은 숨김, JS에서 조건 충족 시 표시 */
+}
+.tab_menu_enhanced .tab_select {
+    width: 100%;
+    padding: 10px 40px 10px 14px;
+    border: 1px solid #DBDBDB;
+    border-radius: 30px;
+    background-color: #F2F2F2;
+    color: #333;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('/ic_select.svg');
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 14px;
+}
+
+@media (max-width: 768px) {
+    /* JS가 켜주지만, 초기 렌더에서도 UX 보장 */
+    .tab_menu_enhanced {
+        display: block;
+    }
+}
+
 
 /* search_wrap */
 .search_wrap {

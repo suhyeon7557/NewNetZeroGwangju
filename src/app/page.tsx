@@ -1,8 +1,8 @@
-import MainPage from "../pages/mainpage/mainpage";
+import ReportPage from "../pages/ReportPage/ReportPage";
 
 export default function Home() {
 	return (
-		<MainPage/>
+		<ReportPage/>
 	);
 }
 
