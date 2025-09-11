@@ -278,9 +278,9 @@
 .tab_menu_enhanced .tab_select {
     width: 100%;
     padding: 10px 40px 10px 14px;
-    border: 1px solid #DBDBDB;
+    border: 1px solid #151329;
     border-radius: 30px;
-    background-color: #F2F2F2;
+    background-color: #fff;
     color: #333;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -1232,3 +1232,60 @@ table tbody tr:last-of-type {
     }
 }
 
+
+/* ------------------------------
+   Tab Custom Dropdown (모바일 전용)
+   body[data-tab-custom="true"] 활성화 시 사용
+------------------------------ */
+body[data-tab-custom="true"] .tab_menu_enhanced {
+    position: relative;
+}
+body[data-tab-custom="true"] .tab_menu_enhanced .tab_select {
+    display: none;
+}
+body[data-tab-custom="true"] .tab_custom_dropdown {
+    position: relative;
+    width: 100%;
+}
+body[data-tab-custom="true"] .tab_cd_trigger {
+    width: 100%;
+    padding: 12px 44px 12px 14px;
+    border: 1px solid #dbdbdb;
+    background-color: #fff;
+    color: #333;
+    text-align: left;
+    cursor: pointer;
+}
+body[data-tab-custom="true"] .tab_cd_trigger::after {
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 8px;
+    background: url('/ic_select.svg') no-repeat center center;
+}
+body[data-tab-custom="true"] .tab_cd_list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    max-height: 260px;
+    overflow: auto;
+    z-index: 50;
+}
+body[data-tab-custom="true"] .tab_custom_dropdown.is-open .tab_cd_list {
+    display: block;
+}
+body[data-tab-custom="true"] .tab_cd_option {
+    padding: 12px 14px;
+    color: #333;
+}
+body[data-tab-custom="true"] .tab_cd_option.is-active {
+    background-color: #f5f5f5;
+    color: #111;
+}

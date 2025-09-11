@@ -45,7 +45,7 @@ export default function TabMenuEnhancer() {
             wrap.appendChild(select);
             menu.parentElement?.insertBefore(wrap, menu);
 
-            const mq = window.matchMedia('(max-width: 480px)');
+            const mq = window.matchMedia('(max-width: 768px)');
             const apply = () => {
                 const useSelect = mq.matches;
                 wrap.style.display = useSelect ? '' : 'none';
