@@ -1,0 +1,290 @@
+/*dashboardpage*/
+.Dashboardpage {
+    width: 100%;
+    height: 100%;
+}
+.Dashboardpage .Dashboardpage_wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #151329;
+    z-index: 9999
+}
+
+/*inner*/
+.Dashboardpage_inner {
+    width: 100%;
+    position: relative;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.Dashboardpage_inner .Dashboardpage_header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/*header*/
+.Dashboardpage_header img {
+    width: 120px;   
+}
+.Dashboardpage_header button {
+    width: 180px;
+    padding: 10px 15px;
+    background-color: rgba(185,227,0,0.3);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: #B9E300;
+    font-size: 0.85rem;
+}
+.Dashboardpage_header button::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: url(/ic_arrow_up.svg) no-repeat center center;
+}
+
+/*content*/
+.Dashboardpage_content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*left*/
+.DB_left  {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.DB_left > div {
+    position: relative;
+    width: 100%;
+}
+
+.DB_left > div:not(:last-of-type)::after {
+    content:'';
+    display: block;
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255,255,255,0.2);
+}
+
+.legend_wrap ul {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 10px;
+}
+.legend_wrap ul li {
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+//description
+.DB_left .description_wrap {
+    position: relative;
+}
+.DB_left .description_wrap button {
+    text-decoration: underline;
+    font-size: 0.85rem;
+    color: #fff;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.DB_left .description_wrap button::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url(/ic_file_btn.svg) no-repeat center center;
+    background-size: contain;
+}
+
+
+//emissions_wrap
+
+.emissions_wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.emissions_wrap h3 {
+    font-size: 1.25rem;
+    color: #fff;
+    font-weight: 700;
+}
+.map_select_wrap {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+}
+.select_navy select {
+    width: 130px;
+    padding: 10px 30px 10px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff; 
+    font-size: 0.85rem;
+    /* 기본 화살표 제거 */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url(/ic_dashboard_select.svg) no-repeat center center ;
+    background-position: right 12px center;
+    background-color: #151329;
+    transition: all 0.3s ease;
+}
+
+
+//emissions_graph_wrap
+.emissions_graph_wrap {
+    width: 100%;
+    position: relative;
+    padding: 30px;
+    border-radius: 15px;
+    background: linear-gradient(to bottom, #030625, #2B354C);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.emissions_graph_wrap .graph_txt {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.emissions_graph_wrap .graph_txt h3 {
+    color: #666;
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+.emissions_graph_wrap .graph_txt .data_txt {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    gap: 3px;
+}
+.emissions_graph_wrap .graph_txt .data_txt p {
+    margin-right: 5px;
+    font-size: 1.25rem;
+}
+
+
+//DB_right
+.DB_right {
+    position: relative;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    background: linear-gradient(to bottom, #030625, #2B354C);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 15px;
+}
+.DB_right .trend_txt {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.DB_right .trend_txt::after {
+    content: '';
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255,255,255,0.2);
+}
+.DB_right .trend_txt h3 {
+    font-size: 1.25rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.DB_right .trend_txt h3:before {
+    content: '';
+    display: block;
+    gap: 5px;
+    width: 25px;
+    height: 25px;
+    background: url(/ic_energy.svg) no-repeat center center;
+    background-size: contain;
+}
+.DB_right .trend_txt p {
+    color: #666;
+    font-size: 0.85rem;
+}
+.DB_right .trend_graph_wrap > ul > li h2 {
+    color: #fff;
+    font-weight: 400;
+    font-size: 0.85rem;
+}
+.DB_right .trend_graph_wrap > ul > li {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    height: 60px;
+}
+.DB_right .trend_graph_wrap > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.trend_graph_wrap > ul > li .txt_graph_wrap {
+    display: flex;
+    align-items: center;
+}
+.trend_graph_wrap > ul > li .txt_graph_wrap .legend_box {
+    width: 150px;
+}
+.trend_graph_wrap > ul > li .txt_graph_wrap .trend_graph_box {
+    width: calc(100% - 150px);
+}
+.trend_graph_wrap > ul > li .trend_graph_box p {
+    display: none;
+    color:#fff;
+    font-size: 0.65rem;
+    text-align: center;
+}
+.trend_graph_wrap > ul > li .trend_graph_box.data_none p {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+//dashboardpage_footer
+.dashboardpage_footer {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: rgba(0,0,0,0.2);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dashboardpage_footer h2 {
+    color: #fff;
+    font-size: 0.85rem;
+}

@@ -395,12 +395,19 @@ select {
     border-right: 7px solid transparent;
     border-top: 9px solid #EC0647; /* 원하는 색상 */
 }
-  .triangle_down {
+.triangle_down {
     display: inline-block;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     border-bottom: 9px solid #0015FF; /* 원하는 색상 */
 }
+.triangle_down.skyblue {
+    display: inline-block;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 9px solid #5D88FD; /* 원하는 색상 */
+}
+
 
 /* 상태값 스타일 */
 span.status {
@@ -430,12 +437,15 @@ span.status {
 .text_blue {
     color :#0015FF;
 }
-
+.text_skyblue {
+    color: #5D88FD;
+}
 
 /* 텍스트 굵기 */
 .text_bold {
     font-weight: 550;
 }
+
 
 /* 테이블 */
 table td {
@@ -475,6 +485,105 @@ table tbody tr:last-of-type {
     background : url('/ic_check.svg') no-repeat center center;
     background-size: 10px;
 }
+
+/* 범례 */
+.legend_box {
+    display: flex;
+    gap: 5px;
+}
+.legend_box p,
+.legend_box span {
+    font-size: 0.85rem;
+}
+.legend_box p.legend {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    position: relative;
+}
+p.legend::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15px;
+    height: 15px;
+}
+.legend_box.green p.legend::before {
+    background: url(/ic_green_legend.svg) no-repeat center center;
+    background-size: contain;
+}
+.legend_box.yellow p.legend::before {
+    background: url(/ic_yellow_legend.svg) no-repeat center center;
+    background-size: contain;
+}
+.legend_box.orange p.legend::before {
+    background: url(/ic_orange_legend.svg) no-repeat center center;
+    background-size: contain;
+}
+.legend_box.white p.legend::before {
+    background: url(/ic_white_legend.svg) no-repeat center center;
+    background-size: contain;
+}
+.legend_box.led p.legend::before {
+    background: url(/ic_led_legend.svg) no-repeat center center;
+    background-size: contain;
+}
+.legend_box.purple p.legend::before {
+    background: url(/ic_purple_legend.svg) no-repeat center center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-size: cover;
+}
+
+.legend_box.green p {
+    color: #1bea9a;
+    background-color: #1bea9a;
+}
+.legend_box.yellow p {
+    color: #fffb9b;
+    background-color: #fffb9b;
+}
+.legend_box.orange p {
+    color: #ff9c29;
+    background-color: #ff9c29;
+}
+.legend_box.white p {
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+.legend_box.led p {
+    color: #ff3c69;
+    background-color: #ff3c69;
+}
+.legend_box.purple p {
+    color: #aa75d3;
+}
+
+.legend_box.green span {
+    color: #1bea9a;
+}
+.legend_box.yellow span {
+    color: #fffb9b;
+}
+.legend_box.orange span {
+    color: #ff9c29;
+}
+.legend_box.white span {
+    color: #ffffff;
+}
+.legend_box.led span {
+    color: #ff3c69;
+}
+.legend_box.purple span {
+    color: #aa75d3;
+}
+
+
+
+
 
 /* 페이징 */
 .pagination {
