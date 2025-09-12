@@ -2,32 +2,33 @@
 .Dashboardpage {
     width: 100%;
     height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200000;
 }
 .Dashboardpage .Dashboardpage_wrap {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background: #151329;
-    z-index: 9999
 }
 
 /*inner*/
 .Dashboardpage_inner {
     width: 100%;
+    height: 100%;
     position: relative;
-    padding: 30px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
 }
 .Dashboardpage_inner .Dashboardpage_header {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 20px 20px 0 20px;
 }
 /*header*/
 .Dashboardpage_header img {
@@ -59,20 +60,47 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    flex: 1 0;
+    flex-basis: 0;
+    overflow: hidden;
+    padding: 0 20px;
 }
+
 
 /*left*/
 .DB_left  {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.DB_left .DB_left_inner {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
-.DB_left > div {
+.DB_left .description_wrap {
+    padding: 10px 0;
+}
+.DB_left .legend_wrap ,
+.DB_left .description_wrap ,
+.DB_left .emissions_wrap {
     position: relative;
     width: 100%;
 }
 
-.DB_left > div:not(:last-of-type)::after {
+.DB_left .DB_left_inner 
+.DB_left .DB_left_inner > div {
+    position: relative;
+    width: 100%;
+}
+/* 중앙 차트 영역: 남는 공간 유연 분배 */
+.DB_center {
+    flex: 1 0;
+    flex-basis: 0;
+}
+
+.DB_left .DB_left_inner > div:not(:last-of-type)::after {
     content:'';
     display: block;
     position: absolute;
@@ -122,7 +150,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 .emissions_wrap h3 {
     font-size: 1.25rem;
@@ -132,7 +160,7 @@
 .map_select_wrap {
     width: 100%;
     display: flex;
-    gap: 15px;
+    gap: 10px;
 }
 .select_navy select {
     width: 130px;
@@ -182,29 +210,47 @@
     font-size: 1.25rem;
 }
 
+.DB_right_body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
 //DB_right
 .DB_right {
     position: relative;
     width: 400px;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 30px;
     background: linear-gradient(to bottom, #030625, #2B354C);
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 15px;
 }
+
+
+
+/* 사이드 핸들: 접혔을 때 우측 화면 모서리에 고정되어 항상 보임 */
+.DB_right .DB_right_handle {
+    display: none; /* 데스크탑 기본 숨김, 1200px 이하에서 사용 */
+}
 .DB_right .trend_txt {
+    position: relative;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 15px;
 }
 .DB_right .trend_txt::after {
     content: '';
-    bottom: 10px;
-    left: 0;
-    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 30px);
     height: 1px;
     background-color: rgba(255,255,255,0.2);
 }
@@ -228,31 +274,44 @@
     color: #666;
     font-size: 0.85rem;
 }
+.DB_right .trend_graph_wrap {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    flex: 1 0;
+    flex-basis: 0;
+}
 .DB_right .trend_graph_wrap > ul > li h2 {
     color: #fff;
     font-weight: 400;
     font-size: 0.85rem;
-}
-.DB_right .trend_graph_wrap > ul > li {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    height: 60px;
 }
 .DB_right .trend_graph_wrap > ul {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.trend_graph_wrap > ul > li .txt_graph_wrap {
+.DB_right .trend_graph_wrap > ul > li {
+    position: relative;
+    width: 100%;
+}
+.trend_graph_wrap > ul > li .txt_wrap {
     display: flex;
+    flex-direction: column;
+}
+.trend_graph_wrap > ul > li .txt_trend_wrap {
+    display: flex;
+    flex-direction: row;
     align-items: center;
 }
-.trend_graph_wrap > ul > li .txt_graph_wrap .legend_box {
-    width: 150px;
+.trend_graph_wrap > ul > li .txt_wrap {
+    width: calc(100% - 200px);
 }
-.trend_graph_wrap > ul > li .txt_graph_wrap .trend_graph_box {
-    width: calc(100% - 150px);
+.trend_graph_wrap > ul > li .trend_graph_box {
+    width: 200px;
 }
 .trend_graph_wrap > ul > li .trend_graph_box p {
     display: none;
@@ -263,15 +322,6 @@
 .trend_graph_wrap > ul > li .trend_graph_box.data_none p {
     display: block;
 }
-
-
-
-
-
-
-
-
-
 
 
 //dashboardpage_footer
@@ -287,4 +337,214 @@
 .dashboardpage_footer h2 {
     color: #fff;
     font-size: 0.85rem;
+}
+
+
+/* 반응형: 사이드 드로어(>1200px), 슬라이드 패널(<=1200px), 바텀시트(<=768px) */
+@media (max-width: 1200px) {
+    .Dashboardpage_header img {
+        display: none;
+    }
+    .Dashboardpage_content {
+        align-items: stretch;
+    }
+    .DB_left {
+        width: 230px;
+    }
+    .DB_right {
+        position: relative;
+        transform: none;
+        width: 400px;
+        max-width: none;
+        height: auto;
+        border-radius: 15px;
+        z-index: auto;
+    }
+    .DB_left .DB_left_inner {
+        padding: 15px;
+    }
+    .map_select_wrap {
+        gap: 10px;
+    }
+    .emissions_wrap {
+        gap: 15px;
+    }
+    .select_navy select {
+        width: auto;
+    }
+    .Dashboardpage_header button {
+        padding: 5px;
+        width: 150px;
+    }
+    .Dashboardpage_content {
+        align-items: stretch;
+    }
+
+    .DB_right_toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        height: 36px;
+        padding: 0 14px;
+        margin-bottom: 12px;
+        border-radius: 8px;
+        background-color: rgba(185,227,0,0.2);
+        color: #B9E300;
+    }
+
+    /* 오른쪽에서 들어오는 슬라이드 패널 */
+    .DB_right {
+        position: fixed;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        overflow-y: visible;
+        overflow-x: visible;
+        width: min(86vw, 400px);
+        max-width: 420px;
+        border-radius: 0;
+        transform: translateX(calc(100% - 50px)); /* 닫힘 시 내용 일부 노출 */
+        transition: transform .28s ease;
+        z-index: 10000;
+    }
+    .DB_right.is-open {
+        transform: translateX(0);
+        max-height: 100%;
+    }
+    /* 좌측 고정으로 가려지는 중앙영역을 위해 내부 여백 확보 */
+    .DB_right .trend_graph_wrap {
+        overflow-y: visible;
+        max-height: calc(100% - 90px);
+    }   
+    /* 사이드 드로어 높이에 맞춰 내부 스크롤 */
+    .trend_graph_wrap {
+        height: calc(100% - 90px);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    /* 푸터를 하단 고정 + 좌측 사이드바 폭만큼 여백 확보 */
+    .dashboardpage_footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9500;
+        padding-left: 280px; /* .Dashboardpage_inner 좌측 패딩과 동일 */
+    }
+
+    /* 핸들: 패널(box) 기준으로 내부 좌측에 부착 (닫힘 상태에서도 좌측 36px 영역에 노출) */
+    .DB_right .DB_right_handle {
+        display: block;
+        position: absolute;
+        left: -35px;
+        width: 36px;
+        height: 80px;
+        border: none;
+        border-radius: 10px 0 0 10px;
+        background: rgba(185,227,0,0.9) url('/ic_prev_white.svg') no-repeat center center;
+        background-size: 12px 12px;
+        cursor: pointer;
+        z-index: 2;
+        color: transparent;
+        text-indent: -9999px;
+    }
+    .dashboardpage_footer {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 바텀시트 전환: 전환 애니메이션을 리사이즈 시점에는 보이지 않도록 최소화 */
+    .DB_right {
+        left: 0;
+        right: 0;
+        top: auto;
+        bottom: 0;
+        width: 100%;
+        max-width: 100vw;
+        height: 45vh;
+        max-height: 80vh;
+        border-top-left-radius: 14px;
+        border-top-right-radius: 14px;
+        transform: translateY(calc(100% - 50px));
+        transition: none;
+        z-index: 10000;
+    }
+    .DB_left .DB_left_inner {
+        padding: 0;
+    }
+    .legend_box p, .legend_box span {
+        font-size: 0.75rem;
+    }
+    .DB_left {
+        width: 100%;
+        height: auto;
+    }
+    .Dashboardpage_content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .DB_left .description_wrap,
+    .DB_left .emissions_wrap {
+        display: none;
+    }
+    .DB_left .DB_left_inner > div:not(:last-of-type)::after {
+        display: none;
+    }
+    .legend_wrap ul {
+        gap: 5px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .DB_right .DB_right_handle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .Dashboardpage_header button {
+        width: 130px;
+    }
+    .Dashboardpage_header button::after {
+        display: none;
+    }
+    .DB_right.is-open {
+        transform: translateY(0);
+    }
+    /* 사용자 액션 시에만 부드럽게 동작 */
+    .DB_right.animating {
+        transition: transform .28s ease;
+    }
+
+    /* 바텀시트 내부 스크롤 컨테이너 높이 조정 */
+    .DB_right_body {
+        height: calc(65vh - 60px);
+        max-height: calc(80vh - 60px);
+    }
+
+    /* 바텀시트에서도 좌측 핸들 유지 (사용자 요청 사항) */
+    .DB_right .DB_right_handle {
+        position: absolute;
+        left: 50%;
+        right: auto;
+        top: -14px;
+        transform: translate(-50%, -50%);
+        width: 120px;
+        height: 25px;
+        border: none;
+        border-radius: 10px 10px 0 0;
+        background: rgba(185,227,0,0.9);
+    }
+    .DB_right .DB_right_handle::after {
+        content: '';
+        display: block;
+        width: 30px;
+        height: 30px;
+        margin: 0 auto;
+        background: url('/ic_prev_white.svg') no-repeat center center;
+        background-size: 30px 20px;
+        transform: rotate(90deg);
+    }
 }
