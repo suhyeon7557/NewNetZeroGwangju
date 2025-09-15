@@ -1,6 +1,5 @@
 
-
-/*dashboardpage*/
+/* dashboardpage */
 .Dashboardpage {
     width: 100%;
     height: 100%;
@@ -16,7 +15,7 @@
     background: #151329;
 }
 
-//intro_overlay
+/* intro_overlay */
 .intro_overlay {
     width: 100%;
     height: 100%;
@@ -26,10 +25,6 @@
     z-index: 200001;
     background: rgba(0,0,0,0.6);
 }
-.intro_overlay.is-visible {
-    display: block;
-}
-
 .intro_overlay_inner h3 {
     position: absolute;
     top: 30px;
@@ -39,17 +34,10 @@
     font-weight: 700;
 }
 .emissions_description {
-    position: fixed;
-    width: 280px;
-    height: auto;
+    position: absolute;
     left: 15px;
-    top: calc(50% - -60px);
+    top: calc(50% - -50px);
     transform: translateY(-50%);
-}
-.emissions_description img {
-    display: block;
-    width: 100%;
-    height: auto;
 }
 .description_box {
     position: absolute;
@@ -102,36 +90,31 @@
     transform: translateY(0);
     will-change: transform;
 }
-
 .intro_button button:hover {
     transform: translateY(-3px);
     animation: intro_button_wobble .6s ease;
     box-shadow: 0 6px 12px rgba(0,0,0,0.25);
 }
-
 .intro_button button:active {
     transform: translateY(-1px);
     animation: none;
 }
-
 @keyframes intro_button_wobble {
-    0% {
-        transform: translateY(0) rotate(0deg);
-    }
-    30% {
-        transform: translateY(-4px) rotate(-1.2deg);
-    }
-    60% {
-        transform: translateY(-4px) rotate(1.2deg);
-    }
-    100% {
-        transform: translateY(-3px) rotate(0deg);
-    }
+    0% { transform: translateY(0) rotate(0deg); }
+    30% { transform: translateY(-4px) rotate(-1.2deg); }
+    60% { transform: translateY(-4px) rotate(1.2deg); }
+    100% { transform: translateY(-3px) rotate(0deg); }
 }
 
+/* Add default hidden/visible rules for overlay */
+.intro_overlay {
+    display: none;
+}
+.intro_overlay.is-visible {
+    display: block;
+}
 
-
-/*inner*/
+/* inner */
 .Dashboardpage_inner {
     width: 100%;
     height: 100%;
@@ -148,7 +131,7 @@
     padding: 20px 20px 0 20px;
 }
 
-/*header*/
+/* header */
 .Dashboardpage_header img {
     width: 120px;   
 }
@@ -175,7 +158,7 @@
     background: url(/ic_arrow_up.svg) no-repeat center center;
 }
 
-/*content*/
+/* content */
 .Dashboardpage_content {
     position: relative;
     width: 100%;
@@ -187,7 +170,7 @@
     padding: 0 20px;
 }
 
-/*left*/
+/* left */
 .DB_left  {
     position: relative;
     height: 100%;
@@ -242,7 +225,7 @@
     align-items: center;
     color: #fff;
 }
-//description
+/* description */
 .DB_left .description_wrap {
     position: relative;
 }
@@ -266,14 +249,13 @@
     background-size: contain;
 }
 
-//Dashboardpage_description
+/* Dashboardpage_description */
 .Dashboardpage_description {
-    
     width: 100%;
     height: 100%;
 } 
 
-//emissions_wrap
+/* emissions_wrap */
 .emissions_wrap {
     position: relative;
     display: flex;
@@ -297,7 +279,6 @@
     border: 1px solid rgba(255,255,255,0.2);
     color: #fff; 
     font-size: 0.85rem;
-    /* 기본 화살표 제거 */
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -307,8 +288,7 @@
     transition: all 0.3s ease;
 }
 
-
-//emissions_graph_wrap
+/* emissions_graph_wrap */
 .emissions_graph_wrap {
     width: 100%;
     position: relative;
@@ -346,7 +326,7 @@
     flex-direction: column;
 }
 
-//DB_right
+/* DB_right */
 .DB_right {
     position: relative;
     width: 400px;
@@ -357,8 +337,6 @@
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 15px;
 }
-
-
 
 /* 사이드 핸들: 접혔을 때 우측 화면 모서리에 고정되어 항상 보임 */
 .DB_right .DB_right_handle {
@@ -451,8 +429,7 @@
     display: block;
 }
 
-
-//dashboardpage_footer
+/* dashboardpage_footer */
 .dashboardpage_footer {
     width: 100%;
     padding: 10px 20px;
@@ -467,7 +444,6 @@
     font-size: 0.85rem;
 }
 
-
 /* 반응형: 사이드 드로어(>1200px), 슬라이드 패널(<=1200px), 바텀시트(<=768px) */
 @media (max-width: 1200px) {
     .Dashboardpage_header img {
@@ -476,8 +452,10 @@
     .Dashboardpage_content {
         align-items: stretch;
     }
-    .intro_overlay {
-        display: none;
+    /* 오버레이는 1200px 이하면 항상 숨김 (is-visible 무시) */
+    .Dashboardpage .intro_overlay,
+    .Dashboardpage .intro_overlay.is-visible {
+        display: none !important;
     }
     .DB_left {
         width: 230px;

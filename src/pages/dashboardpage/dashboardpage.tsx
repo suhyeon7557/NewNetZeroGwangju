@@ -9,6 +9,7 @@ import "./dashboardpage.scss";
 const Dashboardpage = () => {
     const [isRightOpen, setIsRightOpen] = React.useState<boolean>(true);
     const [isAnimating, setIsAnimating] = React.useState<boolean>(false);
+    const [isIntroVisible, setIsIntroVisible] = React.useState<boolean>(true);
 
     React.useEffect(() => {
         const mqTablet = window.matchMedia('(max-width: 1200px)');
@@ -40,6 +41,31 @@ const Dashboardpage = () => {
         };
     }, []);
 
+    // 인트로 오버레이: 초기 상태 및 브레이크포인트 변화에 따른 표시/숨김
+    React.useEffect(() => {
+        const mqTablet = window.matchMedia('(max-width: 1200px)');
+        // 1200px 이하는 항상 숨김, 그 외는 초기 진입 시 표시 유지
+        setIsIntroVisible(!mqTablet.matches);
+
+        const onChange = (e: MediaQueryListEvent) => {
+            if (e.matches) {
+                // 1200px 이하로 내려가면 즉시 숨김
+                setIsIntroVisible(false);
+            }
+            // 1200px 초과로 올라갈 때는 자동 표시로 강제하지 않음 (사용자 의도 존중)
+        };
+        try {
+            if (typeof mqTablet.addEventListener === 'function') mqTablet.addEventListener('change', onChange);
+            else if (typeof mqTablet.addListener === 'function') mqTablet.addListener(onChange);
+        } catch {}
+        return () => {
+            try {
+                if (typeof mqTablet.removeEventListener === 'function') mqTablet.removeEventListener('change', onChange);
+                else if (typeof mqTablet.removeListener === 'function') mqTablet.removeListener(onChange);
+            } catch {}
+        };
+    }, []);
+
     const openRightPanel = () => {
         setIsAnimating(true);
         setIsRightOpen(true);
@@ -53,6 +79,13 @@ const Dashboardpage = () => {
         setIsRightOpen((prev) => !prev);
     };
 
+    const openIntroOverlay = () => {
+        const mqTablet = typeof window !== 'undefined' ? window.matchMedia('(max-width: 1200px)') : null;
+        if (mqTablet && mqTablet.matches) return; // 1200px 이하는 열지 않음
+        setIsIntroVisible(true);
+    };
+    const closeIntroOverlay = () => setIsIntroVisible(false);
+
     React.useEffect(() => {
         if (!isAnimating) return;
         const timer = setTimeout(() => setIsAnimating(false), 320);
@@ -61,7 +94,7 @@ const Dashboardpage = () => {
 
     return (
         <div className="Dashboardpage" aria-label='대시보드 페이지 영역'>
-            <div className='intro_overlay' aria-label='인트로 오버레이 영역'>
+            <div className='intro_overlay' aria-label='인트로 오버레이 영역' style={{ display: isIntroVisible ? 'block' : 'none' }}>
                 <div className='intro_overlay_inner'>
                     <h3>정책지표 대시보드</h3>
                     <div className='intro_overlay_content'>
@@ -76,10 +109,10 @@ const Dashboardpage = () => {
                         </div>
                     </div>
                     <div className='intro_button'>
-                        <button type="button" className='intro_close'>
+                        <button type="button" className='intro_close' onClick={closeIntroOverlay}>
                             오늘 하루 보지 않기
                         </button>
-                        <button type="button" className='intro_close'>
+                        <button type="button" className='intro_close' onClick={closeIntroOverlay}>
                             닫기
                         </button>
                     </div>
@@ -125,7 +158,7 @@ const Dashboardpage = () => {
                                     </ul>
                                 </div>
                             <div className='description_wrap' aria-label='페이지 설명 보기 영역'>
-                                <button type='button' className='description_btn'> 페이지 설명 보기</button>
+                                <button type='button' className='description_btn' onClick={openIntroOverlay}> 페이지 설명 보기</button>
                             </div>
                             <div className='emissions_wrap' aria-label='배출량 영역'>
                                 <h3>배출량</h3>
