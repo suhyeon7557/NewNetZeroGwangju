@@ -60,7 +60,31 @@ const Dashboardpage = () => {
     }, [isAnimating, isRightOpen]);
 
     return (
-        <div className="Dashboardpage">
+        <div className="Dashboardpage" aria-label='대시보드 페이지 영역'>
+            <div className='intro_overlay' aria-label='인트로 오버레이 영역'>
+                <div className='intro_overlay_inner'>
+                    <h3>정책지표 대시보드</h3>
+                    <div className='intro_overlay_content'>
+                        <div className='emissions_description'>
+                            <img src="/emissions_description.svg" alt="배출량 인트로 설명" />
+                            <div className='description_box'>
+                                <h2 className='txt'>배출량 검색</h2>
+                                <p>광주 전체 또는 구 별로 선택 후 연도를 선택 합니다.<br/>
+                                    분야별 배출량을 확인할 수 있습니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='intro_button'>
+                        <button type="button" className='intro_close'>
+                            오늘 하루 보지 않기
+                        </button>
+                        <button type="button" className='intro_close'>
+                            닫기
+                        </button>
+                    </div>
+                </div>
+            </div>
             <h1 className="Dashboardpage_title" style={{display: 'none'}}>Dashboardpage</h1>
             <div className="Dashboardpage_wrap">
                 <div className='Dashboardpage_inner'>
