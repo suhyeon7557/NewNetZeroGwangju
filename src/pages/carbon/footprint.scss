@@ -1,0 +1,100 @@
+.error_msg {
+    color: #F2082F;
+    font-size: .85rem;
+}
+
+.footprint_title {
+    width: 100%;
+    text-align: center;
+    font-size: 1.15rem;
+}
+
+.footprint_wrap {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.footprint_btn {
+    width: 30%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 20px;
+    font-weight: 700;
+}
+
+.footprint_inner {
+    position: relative;
+    width: calc(100% / 2 - 10px);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footprint_inner h3 {
+    position: relative;
+    font-size: 1.15rem;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+.footprint_inner h3::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+}
+    .footprint_inner h3.inner_base::before {
+        background: url('/ic_footprint_people.svg') no-repeat center center;
+        background-size: contain;
+    }
+    .footprint_inner h3.inner_usage::before {
+        background: url('/ic_footprint_use.svg') no-repeat center center;
+        background-size: contain;
+    }
+
+.footprint_inner .footprint_item {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footprint_inner .footprint_item input,
+.footprint_inner .footprint_item select {
+    width: 100%;
+    border: 1px solid #dbdbdb;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+
+    .footprint_wrap {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .footprint_btn {
+        width: 80%;
+    }
+
+    .footprint_inner {
+        width: 100%;
+        padding: 15px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .footprint_inner .footprint_item {
+        gap: 5px;
+    }
+
+}
