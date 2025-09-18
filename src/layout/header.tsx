@@ -471,8 +471,15 @@ const Header = () => {
                             <p className='txt_black'>현재 기온 상승</p>
                         </div>
                     </div>
+                    <a href='/dashboardpage' className='dashboard_btn' aria-label='대시보드 바로가기'>
+                        <img src='/ic_dashboard_btn.svg' alt='' aria-hidden='true' />
+                        <span className='label'>대시보드</span>
+                    </a>
                 </div>
             </div>
+            <a href='/dashboardpage' className='dashboard_fab' aria-label='대시보드 바로가기'>
+                <img src='/ic_dashboard_btn.svg' alt='' aria-hidden='true' />
+            </a>
             <div className='header_wrap' ref={headerWrapRef}>
                 {/*menu_inner*/}
                 <div id='menu_inner'>
@@ -623,14 +630,20 @@ const Header = () => {
                             </li>
                         </ul>
                     </nav>
-                    <div className='btn_hamburger'>
-                        <a
-                            href='#'
-                            className={`btn_hamburger_inner${isGnb2Open ? ' open' : ''}`}
-                            aria-label={isGnb2Open ? '메뉴 닫기' : '메뉴 열기'}
-                            aria-expanded={isGnb2Open}
-                            onClick={onClickHamburger}
-                        ></a>
+                    <div className='menu_right_controls'>
+                        <a href='/dashboardpage' className='dashboard_header_btn' aria-label='대시보드 바로가기'>
+                            <img src='/ic_dashboard_btn.svg' alt='' aria-hidden='true' />
+                            <span className='label'>대시보드</span>
+                        </a>
+                        <div className='btn_hamburger'>
+                            <a
+                                href='#'
+                                className={`btn_hamburger_inner${isGnb2Open ? ' open' : ''}`}
+                                aria-label={isGnb2Open ? '메뉴 닫기' : '메뉴 열기'}
+                                aria-expanded={isGnb2Open}
+                                onClick={onClickHamburger}
+                            ></a>
+                        </div>
                     </div>
                 </div>
             </div>

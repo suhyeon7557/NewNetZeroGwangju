@@ -21,6 +21,32 @@
         justify-content: center;
         gap: 15px;
         margin: 0 auto;
+        
+        .dashboard_btn {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 12px;
+            height: 38px;
+            border-radius: 50px;
+            background: #111;
+            border: 2px solid #B9E300;
+        }
+        .dashboard_btn img {
+            width: 15px;
+            height: 15px;
+        }
+        .dashboard_btn .label {
+            color: #fff;
+            font-size: 0.85rem;
+            line-height: 1;
+            font-weight: 600;
+        }
 
     .clock_inner .time {
         display: flex;
@@ -93,6 +119,27 @@
 
 /*header*/
 #header {
+    /* 모바일 고정 원형 버튼 */
+    .dashboard_fab {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        background: #000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        border: 1px solid rgba(255,255,255,0.3);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    }
+    .dashboard_fab img {
+        width: 22px;
+        height: 22px;
+        filter: invert(1);
+    }
     position: fixed;
     top: 0;
     width: 100%;
@@ -321,6 +368,32 @@ html.gnb2-open #menu_inner .btn_hamburger .btn_hamburger_inner.open::after {
     flex-wrap: wrap;
     gap: 35px;
     
+    .menu_right_controls {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-left: auto;
+    }
+    .menu_right_controls .dashboard_header_btn {
+        display: none;
+        align-items: center;
+        gap: 5px;
+        padding: 7px 15px;
+        height: 30px;
+        border-radius: 50px;
+        background: #111;
+        border: 2px solid #B9E300;
+    }
+    .menu_right_controls .dashboard_header_btn img {
+        width: 14px;
+        height: 14px;
+    }
+    .menu_right_controls .dashboard_header_btn .label {
+        color: #fff;
+        font-size: 0.85rem;
+        line-height: 1;
+        font-weight: 600;
+    }
     .btn_hamburger {
         display: block;
         position: relative;
@@ -836,9 +909,17 @@ html.gnb2-open #header.scrolled #menu_inner .btn_hamburger a::after {
         padding: 0 15px 0 15px;
     }
     #menu_inner .btn_hamburger {
-        margin-top: 20px;
+        margin-top: 5px;
     }
     #climateclock, #gnb1 {
+        display: none;
+    }
+    /* 1024 이하: 햄버거 옆 헤더 버튼 노출, FAB는 숨김 */
+    #header .menu_right_controls .dashboard_header_btn {
+        display: flex;
+        align-items: center;
+    }
+    #header .dashboard_fab {
         display: none;
     }
     #gnb2.active {
@@ -922,6 +1003,9 @@ html.gnb2-open #header.scrolled #menu_inner .btn_hamburger a::after {
     #gnb1 > ul > li > .submenu > ul {
         padding: 18px 0; 
     }
+    #climateclock .climateclock_inner .clock_inner .temperature {
+        display: none;
+    }
 }
 /* 모바일 */
 @media (max-width: 768px) {
@@ -935,9 +1019,6 @@ html.gnb2-open #header.scrolled #menu_inner .btn_hamburger a::after {
     #menu_inner .btn_hamburger a {
         width: 28px;
         height: 22px;
-    }
-    #menu_inner .btn_hamburger {
-        margin-top: 10px;
     }
     #logo {
         width: 100px;
@@ -1037,6 +1118,9 @@ html.gnb2-open #header.scrolled #menu_inner .btn_hamburger a::after {
 @media (max-width: 400px) {
     #gnb2.active {
         width: 100%;
+    }
+    #header .menu_right_controls .dashboard_header_btn img {
+        display: none;
     }
 }
 

@@ -1,8 +1,9 @@
-import FootprintResult from "../pages/carbon/footprintresult";
+import PreparingPage from "@component/pages/preparingpage/preparingpage";
+import OrdinancePage from "../pages/preparingpage/preparingpage";
 
 export default function Home() {
 	return (
-		<FootprintResult/>
+		<PreparingPage/>
 	);
 }
 
