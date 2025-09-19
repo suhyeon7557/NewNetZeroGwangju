@@ -537,6 +537,70 @@ span.status {
     background-size: contain;
 }
 
+.arrow_up {
+    position: relative;
+}
+.arrow_up::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 13px;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: url("/ic_arrow_up_black.svg") no-repeat center center;
+    background-size: contain;
+}
+
+/* circle_number */
+.circle_number {
+    position: relative;
+    display: inline-block;
+    padding-left: 40px;
+}
+.circle_number::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    display: flex;
+    background-color: #151329;
+    border-radius: 50%;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+.circle_number::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+.circle_number.one::before {
+    content: '1';
+}
+.circle_number.two::before {
+    content: '2';
+}
+.circle_number.three::before {
+    content: '3';
+}
+.circle_number.four::before {
+    content: '4';
+}
+.circle_number.five::before {
+    content: '5';
+}
+
 /* 테이블 */
 table td {
     color: #999;

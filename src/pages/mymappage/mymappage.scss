@@ -1,0 +1,111 @@
+//mymappage_wrap
+.mymappage_wrap {
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mymappage_wrap .mymappage_inner_box {
+    position: relative;
+    width: 100%;
+    border-radius: 15px;
+    background-color: #F0FDF4;
+    padding: 30px 50px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+.mymappage_inner_box .map_icon img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    will-change: transform, filter, opacity;
+    transform-origin: 50% 60%;
+    animation: mapIntro 1200ms cubic-bezier(0.22, 1, 0.36, 1) 50ms 1 both;
+}
+.map_link_content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.map_link_content a {
+    width: 240px;
+}
+.map_link_content p.text_bold {
+    font-size: 1.25rem;
+}
+.map_link_content a button {
+    font-weight: 700;
+    padding: 10px 50px 10px 30px;
+}
+
+.map_link_content .mymap_txt {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Page-load 화려한 인트로 */
+@keyframes mapIntro {
+    0%   { opacity: 0; transform: translateY(12px) scale(0.92) rotate(-2deg); filter: drop-shadow(0 0 0 rgba(185,227,0,0)); }
+    50%  { opacity: 1; transform: translateY(-8px) scale(1.06) rotate(1.5deg); filter: drop-shadow(0 12px 18px rgba(0,0,0,0.20)) drop-shadow(0 0 12px rgba(185,227,0,0.35)); }
+    80%  { opacity: 1; transform: translateY(3px) scale(0.995) rotate(-0.5deg); filter: drop-shadow(0 8px 14px rgba(0,0,0,0.16)) drop-shadow(0 0 6px rgba(185,227,0,0.25)); }
+    100% { opacity: 1; transform: translateY(0) scale(1) rotate(0); filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12)); }
+}
+
+/* Hover 시 짧은 탄성 바운스 */
+@keyframes mapHoverBounce {
+    0%   { transform: translateY(0) scale(1); }
+    30%  { transform: translateY(-10px) scale(1.04); }
+    60%  { transform: translateY(0) scale(1); }
+    80%  { transform: translateY(-4px) scale(1.015); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+.mymappage_inner_box .map_icon img:hover {
+    animation: mapHoverBounce 680ms cubic-bezier(0.22, 1, 0.36, 1) 0s 1 both;
+}
+
+/* 접근성: 모션 최소화 설정 시 애니메이션 비활성 */
+@media (prefers-reduced-motion: reduce) {
+    .mymappage_inner_box .map_icon img { animation: none !important; }
+}
+
+
+@media screen  and (max-width: 1024px) {
+    .mymappage_wrap .mymappage_inner_box {
+        padding: 20px 30px;
+    }
+}
+
+@media screen  and (max-width: 768px) {
+    .mymappage_wrap .mymappage_inner_box {
+        padding: 15px 20px;
+    }
+    .map_link_content .mymap_txt {
+        display: none;
+    }
+    .mymappage_wrap .mymappage_inner_box {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .map_link_content p.text_bold {
+        text-align: center;
+    }
+    .mymappage_inner_box .map_icon img {
+        width: 250px;
+    }
+    .map_link_content ,
+    .map_link_content a ,
+    .map_link_content a button{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .mymappage_inner_box .map_icon img {
+        width: 200px;   
+    }
+}

@@ -2,9 +2,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import "./preparingpage.scss";
+import "./mymappage.scss";
 
-const PreparingPage = () => {
+const MyMapPage = () => {
     React.useEffect(() => {
         const subNav = document.querySelector('.sub_nav');
         const subNavGnb = document.getElementById('sub_nav_gnb');
@@ -416,21 +416,34 @@ const PreparingPage = () => {
                             정책과제
                         </a>
                     </div> */}
-                    <div className='cont_content ' aria-label='관련 조례 및 계획 컨텐츠 내용 영역'>
-                        <div className='preparing_box'>
-                            <div className='preparing_inner'>
-                                <img className='preparing_img' src='/image_preparing.png' alt='페이지 준비중 이미지'></img>
-                                <div className='preparing_text'>
-                                    <h2 className='title'>해당 페이지는 현재 준비 중입니다.</h2>
-                                    <p className='desc'>더 좋은 모습으로 찾아뵙겠습니다.</p>
+                     <div className='mymappage_wrap' aria-label='행정동별 배출지도 컨텐츠 내용 영역'>
+                        <div className='mymappage_inner_box'>
+                            <div className='map_icon'>
+                                <img src='image_mymap.png' alt='행정동별 배출지도 아이콘'></img>
+                            </div>
+                            <div className='map_link_content'>
+                                <p className='text_bold'>우리 지역의 탄소배출 현황을 한눈에 확인해보세요</p>
+                                <a href='http://www.g-ucms.com/gis/#void'   title='탄소배출지도 페이지로 이동' target='_blank' >
+                                    <button type='button' className='btn_lime_bg bd_radius arrow_up'>탄소배출지도 보러가기</button>
+                                </a>
+                                <div className='mymap_txt'>
+                                    <span className='circle_number one'>
+                                        실시간 모니터링으로 광주광역시 지역별 탄소배출량을 실시간으로 확인할 수 있습니다.
+                                    </span>
+                                    <span className='circle_number two'>
+                                        시간대별, 분야별 배출량 변화를 차트와 그래프로 제공하여 직관적으로 데이터를 이해할 수 있습니다.
+                                    </span>
+                                    <span className='circle_number three'>
+                                        내가 살고 있는 지역의 환경 현황을 배출량뿐만 아니라 생활과 밀접한 환경 데이터를 상세하게 살펴볼 수 있습니다.
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                   </div>
                 </div>
             </div>
         </div>
     );
 }
 
-export default PreparingPage;
+export default MyMapPage;

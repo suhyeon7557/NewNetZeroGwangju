@@ -1,9 +1,9 @@
-import PreparingPage from "@component/pages/preparingpage/preparingpage";
-import OrdinancePage from "../pages/preparingpage/preparingpage";
+
+import MyMapPage from "@component/pages/mymappage/mymappage";
 
 export default function Home() {
 	return (
-		<PreparingPage/>
+		<MyMapPage/>
 	);
 }
 
