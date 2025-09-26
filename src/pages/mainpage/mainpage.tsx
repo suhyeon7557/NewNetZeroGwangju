@@ -881,6 +881,22 @@ const MainPage = () => {
             { code: 'DOgu', label: '동구' },
             { code: 'NMgu', label: '남구' },
         ];
+        // 플로팅 데이터 패널 제어 로직
+        const [isDataPanelActive, setIsDataPanelActive] = React.useState(false);
+        const dataPanelRef = React.useRef<HTMLDivElement | null>(null);
+        const quickMenuRef = React.useRef<HTMLDivElement | null>(null);
+
+        const toggleDataPanel = React.useCallback(() => {
+            setIsDataPanelActive((prev) => !prev);
+        }, []);
+
+        const closeDataPanel = React.useCallback(() => {
+            setIsDataPanelActive(false);
+        }, []);
+
+        // 외부 클릭 닫기 기능은 비활성화 (닫기는 상단 × 버튼으로만 처리)
+
+        // 실시간 데이터 자동 갱신 제거 (요청반영)
     return (
         <div aria-label='탄소중립 메인 페이지 영역' className='main_page'>
             <div className='main_visual_silde' aria-label='메인 비주얼 슬라이드 영역'>
@@ -1330,12 +1346,147 @@ const MainPage = () => {
                     </div>
                 </div>
             </div>
+            {/* 기존 플로팅 바 주석 처리
             <div className='floating_bar' aria-label='플로팅 바 영역'>
                 <div className='floating_bar_inner'>
                     <button type='button' className='floating_bar_button' aria-label='탄소중립 안내 열기'>
                         <span className='floating_txt'>광주,<br/> 얼마나<br/>배출할까?</span>
                         <img src='/ic_earth.svg' alt='' />
                     </button>
+                </div>
+            </div>
+            */}
+
+            {/* 플로팅 퀵메뉴 버튼: 패널 열리면 숨김 */}
+            { !isDataPanelActive && (
+            <div className='floating-quick-menu' ref={quickMenuRef}>
+                <button className='quick-menu-btn' onClick={(e) => { e.stopPropagation(); toggleDataPanel(); }}>
+                    <div className='btn-icon'>
+                        <img src='/floating_icon.svg' alt='' />
+                    </div>
+                    <div className='btn-text'>온실가스 배출량 현황</div>
+                </button>
+            </div>
+            ) }
+
+            {/* 플로팅 데이터 패널 */}
+            <div
+                className={`floating-data-panel${isDataPanelActive ? ' active' : ''}`}
+                id='dataPanel'
+                ref={dataPanelRef}
+            >
+                <div className='panel-header'>
+                    <button className='close-btn' onClick={closeDataPanel}>×</button>
+                    <div className='panel-title'>광주, 얼마나 배출할까?</div>
+                    <div className='panel-subtitle'>2022년 기준 탄소배출 현황</div>
+                </div>
+
+                <div className='panel-content'>
+                    {/* 최신 데이터 현황 */}
+                    <div className='realtime-data'>
+                        <div className='realtime-title'>광주광역시 총 배출량 현황</div>
+                        <div className='realtime-value'>8,818.8천톤</div>
+                        <div className='realtime-unit'>ktCO2eq (2022년)</div>
+                    </div>
+
+                    {/* 부문별 차트 섹션 */}
+                    <div className='chart-section'>
+                        <div className='section-title'>부문별 CO₂ 배출량 </div>
+                        <div className='emission-chart'>
+                            <div className='chart-bar'>
+                                <div className='bar-label'>건물</div>
+                                <div className='bar-container'>
+                                    <div className='bar-fill w-85 bg-building'></div>
+                                </div>
+                                <div className='bar-value'>3,790.7천톤</div>
+                            </div>
+                            <div className='chart-bar'>
+                                <div className='bar-label'>수송</div>
+                                <div className='bar-container'>
+                                    <div className='bar-fill w-65 bg-transport'></div>
+                                </div>
+                                <div className='bar-value'>2,786.7천톤</div>
+                            </div>
+                            <div className='chart-bar'>
+                                <div className='bar-label'>농축산</div>
+                                <div className='bar-container'>
+                                    <div className='bar-fill w-50 bg-agri'></div>
+                                </div>
+                                <div className='bar-value'>109.5천톤</div>
+                            </div>
+                            <div className='chart-bar'>
+                                <div className='bar-label'>산업</div>
+                                <div className='bar-container'>
+                                    <div className='bar-fill w-25 bg-industry'></div>
+                                </div>
+                                <div className='bar-value'>1,628.2천톤</div>
+                            </div>
+                            <div className='chart-bar'>
+                                <div className='bar-label'>폐기물</div>
+                                <div className='bar-container'>
+                                    <div className='bar-fill w-15 bg-waste'></div>
+                                </div>
+                                <div className='bar-value'>495.4천톤</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* 연도별 변화 추이 */}
+                    {/* 변화율 = (올해배출량 - 작년배출량 / 작년배출량)x100 = 퍼센트 */}
+                    <div className='chart-section'>
+                        <div className='section-title'>최근 배출량 변화 추이</div>
+                        <div className='data-table'>
+                            <div className='table-row'>
+                                <div className='table-cell bold'>2022년</div>
+                                <div className='table-cell'>8,819천톤</div>
+                                <div className='table-cell trend-down text_blue'>▼ 3.2%</div>
+                            </div>
+                            <div className='table-row'>
+                                <div className='table-cell bold'>2021년</div>
+                                <div className='table-cell'>89.6천톤</div>
+                                <div className='table-cell trend-up text_red'>▲ 5.4%</div>
+                            </div>
+                            <div className='table-row'>
+                                <div className='table-cell bold'>2020년</div>
+                                <div className='table-cell'>87.1천톤</div>
+                                <div className='table-cell trend-down text_blue'>▼ 8.7%</div>
+                            </div>
+                            <div className='table-row'>
+                                <div className='table-cell bold'>2019년</div>
+                                <div className='table-cell'>12.0천톤</div>
+                                <div className='table-cell trend-up text_red'>▲ 2.1%</div>
+                            </div>
+                            <div className='table-row'>
+                                <div className='table-cell bold'>2018년</div>
+                                <div className='table-cell'>11.8천톤</div>
+                                <div className='table-cell text_gray'>-</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* 2045 목표 대비 현황 */}
+                    <div className='chart-section'>
+                        <div className='section-title'>2045 탄소중립 목표 현황</div>
+                        <div className='emission-chart'>
+                            <div className='target-summary'>
+                                <div className='target-cell'>
+                                    <div className='meta'>2018 기준</div>
+                                    <div className='value text_red'>9,552천톤</div>
+                                </div>
+                                <div className='target-cell'>
+                                    <div className='meta'>2022 현재</div>
+                                    <div className='value text_orange'>8,819천톤</div>
+                                </div>
+                                <div className='target-cell'>
+                                    <div className='meta'>2045 목표</div>
+                                    <div className='value text_blue'>4,414천톤</div>
+                                </div>
+                            </div>
+                            <div className='target-note'>
+                                <span className='achieved text_red'>2.2%</span> 초과 (2018년 대비)
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

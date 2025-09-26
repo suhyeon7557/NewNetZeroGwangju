@@ -1250,3 +1250,343 @@
 }
 
   
+/* 플로팅 퀵메뉴 버튼 */
+.floating-quick-menu {
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+
+.quick-menu-btn {
+  width: auto;
+  height: auto;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+  transition: none;
+  animation: none;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.quick-menu-btn:hover { transform: none; box-shadow: none; animation: none; }
+
+.quick-menu-btn::before { content: ''; display: none; animation: none; }
+
+/* 지구 궤도 링 효과 */
+.quick-menu-btn::after { content: ''; display: none; animation: none; }
+
+@keyframes orbitRotate {
+  0% { transform: rotate(0deg) scale(1.08); }
+  100% { transform: rotate(360deg) scale(1.08); }
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+  100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+}
+
+.btn-icon { position: relative; z-index: 2; display: inline-block; }
+.btn-icon img {
+  display: block;
+  width: 90px;
+  height: 80px;
+  /* 네온 글로우 */
+  filter: drop-shadow(0 0 6px rgba(185, 227, 0, 0.6))
+          drop-shadow(0 0 14px rgba(185, 227, 0, 0.35));
+  /* 붕붕 뜨는 애니메이션 */
+  animation: floatingUpDown 2.6s ease-in-out infinite;
+}
+
+@keyframes floatingUpDown {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+.btn-text {
+  position: absolute;
+  right: 90px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.quick-menu-btn:hover .btn-text {
+  opacity: 1;
+  right: 95px;
+}
+
+/* 플로팅 데이터 패널 */
+.floating-data-panel {
+  position: fixed;
+  right: -400px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 380px;
+  height: 600px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 25px 0 0 25px;
+  box-shadow: -10px 0 40px rgba(0,0,0,0.3);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 999;
+  overflow: hidden;
+}
+
+.floating-data-panel.active {
+  right: 0;
+}
+
+.panel-header {
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  color: white;
+  padding: 15px;
+  text-align: center;
+  position: relative;
+}
+
+.panel-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.panel-subtitle {
+  opacity: 0.9;
+  font-size: 0.85rem;
+}
+
+.close-btn {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.panel-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  height: calc(100% - 80px);
+  overflow-y: auto;
+}
+
+/* 차트 섹션 */
+
+.section-title {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #000;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #ff6b35;
+}
+
+.emission-chart {
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.chart-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.bar-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+  flex: 1;
+}
+
+.bar-container {
+  flex: 2;
+  height: 20px;
+  background: #e9ecef;
+  border-radius: 10px;
+  margin: 0 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  position: relative;
+  animation: fillBar 2s ease-out;
+}
+
+/* width helpers (CSS var 대체) */
+.w-85 { width: 85%; }
+.w-65 { width: 65%; }
+.w-50 { width: 50%; }
+.w-25 { width: 25%; }
+.w-15 { width: 15%; }
+
+/* sector colors */
+.bg-building { background: #B9E300; }
+.bg-transport { background: #AF92E8; }
+.bg-agri { background: #50E3C2; }
+.bg-industry { background: #FF6B3D; }
+.bg-waste { background: #4AB3FF; }
+
+/* 변화율 색상 */
+.trend-down { color: #0015FF; }
+.trend-up { color: #EC0647; }
+
+/* 2045 목표 섹션 */
+.target-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.target-summary .target-cell {
+  text-align: center;
+  flex: 1;
+}
+.target-summary .meta {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 5px;
+}
+.target-summary .value {
+  font-size: 18px;
+  font-weight: bold;
+}
+.target-note {
+  font-size: 0.85rem;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 10px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+.target-note .note-achieved { color: #4caf50; font-weight: bold; }
+
+@keyframes fillBar {
+  from { width: 0; }
+  to { width: var(--width); }
+}
+
+.bar-value {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #000;
+  min-width: 60px;
+  text-align: right;
+}
+
+/* 데이터 테이블 */
+.data-table {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.table-header {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white;
+  padding: 15px;
+  font-weight: bold;
+}
+
+.table-row {
+  display: flex;
+  padding: 12px 15px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.3s ease;
+}
+
+.table-row:hover {
+  background: #f8f9fa;
+}
+
+.table-cell {
+  flex: 1;
+  font-size: 0.85rem;
+}
+
+.table-cell.bold {
+  font-weight: 700;
+  color: #000;
+}
+
+/* 실시간 데이터 */
+.realtime-data {
+  border-radius: 15px;
+  text-align: center;
+}
+
+.realtime-title {
+  color: #000000;
+}
+
+.realtime-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ff6b35;
+}
+
+.realtime-unit {
+  font-size: 0.65rem;
+  color: #999;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .floating-quick-menu {
+    right: 20px;
+  }
+
+  .floating-data-panel {
+    width: calc(100vw - 40px);
+    right: -100vw;
+  }
+
+  .floating-data-panel.active {
+    right: 20px;
+  }
+}
