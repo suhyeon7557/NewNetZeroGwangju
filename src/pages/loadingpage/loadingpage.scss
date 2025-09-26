@@ -1,0 +1,77 @@
+.loading_page {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #151329 0%, #0F2A0F 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loading_inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    color: #E7FFD1;
+}
+
+.logo_mark {
+    position: relative;
+    width: 84px;
+    height: 84px;
+    display: grid;
+    place-items: center;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35)) drop-shadow(0 0 14px rgba(185,227,0,0.25));
+}
+.logo_mark .leaf {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border-radius: 48px 48px 0 48px;
+    background: linear-gradient(135deg, #B9E300 0%, #87C400 100%);
+    transform-origin: 80% 80%;
+}
+.logo_mark .leaf.left { transform: rotate(45deg); animation: leafSpinLeft 1400ms ease-in-out infinite; }
+.logo_mark .leaf.right { transform: rotate(225deg); animation: leafSpinRight 1400ms ease-in-out infinite; }
+.logo_mark .dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #B9E300;
+    animation: dotPulse 1200ms ease-in-out infinite;
+}
+
+@keyframes leafSpinLeft {
+    0%   { transform: rotate(45deg) scale(0.96); opacity: .9; }
+    50%  { transform: rotate(225deg) scale(1.04); opacity: 1; }
+    100% { transform: rotate(405deg) scale(0.96); opacity: .9; }
+}
+@keyframes leafSpinRight {
+    0%   { transform: rotate(225deg) scale(1.04); opacity: 1; }
+    50%  { transform: rotate(405deg) scale(0.96); opacity: .9; }
+    100% { transform: rotate(585deg) scale(1.04); opacity: 1; }
+}
+@keyframes dotPulse {
+    0%, 100% { transform: scale(0.9); box-shadow: 0 0 0 rgba(185,227,0,0.0); }
+    50%      { transform: scale(1.15); box-shadow: 0 0 24px rgba(185,227,0,0.55); }
+}
+
+.loading_text {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #E7FFD1;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .logo_mark .leaf,
+    .logo_mark .right,
+    .logo_mark .left,
+    .logo_mark .dot { animation: none !important; }
+}
+
+

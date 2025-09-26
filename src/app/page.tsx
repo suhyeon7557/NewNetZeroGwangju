@@ -1,9 +1,8 @@
-
-import MyMapPage from "@component/pages/mymappage/mymappage";
+import MainPage from "@component/pages/mainpage/mainpage";
 
 export default function Home() {
 	return (
-		<MyMapPage/>
+		<MainPage/>
 	);
 }
 
