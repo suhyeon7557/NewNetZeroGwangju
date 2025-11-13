@@ -1,9 +1,8 @@
-import MainPage from "@component/pages/mainpage/mainpage";
-
-export default function Home() {
-	return (
-		<MainPage/>
-	);
+export default function HomePage() {
+  return (
+    <main className="container" role="main">
+    </main>
+  );
 }
 
 

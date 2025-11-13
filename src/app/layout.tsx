@@ -1,43 +1,31 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import "../styles/header.scss";
-import "../styles/footer.scss";
-import "../styles/common.scss";
-import "swiper/css";
-import "swiper/css/navigation";
-
-import Header from "../layout/header";
-import Footer from "../layout/footer";
-import TopScroll from "../layout/topscroll";
-import Notice from "../layout/notice";
-import TabMenuEnhancer from "../layout/tabmenu_enhancer";
-import Common from "../layout/common";
+import "../../styles/font.scss";
+import "./globals.scss";
+import "../layout/header.scss";
+import "../layout/footer.scss";
+import "../layout/common.scss";
+import Header from "./_components/Header";
+import Footer from "./_components/Footer";
 
 export const metadata: Metadata = {
-	title: "광주넷제로",
-	description: "광주 넷제로 서비스",
+  title: "NetZero",
+  description: "NetZero 홈페이지",
 };
 
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-	return (
-		<html lang="ko">
-			<body>
-                <div className="Netzero">
-                    <Header />
-                    <main>
-                        <h2 className='notext' style={{display: 'none'}}>컨텐츠 영역</h2>
-                        {children}
-                    </main>
-                    <Footer />  
-                    <Notice />
-                    <TopScroll />
-                    <TabMenuEnhancer />
-                    <Common />
-                </div>
-			</body>
-		</html>
-	);
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="ko">
+      <body className="min-h-dvh bg-white text-gray-900 antialiased">
+        <Header />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  );
 }
 
 
