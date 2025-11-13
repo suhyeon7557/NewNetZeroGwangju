@@ -1,0 +1,177 @@
+#footer {
+    position: relative;
+    background: var(--color-mint-50);
+    background-image: url('/images/image_footer_bg.png');
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+    padding: 30px 0;
+    width: 100%;
+}
+#footer::before {
+    position: absolute;
+    content: '';
+    width: 40px;
+    height: 100px;
+    left: 60px;
+    top: - 30px;
+    z-index: 1;
+    background: url('/images/image_tree.svg') no-repeat center center;
+    background-size: contain;
+}
+#footer::after {
+    position: absolute;
+    content: '';
+    width: 100px;
+    height: 80px;
+    right: 60px;
+    top: - 10px;
+    z-index: 1;
+    background: url('/images/image_tree2.svg') no-repeat center center;
+    background-size: contain;
+}   
+
+#footer .footer_wrap {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;    
+}
+
+.footer_wrap .top_sec {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.top_sec .link_list a.email_reject,
+.top_sec .link_list a.find_road {
+    color: var(--color-neutral-700);
+}
+
+.top_sec .link_list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.top_sec .link_list .person_infor {
+    font-weight: 600;
+}
+.agree {
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: var(--color-white);
+    border-radius: 10px;
+}
+.agree .sns_list {
+    display: flex;
+    gap: 5px;
+    margin-left: auto;
+}
+.agree .sns_list button img {
+    width: 40px;
+    height: 40px;
+}
+.agree_list {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+}
+
+.agree_list .call_list {
+    display: flex;
+    gap: 15px;
+}
+
+.agree_list .call_list span {
+    font-weight: 600;
+}
+.agree_list .call_list_gray {   
+    font-size: var(--fs-16);
+    color: var(--color-neutral-700);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.info .address_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.info .address_list span,
+.info .copyright span {
+    color: var(--color-neutral-700);
+    font-size: var(--fs-16);
+}
+
+
+@media (max-width: 1400px) {
+    #footer .footer_wrap {
+        padding: 0 30px;
+    }
+    #footer::before {
+        content: none;
+    }
+    .footer_wrap .top_sec .logo img {
+        width: 120px;
+    }
+}
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 768px) {
+    #footer .footer_wrap {
+        padding: 0 20px;
+        gap: 15px;
+    }
+    #footer::after {
+        content: none;
+    }
+    .footer_wrap .top_sec {
+        gap: 5px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .agree {
+        padding: 10px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .info .address_list {
+        gap: 10px;
+    }
+    .agree .sns_list button img {
+        width: 30px;
+        height: 30px;
+    }
+    .agree .sns_list {
+        margin: 0;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .top_sec .link_list {
+        gap: 5px;
+    }
+    .agree_list {
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-start;
+    }
+}

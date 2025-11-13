@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+/* 기본 타이포그래피 조정 */
+html, body {
+  height: 100%;
+}
+
+header, footer, main, section, article, nav, aside {
+  display: block;
+}
+/* 접근성: 포커스 표시 강화 */
+:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* REM 설정: 기본 1rem = 18px */
+:root {
+  font-size: 18px;
+  --fs-16: 0.85rem;
+  --fs-18: 1rem;
+  --fs-20: 1.2rem;
+  --fs-32: 1.5rem;
+  --fs-36: 2rem;
+  --fs-48: 2.5rem;
+}
+
+:root {
+  /* Point colors */
+  --color-brand-blue: #0172FF;   /* 0172FF */
+  --color-forest-green: #23861C; /* 23861C */
+  --color-accent-orange: #FF9500;/* FF9500 */
+  --color-accent-purple: #A100FF;/* A100FF */
+  --color-sun-yellow: #FFCE31;   /* FFCE31 */
+  --color-lime-green: #82CE33;   /* 82CE33 */
+  --color-cream-yellow: #FFDF91; /* FFDF91 */
+  --color-white: #FFFFFF;     /* fffff */
+}
+
+:root {
+  /* Neutral colors */
+  --color-neutral-700: #444444; /* dark gray */
+  --color-neutral-500: #999999; /* medium gray */
+  --color-neutral-300: #DBDBDB;  /* DBDBDB */
+  --color-neutral-100: #f2f2f2; /* light gray */
+  --color-mint-50: #F8FFF0;     /* F8FFF0 */
+}
+
+/* 반응형 루트 폰트 스케일 */
+@media (max-width: 1200px) {
+  :root {
+    font-size: 17px;
+  }
+}
+@media (max-width: 1024px) {
+  :root {
+    font-size: 16px;
+  }
+}
+@media (max-width: 768px) {
+  :root {
+    font-size: 15px;
+  }
+}
+@media (max-width: 480px) {
+  :root {
+    font-size: 14px;
+  }
+}
+@media (max-width: 350px) {
+  :root {
+    font-size: 13px;
+  }
+}
+
+:root {
+	--background: #ffffff;
+	--foreground: #171717;
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
+}
+/* 1. 기본 스타일 초기화 */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Sticky footer layout */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. body 기본 스타일 정의 */
+body {
+  font-family: 'Paperozi', 'Gmarket Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 6. 텍스트 줄임 처리 */
+.txt_cut1 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.txt_cut2, .txt_cut3, .txt_cut4, .txt_cut5 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.txt_cut2 { -webkit-line-clamp: 2; }
+.txt_cut3 { -webkit-line-clamp: 3; }
+.txt_cut4 { -webkit-line-clamp: 4; }
+.txt_cut5 { -webkit-line-clamp: 5; }
+
+/* 7. 영역 메시지 지우기 */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Global scrollbar styling (light theme aligned, accent: #B9E300) */
+* {
+	scrollbar-width: thin; /* Firefox */
+	scrollbar-color: #8F7D65 #e9ece3; /* thumb track */
+}
+
+/* WebKit-based browsers */
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+::-webkit-scrollbar-track {
+	background: #e9ece3;
+	border-radius: 8px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #8F7D65;
+	border-radius: 8px;
+	border: 2px solid #e9ece3; /* creates padding around thumb */
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: #7A6B52;
+}
+::-webkit-scrollbar-corner {
+	background: #e9ece3;
+}
+
+/* 3. 모든 요소가 부모 스타일을 상속받도록 설정 */
+h1, h2, h3, h4, h5, h6,
+p, a, span, label, strong, em,
+input, button, textarea, select,
+ul, ol, li, table, thead, tbody, tr, th, td {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+/* 4. 특정 태그에 대한 추가 설정 */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+label, select, input, textarea {
+    vertical-align: middle;
+}
+
+button, input, textarea, select {
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+button {
+  cursor: pointer;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+/* outline: none 사용 시 시각적 포커스 스타일을 제공하여 웹 접근성 보완 */
+input:focus, button:focus, textarea:focus {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+th, td {
+  padding: 0;
+  text-align: center;
+  border: 0;
+  font-weight: 400;
+}
+main {
+  flex: 1 0 ;
+  flex-basis: 0;
+}
+
+
+
+
+

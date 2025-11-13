@@ -1,0 +1,673 @@
+#header {
+    position: fixed;
+    left: 50%;
+    z-index: 10;
+    width: 100%;
+    transform: translate(-50%);
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+#logo {
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    z-index: 2;
+}
+.header_wrap {
+    width: 100%;
+    max-width: calc(100% - 6rem);
+    margin-left: auto !important;
+    margin-right: auto !important;
+    position: relative;
+    z-index: 2;
+    height: 90px;
+    display: flex;
+}
+#gnb1 {
+    position: relative;
+    overflow: visible;
+    width: 100%;
+}
+#gnb1 > ul {
+    display: inline-block;
+    vertical-align: middle;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding-left: 9rem;
+    padding-right: 3rem;
+}
+#gnb1 > ul > li {
+    display: inline-block;
+    padding: 0 20px;
+    vertical-align: top;
+    height: 90px;
+}
+/* LNB show on hover/focus */
+#gnb1 > ul > li.lnb:hover .submenu,
+#gnb1 > ul > li.lnb:focus-within .submenu,
+#gnb1 > ul > li.lnb.is-open .submenu {
+    visibility: visible;
+    opacity: 1;
+    width: 100%;
+    height: auto;
+}
+#gnb1 > ul .submenu {
+    visibility: hidden;
+    overflow: visible;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 1;
+    min-width: 100%;
+}
+
+#gnb1 > ul > li.lnb.is-open .submenu {
+    visibility: visible;
+    overflow: visible;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+#side_btn .btn_search {
+    position: absolute;
+    right: 0;
+    top: 1.2rem;
+    width: 50px;
+    height: 45px;
+    background-color: #0172FF;
+    border-radius: 7px;
+    background-image: url('/images/ic_search_white.svg');
+    background-size: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 3;
+}
+#side_btn .btn_hamburger {
+    display: none;
+    position: absolute;
+    right: 60px;
+    top: 1.2rem;
+    width: 50px;
+    height: 45px;
+    background-color: #0172FF;
+    border-radius: 7px;
+    background-image: url('/images/ic_hamburger_on.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 3;
+}
+/* Active (pressed) and open states switch to off icon.
+   Hover no longer forces icon change so it returns to default when not open. */
+#side_btn .btn_hamburger:active,
+#side_btn .btn_hamburger[aria-pressed="true"],
+html.gnb2-open #side_btn .btn_hamburger {
+    background-image: url('/images/ic_hamburger_off.svg');
+}
+
+#header.active .header_wrap:before {
+    content: "";
+    width: 100vw;
+    height: 10rem;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    background: #fff;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+#gnb1 > ul .submenu::before {
+    content: none;
+}
+
+#gnb1 > ul > li.active .submenu::before {
+    content: none;
+}
+/* expand ::before when opened via JS class */
+#gnb1 > ul > li.lnb.is-open .submenu::before {
+    content: none;
+}
+
+/* GNB-wide background behind submenu (full viewport width) */
+#gnb1::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: var(--submenu-top, 90px);
+    width: 100vw;
+    height: 0;
+    background: #fff;
+    z-index: -1;
+    border-radius: 0 0 4rem 4rem;
+    -webkit-box-shadow: 0 3rem 6rem -3rem rgba(0, 0, 0, 0.4);
+    box-shadow: 0 3rem 6rem -3rem rgba(0, 0, 0, 0.4);
+    border-top: 1px solid rgba(205, 205, 205, 0.3);
+    opacity: 0;
+    -webkit-transition: height 0.35s ease, opacity 0.35s ease;
+    transition: height 0.35s ease, opacity 0.35s ease;
+    pointer-events: none;
+}
+/* When any submenu is open, expand the background using JS-provided height */
+#gnb1.is-open::after {
+    height: var(--submenu-bg-height, 16rem);
+    opacity: 1;
+}
+
+/* remove global image layer; image handled per .lnb_title::before */
+/* Submenu panel styling (similar to gihoo portal) */
+#gnb1 > ul .submenu {
+    background: transparent; /* full-bleed background handled by ::before */
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+    -webkit-transition: opacity 0.35s ease, -webkit-transform 0.35s ease;
+    transition: opacity 0.35s ease, -webkit-transform 0.35s ease;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    transition: transform 0.35s ease, opacity 0.35s ease, -webkit-transform 0.35s ease;
+    z-index: 2;
+}
+#gnb1 > ul > li.lnb.is-open .submenu {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+
+/* Full-width invisible hit area to keep submenu open while hovering blank space */
+#gnb1 .submenu-hitarea {
+    position: fixed;
+    left: 0;
+    top: var(--submenu-top, 90px);
+    width: 100vw;
+    height: 0;
+    display: none;
+    z-index: 1;
+    pointer-events: auto;
+    /* no background; purely for hover capture */
+}
+#gnb1.is-open .submenu-hitarea {
+    display: block;
+    height: var(--submenu-bg-height, 16rem);
+}
+/* Title/description in submenu */
+#gnb1 .submenu .desc {
+    margin: 0;
+    font-weight: 700;
+    color: #000;
+}
+
+/* Sub list layout */
+#gnb1 .submenu .sublist {
+    margin: 0;
+    list-style: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    width: calc(100% - 500px);
+    -webkit-box-direction: normal;
+    gap: 10px;
+}
+#gnb1 .submenu .sublist li a {
+    display: block;
+    width: 250px;
+    padding: 10px 44px 10px 20px;
+    border-radius: 0.5rem;
+    color: #000;
+    -webkit-transition: background-color 0.15s, color 0.15s;
+    transition: background-color 0.15s, color 0.15s;
+    border: 1px solid #DBDBDB;
+    border-radius: 5px;
+    background-image: url('/images/ic_leftarrow_gray.svg');
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+}
+#gnb1 .submenu .sublist li a:hover,
+#gnb1 .submenu .sublist li a:focus-visible {
+    background-color: #0172FF;
+    color: #fff;
+    font-weight: 600;
+    background-image: url('/images/ic_leftarrow_white.svg');
+}
+
+/* Top level items */
+#gnb1 > ul.topmenu > li > a {
+    display: block;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    line-height: 5rem;
+    padding: 0;
+    font-weight: 400;
+    color: #000;
+}
+#gnb1 > ul.topmenu > li.is-open > a,
+#gnb1 > ul.topmenu > li:hover > a {
+    color: #0172FF;
+    font-weight: 600;
+}
+#gnb1 > ul .submenu .lnb_title {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4rem 0 4rem 6rem;
+    width: 500px;
+    position: relative;
+}
+#gnb1 > ul .submenu .lnb_title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 30px;
+    width: 90px;
+    height: 110px;
+    background-image: url('/images/image_lnb.svg');
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: contain;
+    pointer-events: none;
+}
+#gnb1 > ul .submenu .lnb_title span {
+    font-size: var(--fs-16);
+}
+#gnb1 > ul .submenu .desc {
+    -webkit-box-flex: 0;
+    font-size: var(--fs-32);
+}
+
+/* ===== gnb2 (Mobile) Layer & Container ===== */
+#gnb2-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    -webkit-transition: opacity .45s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity .45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#gnb2-layer.open {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+#gnb2 {
+    position: fixed;
+    display: block;
+    width: 100%;
+    left: auto;
+    right: 0;
+    top: var(--header-offset, 90px);
+    background-color: #fff;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    will-change: opacity, max-height;
+    -webkit-transition: opacity .35s cubic-bezier(0.4, 0, 0.2, 1), max-height .35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity .35s cubic-bezier(0.4, 0, 0.2, 1), max-height .35s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    pointer-events: none;
+    max-height: 0;
+    overflow: hidden;
+}
+#gnb2:not(.active) {
+    opacity: 0;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    pointer-events: none;
+    max-height: 0;
+    overflow: hidden;
+}
+#gnb2.active {
+    display: block;
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    max-height: 650px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.24);
+    pointer-events: auto;
+}
+#gnb2 > ul {
+    width: 100%;
+    margin: 0 auto;
+    color: #000;
+    position: relative;
+    padding: 0 20px 40px 20px;
+    margin-top: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    word-break: keep-all;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
+#gnb2 > ul > li {
+    position: relative;
+    display: flex;
+    width: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 5px;
+}
+#gnb2 > ul > li > a {
+    font-size: var(--fs-18);
+    line-height: 2rem;
+    display: block;
+    font-weight: 550;
+    color: #111;
+    border-bottom: 1px dashed #ddd;
+    position: relative;
+}
+#gnb2 > ul > li > a[aria-expanded='true'] {
+    border-bottom-color: #0172FF;
+}
+#gnb2 > ul > li:has(> .submenu2.open) > a {
+    border-bottom-color: #0172FF;
+    border-bottom: solid 2px #0172FF;
+}
+
+#gnb2 > ul > li > a::before {
+    content: "";
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+    -webkit-transition: -webkit-transform .45s cubic-bezier(0.4, 0, 0.2, 1), opacity .3s ease;
+    transition: -webkit-transform .45s cubic-bezier(0.4, 0, 0.2, 1), opacity .3s ease;
+    transition: transform .45s cubic-bezier(0.4, 0, 0.2, 1), opacity .3s ease;
+    transition: transform .45s cubic-bezier(0.4, 0, 0.2, 1), opacity .3s ease, -webkit-transform .45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#gnb2 > ul > li:hover > a::before,
+#gnb2 > ul > li:focus-within > a::before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+#gnb2 > ul > li > .submenu2 {
+    font-size: 1.3rem;
+    line-height: 1.8;
+}
+/* 기본: 아코디언 닫힘 */
+#gnb2 > ul > li > .submenu2 {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition: max-height .32s cubic-bezier(0.4, 0, 0.2, 1), opacity .25s ease, -webkit-transform .25s ease, padding .25s ease;
+    transition: max-height .32s cubic-bezier(0.4, 0, 0.2, 1), opacity .25s ease, -webkit-transform .25s ease, padding .25s ease;
+    transition: max-height .32s cubic-bezier(0.4, 0, 0.2, 1), opacity .25s ease, transform .25s ease, padding .25s ease;
+    transition: max-height .32s cubic-bezier(0.4, 0, 0.2, 1), opacity .25s ease, transform .25s ease, padding .25s ease, -webkit-transform .25s ease;
+    opacity: 0;
+    -webkit-transform: translateY(-4px);
+    transform: translateY(-4px);
+    padding-top: 0;
+    padding-bottom: 0;
+    visibility: hidden;
+    pointer-events: none;
+    background-color: #fff;
+}
+/* 아코디언 열림 */
+#gnb2 > ul > li > .submenu2.open {
+    max-height: 500px;
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    padding-top: 8px;
+    padding-bottom: 8px;
+    visibility: visible;
+    pointer-events: auto;
+}
+#gnb2 > ul > li > .submenu2 > ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    position: relative;
+}
+#gnb2 > ul > li > .submenu2 > ul > li a {
+    width: 100%;
+    border-radius: 25px;
+    display: inline-block;
+    padding: 5px 25px;
+    font-size: var(--fs-18);
+    border: 1px solid #dbdbdb;
+    -webkit-transition: background-color .18s ease, color .18s ease, border-color .18s ease;
+    transition: background-color .18s ease, color .18s ease, border-color .18s ease;
+}
+#gnb2 > ul > li > .submenu2 > ul > li a:hover,
+#gnb2 > ul > li > .submenu2 > ul > li a:focus {
+    border-color: #0172FF;
+    color: #fff;
+    background-color: #0172FF;
+    font-weight: 600;
+}
+
+#gnb2.active::before {
+    content: "전체메뉴";
+    font-size: var(--fs-32);
+    position: relative;
+    text-align: center;
+    color: #000;
+    font-weight: 700;
+    display: block;
+}
+
+/* 769px 이상에서는 아코디언이 아닌 항상 펼침 상태 */
+@media (min-width: 769px) {
+    #gnb2.active > ul > li > .submenu2 {
+        max-height: none;
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        visibility: visible;
+        pointer-events: auto;
+    }
+}
+
+@media (max-width: 1200px) {
+    .header_wrap {
+        max-width: calc(100% - 4rem);
+    }
+    #logo img {
+        width: 120px;
+    }
+    #gnb1 > ul {
+        padding-left: 7rem;
+        padding-right: 6rem;
+    }
+    #gnb1 > ul > li {
+        padding: 0 10px;
+    }
+    #side_btn .btn_hamburger,
+    #side_btn .btn_search {
+        display: block;
+        top: 1.5rem;
+        width: 45px;
+        height: 40px;
+    }
+    #gnb1::after {
+        opacity: 0 !important;
+        height: 0 !important;
+    }
+    /* hover/focus로 인한 열림 무력화 */
+    #gnb1 > ul > li.lnb:hover .submenu,
+    #gnb1 > ul > li.lnb:focus-within .submenu,
+    #gnb1 > ul > li.lnb.is-open .submenu {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transform: translateY(-6px) !important;
+        max-height: 0 !important;
+    }
+
+}
+
+@media (max-width: 1024px) {
+    #gnb2 {
+        top: var(--header-offset, 75px);
+    }
+    /* 상단 메뉴(head_menu)도 숨김 */
+    #head_menu {
+        display: none !important;
+    }
+    #gnb1 > ul .submenu {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transform: translateY(-6px) !important;
+        max-height: 0 !important;
+    }
+    #gnb1 .submenu-hitarea {
+        display: none !important;
+    }
+    .header_wrap {
+        height: 75px;
+    }
+    #side_btn .btn_hamburger,
+    #side_btn .btn_search,
+    #logo {
+        top: 1.2rem;
+    }
+
+}
+
+@media (max-width: 768px) {
+    #logo,
+    #side_btn .btn_hamburger,
+    #side_btn .btn_search {
+        top: 1rem;
+    }
+    #side_btn .btn_hamburger,
+    #side_btn .btn_search {
+        width: 40px;
+        height: 35px;
+        border-radius: 5px;
+    }
+    #side_btn .btn_hamburger {
+        right: 50px;
+    }
+    .header_wrap {
+        height: 60px;
+        max-width: calc(100% - 2.5rem);
+    }
+    #logo img {
+        width: 100px;
+    }
+    #gnb2.active {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        width: 300px;
+        padding-top: 20px;
+        max-height: 50vh; /* smooth open/close */
+        top: 75px;
+        left: auto;
+        right: 0;
+    }
+    #gnb2.active { top: 60px; }
+    #gnb2 > ul {
+        margin-top: 15px;
+    }
+    /* gnb2 아코디언: 상위 a 오른쪽에 아이콘 표시 (닫힘: 아래, 열림: 위) */
+    #gnb2 > ul > li > a {
+        position: relative;
+        padding-right: 32px;
+        align-items: center;
+    }
+    /* 기존 보더 화살표 제거 */
+    #gnb2 > ul > li > a::before {
+        content: none;
+    }
+    /* 아이콘 화살표 (ic_btmarrow_black) */
+    #gnb2 > ul > li > a::after {
+        content: '';
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        width: 12px;
+        height: 12px;
+        background-image: url('/images/ic_btmarrow_black.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        transform: translateY(-50%) rotate(0deg);
+        -webkit-transition: transform .25s ease;
+        transition: transform .25s ease;
+    }
+    #gnb2 > ul > li > a[aria-expanded='true']::after {
+        transform: translateY(-50%) rotate(180deg);
+    }
+    #gnb2 > ul > li > .submenu2 {
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+        -webkit-transition: max-height .32s cubic-bezier(0.4, 0, 0.2, 1), opacity .25s ease, -webkit-transform .25s ease, padding .25s ease;
+        transition: max-height .32s cubic-bezier(0.4, 0, 0.2, 1), opacity .25s ease, -webkit-transform .25s ease, padding .25s ease;
+        transition: max-height .32s cubic-bezier(0.4, 0, 0.2, 1), opacity .25s ease, transform .25s ease, padding .25s ease;
+        transition: max-height .32s cubic-bezier(0.4, 0, 0.2, 1), opacity .25s ease, transform .25s ease, padding .25s ease, -webkit-transform .25s ease;
+        opacity: 0;
+        -webkit-transform: translateY(-4px);
+        transform: translateY(-4px);
+        padding-top: 0;
+        padding-bottom: 0;
+        visibility: hidden;
+        pointer-events: none;
+        background-color: #fff;
+    }
+    #gnb2 > ul > li > .submenu2.open {
+        max-height: 500px;
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        padding-top: 8px;
+        padding-bottom: 8px;
+        visibility: visible;
+        pointer-events: auto;
+    }
+    #gnb2 > ul > li > .submenu2 > ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 5px;
+    }
+    #gnb2 > ul > li > .submenu2 a {
+        color: #000;
+        font-size: 1.05rem;
+    }
+    
+}
